@@ -49,5 +49,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60372, 0.553389, 0)
 [node name="Cow" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42479, 0.525529, 0)
 
+[node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
+
 [connection signal="player_entered" from="Water" to="." method="_on_water_player_entered"]
 [connection signal="player_entered" from="Cow" to="." method="_on_cow_player_entered"]
+[connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]
