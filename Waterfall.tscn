@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b80a1hiq0jb56"]
+[gd_scene load_steps=21 format=3 uid="uid://b80a1hiq0jb56"]
 
 [ext_resource type="Script" path="res://waterfall.gd" id="1_ftc7k"]
 [ext_resource type="Texture2D" uid="uid://bo3y4q63vovam" path="res://assets/gfx/noise2.png" id="2_2xh01"]
@@ -44,7 +44,14 @@ point_count = 4
 shading_mode = 0
 diffuse_mode = 1
 
+[sub_resource type="Curve" id="Curve_7h1yw"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveTexture" id="CurveTexture_hk42n"]
+curve = SubResource("Curve_7h1yw")
 
 [sub_resource type="Curve" id="Curve_ttjn1"]
 min_value = -200.0

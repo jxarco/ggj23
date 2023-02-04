@@ -18,6 +18,8 @@ enum AnimState {
 var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 
+signal player_released_waterfall(depth)
+
 func _ready():
 	%Ambience_Night.play()
 
@@ -99,7 +101,6 @@ func interact_mole():
 		state.waterwayDone = true
 
 func interact_water():
-
 	if state.wetGround or state.groundFlooded:
 		print("WATER ALREADY FREED")
 		return
@@ -109,12 +110,14 @@ func interact_water():
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 		%RiverStream.play()
+		emit_signal("player_released_waterfall", 0.23)
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
 		%RiverStream.play()
+		emit_signal("player_released_waterfall", 0.288)
 
 func interact_sun():
 	
