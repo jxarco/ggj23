@@ -1,23 +1,23 @@
 [gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://c5aes7jb51fr0"]
 
-[ext_resource type="Texture2D" uid="uid://c2rudx1sy0fxo" path="res://assets/semilla_walk/SEMILLA_WALK_01.png" id="1_qfjct"]
-[ext_resource type="Texture2D" uid="uid://b81djvi12twnq" path="res://assets/semilla_walk/SEMILLA_WALK_02.png" id="2_lcvhu"]
-[ext_resource type="Texture2D" uid="uid://brymblf420qbg" path="res://assets/semilla_walk/SEMILLA_WALK_03.png" id="3_gvaw4"]
-[ext_resource type="Texture2D" uid="uid://ckimjs6iyd174" path="res://assets/semilla_walk/SEMILLA_WALK_04.png" id="4_wihmx"]
-[ext_resource type="Texture2D" uid="uid://5uk4i618h7f7" path="res://assets/semilla_walk/SEMILLA_WALK_05.png" id="5_brudw"]
-[ext_resource type="Texture2D" uid="uid://cqfytfy8ixbjs" path="res://assets/semilla_walk/SEMILLA_WALK_06.png" id="6_mulce"]
+[ext_resource type="Texture2D" uid="uid://c2rudx1sy0fxo" path="res://assets/semilla_walk/SEMILLA_WALK_01.png" id="1_to16r"]
+[ext_resource type="Texture2D" uid="uid://b81djvi12twnq" path="res://assets/semilla_walk/SEMILLA_WALK_02.png" id="2_fst27"]
+[ext_resource type="Texture2D" uid="uid://brymblf420qbg" path="res://assets/semilla_walk/SEMILLA_WALK_03.png" id="3_oqygx"]
+[ext_resource type="Texture2D" uid="uid://ckimjs6iyd174" path="res://assets/semilla_walk/SEMILLA_WALK_04.png" id="4_v6hhs"]
+[ext_resource type="Texture2D" uid="uid://5uk4i618h7f7" path="res://assets/semilla_walk/SEMILLA_WALK_05.png" id="5_qjhi4"]
+[ext_resource type="Texture2D" uid="uid://cqfytfy8ixbjs" path="res://assets/semilla_walk/SEMILLA_WALK_06.png" id="6_20qkr"]
 
 [resource]
 frames = 6
-frame_0/texture = ExtResource("1_qfjct")
+frame_0/texture = ExtResource("1_to16r")
 frame_0/duration = 0.12
-frame_1/texture = ExtResource("2_lcvhu")
+frame_1/texture = ExtResource("2_fst27")
 frame_1/duration = 0.12
-frame_2/texture = ExtResource("3_gvaw4")
+frame_2/texture = ExtResource("3_oqygx")
 frame_2/duration = 0.12
-frame_3/texture = ExtResource("4_wihmx")
+frame_3/texture = ExtResource("4_v6hhs")
 frame_3/duration = 0.12
-frame_4/texture = ExtResource("5_brudw")
+frame_4/texture = ExtResource("5_qjhi4")
 frame_4/duration = 0.12
-frame_5/texture = ExtResource("6_mulce")
+frame_5/texture = ExtResource("6_20qkr")
 frame_5/duration = 0.12

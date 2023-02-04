@@ -7,7 +7,16 @@ extends CharacterBody3D
 @onready var state = World.state
 
 var standing_anim = preload("res://assets/semilla_idle/standing.tres")
+#var standing_anim = preload("res://assets/test.tres")
 var walking_anim = preload("res://assets/semilla_walk/walking.tres")
+
+enum AnimState {
+	IDLE,
+	WALK
+}
+
+var anim_state := AnimState.IDLE
+var elapsed_time := 0.0
 
 func _ready():
 	pass
@@ -18,7 +27,8 @@ func _process(delta):
 		var angle = move_toward($"../DirectionalLight3D".rotation.x, -PI*0.5, delta*0.1)
 		$"../DirectionalLight3D".rotation.x = angle
 		
-
+	process_sprite_audio(delta)
+		
 func _input(event):
 	if event.is_action_pressed("Interact"):
 		match current_area:
@@ -53,8 +63,10 @@ func _physics_process(delta):
 	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
 	if (abs(velocity.z) + abs(velocity.x)) / 2.0 > 0.00:
 		mat.albedo_texture = walking_anim
+		anim_state = AnimState.WALK
 	else:
 		mat.albedo_texture = standing_anim
+		anim_state = AnimState.IDLE
 
 	if velocity.x > 0.0:
 		mat.uv1_scale.x = -1
@@ -137,3 +149,13 @@ func interact_roots():
 		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
 	elif state.waterwayDone and state.wetGround:
 		print("SHOOT AND SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
+
+func process_sprite_audio(delta):
+	
+	elapsed_time += delta
+	
+	if anim_state == AnimState.WALK:
+		var frame = walking_anim.current_frame
+		if (frame == 2 or frame == 5) and elapsed_time >= walking_anim.get_frame_duration(frame):
+			%AudioStream.play()
+			elapsed_time = 0.0
