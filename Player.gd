@@ -152,10 +152,11 @@ func interact_roots():
 
 func process_sprite_audio(delta):
 	
-	elapsed_time += delta
-	
 	if anim_state == AnimState.WALK:
+		elapsed_time += delta
 		var frame = walking_anim.current_frame
-		if (frame == 2 or frame == 5) and elapsed_time >= walking_anim.get_frame_duration(frame):
+		if (frame == 1 or frame == 4) and elapsed_time >= walking_anim.get_frame_duration(frame) + 0.05:
 			%AudioStream.play()
 			elapsed_time = 0.0
+	else:
+		elapsed_time = 0.0
