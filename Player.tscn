@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d34ksba0fd5cj"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ayeja"]
-[ext_resource type="Texture2D" uid="uid://86j1e148sib5" path="res://assets/gfx/frog.png" id="2_ycrku"]
+[ext_resource type="Texture2D" uid="uid://droc6pdmgua70" path="res://assets/gfx/frog.png" id="2_ycrku"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxh7k"]
 size = Vector3(1.24278, 1.27037, 0.106677)
