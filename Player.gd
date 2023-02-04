@@ -19,7 +19,7 @@ var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 
 func _ready():
-	pass
+	%Ambience_Night.play()
 
 func _process(delta):
 	
