@@ -108,3 +108,13 @@ func interact_cow():
 		print("COW DRINKS WATER")
 	elif state.waterwayDone and not state.wetGround:
 		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
+
+func interact_root():
+	print("i'm in ROOT area")
+	
+	if state.waterwayDone and state.wetGround and state.sunIsUp and state.grassEaten:
+		print("WIN")
+	elif state.waterwayDone and not state.wetGround and not state.sunIsUp:
+		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
+	elif state.waterwayDone and state.wetGround:
+		print("SHOOT AND SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
