@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://i8luyjv0evij"]
+[gd_scene load_steps=10 format=3 uid="uid://cp1yxd2aylyed"]
 
 [ext_resource type="PackedScene" uid="uid://mdpgpjy8q25j" path="res://assets/gfx/3d/piedra02.glb" id="1_qf827"]
 [ext_resource type="PackedScene" uid="uid://dsbsos6e81jyq" path="res://assets/gfx/3d/piedra01.glb" id="2_f2hue"]
 [ext_resource type="PackedScene" uid="uid://bwutgnjilajdn" path="res://assets/gfx/3d/piedra03.glb" id="3_ru855"]
-[ext_resource type="PackedScene" path="res://assets/gfx/3d/suelo_01.glb" id="4_weyra"]
+[ext_resource type="PackedScene" uid="uid://d1omrstsd7d0r" path="res://assets/gfx/3d/suelo_01.glb" id="4_weyra"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="5_6lsce"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xw31"]
@@ -11,13 +11,13 @@ size = Vector3(10, 1, 6)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_qdbxt"]
 
-[sub_resource type="Sky" id="Sky_6i0h7"]
+[sub_resource type="Sky" id="Sky_6pdah"]
 sky_material = SubResource("PhysicalSkyMaterial_qdbxt")
 
 [sub_resource type="Environment" id="Environment_a6tyo"]
 background_mode = 1
 background_color = Color(0.623529, 0.541176, 0.317647, 1)
-sky = SubResource("Sky_6i0h7")
+sky = SubResource("Sky_6pdah")
 tonemap_mode = 2
 sdfgi_enabled = true
 glow_enabled = true

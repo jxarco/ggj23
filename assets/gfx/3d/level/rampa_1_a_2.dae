@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.4.1 commit date:2022-12-19, commit time:17:00, hash:55485cb379f7</authoring_tool>
+    </contributor>
+    <created>2023-02-04T14:07:14</created>
+    <modified>2023-02-04T14:07:14</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="suelo_seco-effect">
+      <profile_COMMON>
+        <newparam sid="suelo_seco_diffuse_png-surface">
+          <surface type="2D">
+            <init_from>suelo_seco_diffuse_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="suelo_seco_diffuse_png-sampler">
+          <sampler2D>
+            <source>suelo_seco_diffuse_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="suelo_seco_diffuse_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="suelo_seco_diffuse_png" name="suelo_seco_diffuse_png">
+      <init_from>suelo_seco_diffuse.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="suelo_seco-material" name="suelo_seco">
+      <instance_effect url="#suelo_seco-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Plane_003-mesh" name="Plane.003">
+      <mesh>
+        <source id="Plane_003-mesh-positions">
+          <float_array id="Plane_003-mesh-positions-array" count="36">-1 -4 0 21 -4 10 -1 1 0 21 1 10 5.359364 -4 4.756248 4.47476 -4 4.354923 4.47476 1 4.354922 5.359364 1 4.756248 12.76812 -4 6.258237 11.58601 -4 5.888366 11.58601 1 5.888365 12.76812 1 6.258236</float_array>
+          <technique_common>
+            <accessor source="#Plane_003-mesh-positions-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_003-mesh-normals">
+          <float_array id="Plane_003-mesh-normals-array" count="30">-0.1788853 1.20552e-7 0.98387 -0.4131487 0 0.9106637 -0.6225236 0 0.7826011 -0.2986142 1.53989e-7 0.954374 -0.4138029 0 0.9103666 -0.1788856 0 0.9838699 -0.4131487 0 0.9106637 -0.6225236 0 0.7826011 -0.2986142 0 0.954374 -0.4138029 0 0.9103666</float_array>
+          <technique_common>
+            <accessor source="#Plane_003-mesh-normals-array" count="10" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_003-mesh-map-0">
+          <float_array id="Plane_003-mesh-map-0-array" count="60">-0.1686527 0.9674174 0.3721684 0.2828779 0.3721684 0.9674174 0.3721684 0.9674174 -0.1686527 1.07249 -0.1686527 0.9674174 -0.1686527 1.829161 0.3721684 1.07249 0.3721697 1.829161 0.3721684 0.1489019 -0.1686527 0.2828779 -0.1686527 0.1489019 -0.1686527 -0.8291614 0.3721684 0.1489019 -0.1686527 0.1489019 -0.1686527 0.9674174 -0.1686527 0.2828779 0.3721684 0.2828779 0.3721684 0.9674174 0.3721684 1.07249 -0.1686527 1.07249 -0.1686527 1.829161 -0.1686527 1.07249 0.3721684 1.07249 0.3721684 0.1489019 0.3721684 0.2828779 -0.1686527 0.2828779 -0.1686527 -0.8291614 0.3721684 -0.8291614 0.3721684 0.1489019</float_array>
+          <technique_common>
+            <accessor source="#Plane_003-mesh-map-0-array" count="30" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane_003-mesh-vertices">
+          <input semantic="POSITION" source="#Plane_003-mesh-positions"/>
+        </vertices>
+        <triangles material="suelo_seco-material" count="10">
+          <input semantic="VERTEX" source="#Plane_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_003-mesh-map-0" offset="2" set="0"/>
+          <p>4 0 0 10 0 1 7 0 2 7 1 3 5 1 4 4 1 5 0 2 6 6 2 7 2 2 8 11 3 9 9 3 10 8 3 11 1 4 12 11 4 13 8 4 14 4 5 15 9 5 16 10 5 17 7 6 18 6 6 19 5 6 20 0 7 21 5 7 22 6 7 23 11 8 24 10 8 25 9 8 26 1 9 27 3 9 28 11 9 29</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene"/>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

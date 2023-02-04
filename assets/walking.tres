@@ -1,7 +1,7 @@
 [gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://b7y8nhtv7obyi"]
 
-[ext_resource type="Texture2D" uid="uid://cpfclx5posi2r" path="res://assets/character-moving-1.png" id="1_aef7f"]
-[ext_resource type="Texture2D" uid="uid://i5x5fbyctfp0" path="res://assets/character-moving-2.png" id="2_71y6i"]
+[ext_resource type="Texture2D" uid="uid://ck0w1t4wow3i5" path="res://assets/character-moving-1.png" id="1_aef7f"]
+[ext_resource type="Texture2D" uid="uid://3fv6ueu4fljx" path="res://assets/character-moving-2.png" id="2_71y6i"]
 
 [resource]
 frames = 2
