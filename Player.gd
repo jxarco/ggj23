@@ -34,5 +34,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+#
+#	for i in range(get_slide_collision_count() - 1):
+#		var collision = get_slide_collision(i)
+#		print(collision)
 	
 	pass

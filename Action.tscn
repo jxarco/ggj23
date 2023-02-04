@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpon6uc57bd78"]
+[gd_scene load_steps=3 format=3 uid="uid://cpon6uc57bd78"]
+
+[ext_resource type="Script" path="res://Action.gd" id="1_qcsvn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_11ydm"]
 
 [node name="Action" type="Node3D"]
+script = ExtResource("1_qcsvn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["Action"]]
+collision_layer = 4
+collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_11ydm")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
