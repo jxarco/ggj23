@@ -25,7 +25,7 @@ size = Vector3(4.62016, 0.115799, 3.12037)
 script = ExtResource("1_84ysa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.999767, -0.0183975, 0.011313, 0.0195641, -0.549572, 0.835217, -0.00914862, 0.835243, 0.549804, 0, 0, 0)
+transform = Transform3D(-0.999767, -0.0183974, 0.011313, 0.0159998, -0.279063, 0.96014, -0.0145071, 0.960097, 0.279292, -0.0158203, -0.0790607, 0.0389924)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -47,8 +47,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60372, 0.553389, 0)
 [node name="Cow" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42479, 0.525529, 0)
 
+[node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
+
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.726525, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.994984, 0)
 
 [connection signal="player_entered" from="Water" to="." method="_on_water_player_entered"]
 [connection signal="player_entered" from="Cow" to="." method="_on_cow_player_entered"]
+[connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]

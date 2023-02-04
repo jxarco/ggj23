@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://do2hrqxwbqkdy"]
+[gd_scene load_steps=4 format=3 uid="uid://do2hrqxwbqkdy"]
 
 [ext_resource type="PackedScene" uid="uid://dpjhc8dxmts1i" path="res://assets/up_quad.glb" id="1_vlsa8"]
-[ext_resource type="Texture2D" uid="uid://droc6pdmgua70" path="res://assets/gfx/frog.png" id="2_bs1l3"]
+[ext_resource type="Texture2D" uid="uid://bot5kg5isufoq" path="res://assets/standing.tres" id="2_vvt6e"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlwh6"]
-albedo_texture = ExtResource("2_bs1l3")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4dke"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvrlq"]
+transparency = 1
+albedo_texture = ExtResource("2_vvt6e")
 
 [node name="up_quad" instance=ExtResource("1_vlsa8")]
 
 [node name="Plane" parent="." index="0"]
-material_override = SubResource("StandardMaterial3D_jlwh6")
-surface_material_override/0 = SubResource("StandardMaterial3D_l4dke")
+surface_material_override/0 = SubResource("StandardMaterial3D_wvrlq")
