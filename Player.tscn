@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://do2hrqxwbqkdy" path="res://up_quad.tscn" id="5_g2gq6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxh7k"]
-size = Vector3(1.10203, 1.77238, 0.106677)
+size = Vector3(1.16553, 1.68322, 0.106677)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 5
@@ -19,9 +19,9 @@ spring_length = 3.866
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0154053, -0.00842148, 0.00585532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00936535, -0.158473, 0.00584435)
 shape = SubResource("BoxShape3D_oxh7k")
 
 [node name="Sprite" parent="." instance=ExtResource("5_g2gq6")]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1.70302, 0, -8.74228e-08, 0, 1, 0, 1.48883e-07, 0, -1, 0, 0, 0)

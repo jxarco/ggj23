@@ -5,15 +5,11 @@ extends CharacterBody3D
 @export var current_area := World.Area.NONE
 
 @onready var state = World.state
-@onready var sprite := %AnimatedSprite3D
 
 var walking_anim = preload("res://assets/walking.tres")
 var standing_anim = preload("res://assets/standing.tres")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-
-#	get_node("Mesh/AnimationPlayer").play("Move", -1, 2)
 	pass
 
 func _process(_delta):
@@ -26,8 +22,12 @@ func _input(event):
 				interact_mole()
 			World.Area.WATER:
 				interact_water()
+			World.Area.SUN:
+				interact_sun()
 			World.Area.COW:
 				interact_cow()
+			World.Area.ROOTS:
+				interact_roots()
 			_:
 				print("No area!")
 
@@ -49,52 +49,63 @@ func _physics_process(delta):
 	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
 	if (abs(velocity.z) + abs(velocity.x)) / 2.0 > 0.00:
 		mat.albedo_texture = walking_anim
-
-#		sprite.play("walking")
 	else:
 		mat.albedo_texture = standing_anim
-#		sprite.play("standing")
 
 	if velocity.x > 0.0:
 		mat.uv1_scale.x = -1
 	elif velocity.x < 0.0:
 		mat.uv1_scale.x = 1
-#
-#	for i in range(get_slide_collision_count() - 1):
-#		var collision = get_slide_collision(i)
-#		print(collision)
+
+#	var waterwayDone := false
+#	var wetGround := false
+#	var sunIsUp := false
+#	var grassEaten := false
+#	var groundFlooded := false
 
 func interact_mole():
 
-	print("i'm in MOLE area")
 	if state.waterwayDone:
 		print("WATERWAY ALREADY DONE")
 		return
 
 	if state.sunIsUp:
 		print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
+	elif state.groundFlooded:
+		print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
 	elif not state.sunIsUp:
 		print("MOLE MAKES CORRECT WATERWAY")
+		state.actionSequence.push_back("MOLE")
 		state.waterwayDone = true
 
 func interact_water():
 
-	print("i'm in WATER area")
-	if state.wetGround:
-		print("WATER ALREADY TO THE WATERWAY")
+	if state.wetGround or state.groundFlooded:
+		print("WATER ALREADY FREED")
 		return
 
-	if state.waterwayDone and not state.grassEaten and not state.sunIsUp:
+	if state.waterwayDone and not state.sunIsUp:
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
+		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
+		state.groundFlooded = true
+
+func interact_sun():
+	
+	if state.sunIsUp:
+		print("SUN IS ALREADY UP")
+		return
+
+	print("SUN IS UP!")
+	state.sunIsUp = true
+	state.actionSequence.push_back("SUN")
 
 func interact_cow():
 
-	print("i'm in COW area")
 	if state.grassEaten:
 		print("GRASS ALREADY EATEN")
 		return
@@ -102,9 +113,23 @@ func interact_cow():
 	if state.waterwayDone and state.wetGround and state.sunIsUp:
 		print("COW EATS GRASS")
 		state.grassEaten = true
-	elif state.waterwayDone and state.wetGround and not state.sunIsUp:
-		print("COW WAKES UP, GETS ANGRY AND GOES AWAY")
-	elif not state.waterwayDone and state.wetGround:
+		state.actionSequence.push_back("COW")
+	elif not state.waterwayDone and state.groundFlooded:
 		print("COW DRINKS WATER")
 	elif state.waterwayDone and not state.wetGround:
 		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
+	elif not state.sunIsUp:
+		print("COW WAKES UP, GETS ANGRY AND GOES AWAY")
+
+func interact_roots():
+	
+	if state.waterwayDone and state.wetGround and state.sunIsUp and state.grassEaten:
+		print("WIN CASE!!")
+		# Check in case something is really bugged
+#		for act in state.actionSequence:
+#			print(act)
+			
+	elif state.waterwayDone and not state.wetGround and not state.sunIsUp:
+		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
+	elif state.waterwayDone and state.wetGround:
+		print("SHOOT AND SOME LEAVES GROWS UP, AFTERWARDS IT DIES")

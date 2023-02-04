@@ -1,6 +1,20 @@
-[gd_resource type="AnimatedTexture" load_steps=2 format=3 uid="uid://bot5kg5isufoq"]
+[gd_resource type="AnimatedTexture" load_steps=6 format=3 uid="uid://cwj6htr7s6wut"]
 
-[ext_resource type="Texture2D" uid="uid://dia73aw5vtiig" path="res://assets/character-standing.png" id="1_s5s71"]
+[ext_resource type="Texture2D" uid="uid://dbfkqb0a1royl" path="res://assets/SEMILLA_IDLE_01.png" id="1_psbx6"]
+[ext_resource type="Texture2D" uid="uid://bo123ytc1188u" path="res://assets/SEMILLA_IDLE_02.png" id="2_vso3q"]
+[ext_resource type="Texture2D" uid="uid://b6ekpbe5jx57g" path="res://assets/SEMILLA_IDLE_03.png" id="3_uyysh"]
+[ext_resource type="Texture2D" uid="uid://bevgn0unyekpx" path="res://assets/SEMILLA_IDLE_04.png" id="4_q03nv"]
+[ext_resource type="Texture2D" uid="uid://bxiqhp8hr4jjg" path="res://assets/SEMILLA_IDLE_05.png" id="5_io1fk"]
 
 [resource]
-frame_0/texture = ExtResource("1_s5s71")
+frames = 5
+frame_0/texture = ExtResource("1_psbx6")
+frame_0/duration = 0.12
+frame_1/texture = ExtResource("2_vso3q")
+frame_1/duration = 0.12
+frame_2/texture = ExtResource("3_uyysh")
+frame_2/duration = 0.12
+frame_3/texture = ExtResource("4_q03nv")
+frame_3/duration = 0.12
+frame_4/texture = ExtResource("5_io1fk")
+frame_4/duration = 0.12

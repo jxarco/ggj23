@@ -41,17 +41,41 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_hqpuy")
 
+[node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033133, 0.15328, -1.20905)
+
+[node name="Label3" type="Label3D" parent="Mole"]
+text = "MOLE"
+
 [node name="Water" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60372, 0.553389, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45562, 0.553389, 0.117494)
+
+[node name="Label" type="Label3D" parent="Water"]
+text = "WATER"
 
 [node name="Cow" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42479, 0.525529, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1446, 0.829053, 0.0672284)
 
-[node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
+[node name="Label2" type="Label3D" parent="Cow"]
+text = "COW"
+
+[node name="Sun" parent="." instance=ExtResource("1_r8fxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37777, 0.533048, 1.4139)
+
+[node name="Label3" type="Label3D" parent="Sun"]
+text = "SUN"
+
+[node name="Roots" parent="." instance=ExtResource("1_r8fxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.808125, 0.490299, 1.43331)
+
+[node name="Label4" type="Label3D" parent="Roots"]
+text = "ROOTS"
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.994984, 0)
 
+[connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]
 [connection signal="player_entered" from="Water" to="." method="_on_water_player_entered"]
 [connection signal="player_entered" from="Cow" to="." method="_on_cow_player_entered"]
-[connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]
+[connection signal="player_entered" from="Sun" to="." method="_on_sun_player_entered"]
+[connection signal="player_entered" from="Roots" to="." method="_on_roots_player_entered"]
