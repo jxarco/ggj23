@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scene.gd" id="1_84ysa"]
 [ext_resource type="PackedScene" uid="uid://cpon6uc57bd78" path="res://Action.tscn" id="1_r8fxx"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="1_w27bx"]
-[ext_resource type="PackedScene" uid="uid://87hoa71shqjr" path="res://Waterfall.tscn" id="4_ejfjf"]
+[ext_resource type="PackedScene" path="res://Waterfall.tscn" id="4_ejfjf"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_k22va"]
 

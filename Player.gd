@@ -6,8 +6,8 @@ extends CharacterBody3D
 
 @onready var state = World.state
 
-var walking_anim = preload("res://assets/walking.tres")
-var standing_anim = preload("res://assets/standing.tres")
+var standing_anim = preload("res://assets/semilla_idle/standing.tres")
+var walking_anim = preload("res://assets/semilla_walk/walking.tres")
 
 func _ready():
 	pass

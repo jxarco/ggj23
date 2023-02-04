@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://droc6pdmgua70"
-path.s3tc="res://.godot/imported/frog.png-29151c091c43fbbadfdb1fe04d08208f.s3tc.ctex"
+uid="uid://blq5t0e53uki2"
+path.s3tc="res://.godot/imported/uniformclouds.jpg-aed3150990c9a8f92da46c59a2aa8d64.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/gfx/frog.png"
-dest_files=["res://.godot/imported/frog.png-29151c091c43fbbadfdb1fe04d08208f.s3tc.ctex"]
+source_file="res://assets/gfx/uniformclouds.jpg"
+dest_files=["res://.godot/imported/uniformclouds.jpg-aed3150990c9a8f92da46c59a2aa8d64.s3tc.ctex"]
 
 [params]
 
