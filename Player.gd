@@ -44,6 +44,8 @@ func _input(event):
 				interact_roots()
 			_:
 				print("No area!")
+	if event.is_action_pressed("Exit"):
+		get_tree().quit()
 
 func _physics_process(delta):
 #
