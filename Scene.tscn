@@ -4,18 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://cpon6uc57bd78" path="res://Action.tscn" id="1_r8fxx"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="1_w27bx"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pkand"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_k22va"]
 
 [sub_resource type="Sky" id="Sky_6i0h7"]
-sky_material = SubResource("ProceduralSkyMaterial_pkand")
+sky_material = SubResource("PhysicalSkyMaterial_k22va")
 
 [sub_resource type="Environment" id="Environment_k2447"]
 background_mode = 2
 sky = SubResource("Sky_6i0h7")
 tonemap_mode = 2
+sdfgi_enabled = true
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqpuy"]
 size = Vector3(4.62016, 0.115799, 3.12037)
@@ -24,7 +25,7 @@ size = Vector3(4.62016, 0.115799, 3.12037)
 script = ExtResource("1_84ysa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.999767, -0.0183975, 0.011313, 0.0195641, -0.549572, 0.835217, -0.00914862, 0.835243, 0.549804, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -40,14 +41,14 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_hqpuy")
 
-[node name="Player" parent="." instance=ExtResource("1_w27bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699068, 0)
-
 [node name="Water" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60372, 0.553389, 0)
 
 [node name="Cow" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42479, 0.525529, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_w27bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.726525, 0)
 
 [connection signal="player_entered" from="Water" to="." method="_on_water_player_entered"]
 [connection signal="player_entered" from="Cow" to="." method="_on_cow_player_entered"]

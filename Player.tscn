@@ -1,20 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://d34ksba0fd5cj"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ayeja"]
-[ext_resource type="Texture2D" uid="uid://droc6pdmgua70" path="res://assets/gfx/frog.png" id="2_ycrku"]
+[ext_resource type="PackedScene" uid="uid://do2hrqxwbqkdy" path="res://up_quad.tscn" id="2_fb0fr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxh7k"]
-size = Vector3(1.24278, 1.27037, 0.106677)
+size = Vector3(1.00857, 1.00681, 0.106677)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 5
 collision_mask = 6
 script = ExtResource("1_ayeja")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-unique_name_in_owner = true
-pixel_size = 0.0008
-texture = ExtResource("2_ycrku")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.320214, 0)
@@ -25,3 +20,6 @@ spring_length = 1.832
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_oxh7k")
+
+[node name="up_quad" parent="." instance=ExtResource("2_fb0fr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
