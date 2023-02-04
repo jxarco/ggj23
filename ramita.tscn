@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cehwwmavw0ljs"]
+
+[ext_resource type="PackedScene" uid="uid://3h3125vn56l7" path="res://assets/gfx/3d/ramita.glb" id="1_h5kb5"]
+
+[node name="ramita" instance=ExtResource("1_h5kb5")]
+
+[node name="StaticBody3D" parent="ramita" index="0"]
+collision_layer = 2

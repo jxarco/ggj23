@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://xiwonhq14p2j"]
+
+[ext_resource type="PackedScene" uid="uid://dsbsos6e81jyq" path="res://assets/gfx/3d/piedra01.glb" id="1_ek3es"]
+
+[node name="piedra01" instance=ExtResource("1_ek3es")]
+
+[node name="StaticBody3D" parent="piedra_01" index="0"]
+collision_layer = 2

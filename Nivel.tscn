@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://ufo7qg2n2id0"]
 
-[ext_resource type="PackedScene" uid="uid://mdpgpjy8q25j" path="res://assets/gfx/3d/piedra02.glb" id="1_u6y8x"]
 [ext_resource type="PackedScene" uid="uid://bmto0t14mxfw1" path="res://assets/gfx/3d/hojas.glb" id="1_yu6dn"]
-[ext_resource type="PackedScene" uid="uid://dpcf0jw6pdpmq" path="res://assets/gfx/3d/ramita.glb" id="4_8sr78"]
-[ext_resource type="PackedScene" uid="uid://dsbsos6e81jyq" path="res://assets/gfx/3d/piedra01.glb" id="4_kkx0h"]
+[ext_resource type="PackedScene" uid="uid://xiwonhq14p2j" path="res://piedra_01.tscn" id="2_1h57l"]
+[ext_resource type="PackedScene" uid="uid://dfv8gyxtr3a2t" path="res://piedra_02.tscn" id="3_c203i"]
+[ext_resource type="PackedScene" uid="uid://mbl42j4eotsv" path="res://piedra_03.tscn" id="4_45jkj"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="4_paryp"]
 [ext_resource type="PackedScene" uid="uid://dp2sij0ol8sup" path="res://assets/tronco_abierto.tscn" id="5_ihn2v"]
 [ext_resource type="PackedScene" uid="uid://dsatv5dnkbpht" path="res://level_scenes/level_narrow.tscn" id="7_qokiv"]
-[ext_resource type="PackedScene" uid="uid://bwutgnjilajdn" path="res://assets/gfx/3d/piedra03.glb" id="9_ttqet"]
+[ext_resource type="PackedScene" uid="uid://cehwwmavw0ljs" path="res://ramita.tscn" id="8_gmuaw"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_yu0jb"]
 
@@ -30,64 +30,52 @@ size = Vector3(34.0329, 1, 12.6217)
 [node name="Nivel" type="Node3D"]
 
 [node name="hojas" parent="." instance=ExtResource("1_yu6dn")]
-transform = Transform3D(0.280891, -0.0133807, 0.104503, 0.0114341, 0.299685, 0.0076385, -0.104734, -0.00316894, 0.281106, -4.79656, 0.00152129, 2.37468)
+transform = Transform3D(0.280891, -0.0133807, 0.104503, 0.0114341, 0.299685, 0.0076385, -0.104734, -0.00316894, 0.281106, -9.2114, 0.00152129, 2.37468)
+
+[node name="hojas6" parent="." instance=ExtResource("1_yu6dn")]
+transform = Transform3D(0.165647, 5.51499e-05, -0.250122, 0.0114341, 0.299685, 0.0076385, 0.249861, -0.0137507, 0.165471, -5.62472, 0.00152129, 2.37468)
 
 [node name="hojas2" parent="." instance=ExtResource("1_yu6dn")]
-transform = Transform3D(0.212914, -0.00273706, -0.211329, 0.0114341, 0.299685, 0.0076385, 0.211037, -0.0134757, 0.212795, 4.02315, 0.00152129, 3.23597)
+transform = Transform3D(0.212914, -0.00273706, -0.211329, 0.0114341, 0.299685, 0.0076385, 0.211037, -0.0134757, 0.212795, 4.02315, 0.00152177, 3.23597)
 
 [node name="hojas3" parent="." instance=ExtResource("1_yu6dn")]
-transform = Transform3D(0.294107, -0.0126944, 0.0577944, 0.0114341, 0.299685, 0.0076385, -0.0580569, -0.00528568, 0.294281, 8.34975, 0.048326, 3.23597)
+transform = Transform3D(0.294107, -0.0126944, 0.0577944, 0.0114341, 0.299685, 0.0076385, -0.0580569, -0.00528568, 0.294281, 8.34975, -0.0253149, 3.23597)
 
 [node name="hojas5" parent="." instance=ExtResource("1_yu6dn")]
 transform = Transform3D(0.294107, -0.0126944, 0.0577944, 0.0114341, 0.299685, 0.0076385, -0.0580569, -0.00528568, 0.294281, 13.1508, 2.96579, -1.64135)
 
 [node name="hojas4" parent="." instance=ExtResource("1_yu6dn")]
-transform = Transform3D(0.212914, -0.00273706, -0.211329, 0.0114341, 0.299685, 0.0076385, 0.211037, -0.0134757, 0.212795, 6.16058, 0.048326, 3.23597)
+transform = Transform3D(0.212914, -0.00273706, -0.211329, 0.0114341, 0.299685, 0.0076385, 0.211037, -0.0134757, 0.212795, 6.16058, 0.123864, 3.23597)
 
 [node name="piedras" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.883, 0, 10.6304)
 
-[node name="piedra01" parent="piedras" instance=ExtResource("4_kkx0h")]
-transform = Transform3D(0.999273, -0.0381261, -4.51794e-10, 0.0381138, 0.998948, 0.0254616, -0.000970755, -0.0254431, 0.999676, 0.768813, 6.58251, -13.2371)
+[node name="piedra01" parent="piedras" instance=ExtResource("2_1h57l")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.18445, 0, -10.6304)
 
-[node name="piedra05" parent="piedras" instance=ExtResource("4_kkx0h")]
-transform = Transform3D(3.05413, -0.147811, 0.368875, 0.124323, 3.31048, 0.0269623, -1.13878, -0.0350058, 0.992245, -3.58675, 0.65583, -5.79516)
+[node name="piedra09" parent="piedras" instance=ExtResource("2_1h57l")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.17301, 7.54375, -10.6304)
 
-[node name="piedra11" parent="piedras" instance=ExtResource("4_kkx0h")]
-transform = Transform3D(3.05413, -0.147811, 0.368875, 0.124323, 3.31048, 0.0269623, -1.13878, -0.0350058, 0.992245, 32.3462, 4.40611, -11.6177)
+[node name="piedra03" parent="piedras" instance=ExtResource("3_c203i")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.99806, 4.26213, -9.33551)
 
-[node name="piedra02" parent="piedras" instance=ExtResource("1_u6y8x")]
-transform = Transform3D(0.999273, -0.0381262, -4.51794e-10, 0.0381138, 0.998948, 0.0254616, -0.000970754, -0.0254431, 0.999676, -0.687201, 6.23831, -11.2782)
+[node name="piedra08" parent="piedras" instance=ExtResource("3_c203i")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 32.2505, 4.26213, -11.6103)
 
-[node name="piedra04" parent="piedras" instance=ExtResource("1_u6y8x")]
-transform = Transform3D(2.15332, -0.0860652, -4.62546e-11, 0.0821308, 2.25501, 0.026277, -0.00209186, -0.0574347, 1.03169, -0.883224, 2.82323, -10.5845)
+[node name="piedra04" parent="piedras" instance=ExtResource("4_45jkj")]
+transform = Transform3D(1.89695, 0, -0.633715, 0, 2, 0, 0.633715, 0, 1.89695, 0.4992, 0, -7.46981)
 
-[node name="piedra06" parent="piedras" instance=ExtResource("1_u6y8x")]
-transform = Transform3D(0.999273, -0.0381262, -4.51794e-10, 0.0381138, 0.998948, 0.0254616, -0.000970754, -0.0254431, 0.999676, 2.27991, 6.28616, -11.5905)
+[node name="piedra05" parent="piedras" instance=ExtResource("4_45jkj")]
+transform = Transform3D(2.99592, 0, 0.156328, 0, 3, 0, -0.156328, 0, 2.99592, 0.866338, -1.43051e-06, -10.1519)
 
-[node name="piedra07" parent="piedras" instance=ExtResource("1_u6y8x")]
-transform = Transform3D(0.583013, -0.0015359, -0.812461, 0.0381138, 0.998949, 0.0254616, 0.811568, -0.0458104, 0.582459, 0.939728, -0.14421, -9.37203)
+[node name="piedra02" parent="piedras" instance=ExtResource("2_1h57l")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.18445, 1.42846, -7.5127)
 
-[node name="piedra09" parent="piedras" instance=ExtResource("1_u6y8x")]
-transform = Transform3D(2.25262, -0.0160937, -3.78959, 0.138801, 4.49909, 0.122802, 2.85809, -0.20581, 2.98083, -3.53483, 1.5571, -10.6535)
+[node name="piedra06" parent="piedras" instance=ExtResource("2_1h57l")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 32.1382, 0.959718, -7.3336)
 
-[node name="piedra10" parent="piedras" instance=ExtResource("1_u6y8x")]
-transform = Transform3D(-3.36068, 0.202496, -1.84524, 0.138801, 4.49909, 0.122802, 1.396, 0.0401496, -4.45437, 31.1446, 0.0581703, -9.37429)
-
-[node name="piedra08" parent="piedras" instance=ExtResource("1_u6y8x")]
-transform = Transform3D(0.583013, -0.0015359, -0.812461, 0.0381138, 0.998949, 0.0254616, 0.811568, -0.0458104, 0.582459, 20.8084, -0.14421, -7.84716)
-
-[node name="piedra03" parent="piedras" instance=ExtResource("9_ttqet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.392107, 0.118232, -9.23749)
-
-[node name="ramita" parent="piedras/piedra03" instance=ExtResource("4_8sr78")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.834535, 0.904194, -1.58853)
-
-[node name="ramita2" parent="piedras/piedra03" instance=ExtResource("4_8sr78")]
-transform = Transform3D(0.410086, 0.0523223, -0.176088, -0.0531528, 0.416596, 0, 0.0733576, 0.00935959, 0.984374, 2.01218, 0.563544, -0.31092)
-
-[node name="ramita3" parent="piedras/piedra03" instance=ExtResource("4_8sr78")]
-transform = Transform3D(0.410086, 0.0523223, -0.176088, -0.0531528, 0.416596, 0, 0.0733576, 0.00935959, 0.984374, 26.3374, 0.563544, 0.798617)
+[node name="piedra07" parent="piedras" instance=ExtResource("2_1h57l")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 32.0075, 4.60919, -8.32069)
 
 [node name="Player" parent="." instance=ExtResource("4_paryp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.805987, 0.973723, 3.43202)
@@ -117,3 +105,12 @@ shape = SubResource("BoxShape3D_21ff7")
 [node name="Environment_3D_assets" type="Node3D" parent="."]
 
 [node name="level_narrow" parent="." instance=ExtResource("7_qokiv")]
+
+[node name="ramita" parent="." instance=ExtResource("8_gmuaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.97329, 0.147678, -0.27093)
+
+[node name="ramita2" parent="." instance=ExtResource("8_gmuaw")]
+transform = Transform3D(0.0963295, 0, -0.490633, 0, 0.5, 0, 0.490633, 0, 0.0963295, 16.0175, 0.147678, 2.7097)
+
+[node name="ramita3" parent="." instance=ExtResource("8_gmuaw")]
+transform = Transform3D(0.192659, 0, -0.981266, 0.776264, -0.611706, 0.15241, -0.600247, -0.791085, -0.117851, 15.2234, 3.22532, 1.84219)
