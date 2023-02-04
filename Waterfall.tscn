@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://87hoa71shqjr"]
+[gd_scene load_steps=12 format=3 uid="uid://b80a1hiq0jb56"]
 
 [ext_resource type="Script" path="res://waterfall.gd" id="1_ftc7k"]
-[ext_resource type="Texture2D" uid="uid://c2ndw0tewho01" path="res://assets/noise2.png" id="2_2xh01"]
+[ext_resource type="Texture2D" uid="uid://bo3y4q63vovam" path="res://assets/gfx/noise2.png" id="2_2xh01"]
 [ext_resource type="Shader" path="res://shaders/foam.gdshader" id="2_80u08"]
-[ext_resource type="Texture2D" uid="uid://b7ee0nfd5cpgb" path="res://assets/uniformclouds.jpg" id="2_j2onh"]
+[ext_resource type="Texture2D" uid="uid://blq5t0e53uki2" path="res://assets/gfx/uniformclouds.jpg" id="2_j2onh"]
 [ext_resource type="Shader" path="res://shaders/Waterfall.gdshader" id="3_lkecg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t4uee"]
