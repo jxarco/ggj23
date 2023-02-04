@@ -1,10 +1,10 @@
 [gd_resource type="AnimatedTexture" load_steps=6 format=3 uid="uid://dtlataok4w2kf"]
 
-[ext_resource type="Texture2D" uid="uid://dbfkqb0a1royl" path="res://assets/semilla_idle/SEMILLA_IDLE_01.png" id="1_f3khh"]
-[ext_resource type="Texture2D" uid="uid://bo123ytc1188u" path="res://assets/semilla_idle/SEMILLA_IDLE_02.png" id="2_63n8g"]
-[ext_resource type="Texture2D" uid="uid://b6ekpbe5jx57g" path="res://assets/semilla_idle/SEMILLA_IDLE_03.png" id="3_qxb1g"]
-[ext_resource type="Texture2D" uid="uid://bevgn0unyekpx" path="res://assets/semilla_idle/SEMILLA_IDLE_04.png" id="4_v0lwl"]
-[ext_resource type="Texture2D" uid="uid://bxiqhp8hr4jjg" path="res://assets/semilla_idle/SEMILLA_IDLE_05.png" id="5_d7spm"]
+[ext_resource type="Texture2D" uid="uid://krq76n4ts1yj" path="res://assets/semilla_idle/SEMILLA_IDLE_01.png" id="1_f3khh"]
+[ext_resource type="Texture2D" uid="uid://cde3pna5lxs1u" path="res://assets/semilla_idle/SEMILLA_IDLE_02.png" id="2_63n8g"]
+[ext_resource type="Texture2D" uid="uid://dhv6i8uprc3ja" path="res://assets/semilla_idle/SEMILLA_IDLE_03.png" id="3_qxb1g"]
+[ext_resource type="Texture2D" uid="uid://x0jbn7mqrksl" path="res://assets/semilla_idle/SEMILLA_IDLE_04.png" id="4_v0lwl"]
+[ext_resource type="Texture2D" uid="uid://c0ea2m7ydhodw" path="res://assets/semilla_idle/SEMILLA_IDLE_05.png" id="5_d7spm"]
 
 [resource]
 frames = 5

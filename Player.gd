@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
-@export var speed := 2.0
+@export var speed := 3.5
 @export var gravity := 15.0
 @export var current_area := World.Area.NONE
 
 @onready var state = World.state
+@onready var footstepsStreams = [%SeedFootstep_1, %SeedFootstep_2, %SeedFootstep_3]
 
 var standing_anim = preload("res://assets/semilla_idle/standing.tres")
-#var standing_anim = preload("res://assets/test.tres")
 var walking_anim = preload("res://assets/semilla_walk/walking.tres")
 
 enum AnimState {
@@ -19,7 +19,7 @@ var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 
 func _ready():
-	pass
+	%Ambience_Night.play()
 
 func _process(delta):
 	
@@ -44,6 +44,8 @@ func _input(event):
 				interact_roots()
 			_:
 				print("No area!")
+	if event.is_action_pressed("Exit"):
+		get_tree().quit()
 
 func _physics_process(delta):
 #
@@ -87,10 +89,12 @@ func interact_mole():
 
 	if state.sunIsUp:
 		print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
+		$"../GroundParticles".emitting = true
 	elif state.groundFlooded:
 		print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
 	elif not state.sunIsUp:
 		print("MOLE MAKES CORRECT WATERWAY")
+		$"../GroundParticles".emitting = true
 		state.actionSequence.push_back("MOLE")
 		state.waterwayDone = true
 
@@ -104,11 +108,13 @@ func interact_water():
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
+		%RiverStream.play()
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
+		%RiverStream.play()
 
 func interact_sun():
 	
@@ -156,7 +162,8 @@ func process_sprite_audio(delta):
 		elapsed_time += delta
 		var frame = walking_anim.current_frame
 		if (frame == 1 or frame == 4) and elapsed_time >= walking_anim.get_frame_duration(frame) + 0.05:
-			%AudioStream.play()
+			var index = randi() % 3
+			footstepsStreams[index].play()
 			elapsed_time = 0.0
 	else:
 		elapsed_time = 0.0
