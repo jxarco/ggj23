@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ufo7qg2n2id0"]
+[gd_scene load_steps=13 format=3 uid="uid://ufo7qg2n2id0"]
 
 [ext_resource type="PackedScene" uid="uid://mdpgpjy8q25j" path="res://assets/gfx/3d/piedra02.glb" id="1_u6y8x"]
+[ext_resource type="PackedScene" uid="uid://bmto0t14mxfw1" path="res://assets/gfx/3d/hojas.glb" id="1_yu6dn"]
 [ext_resource type="PackedScene" uid="uid://dpcf0jw6pdpmq" path="res://assets/gfx/3d/ramita.glb" id="4_8sr78"]
 [ext_resource type="PackedScene" uid="uid://dsbsos6e81jyq" path="res://assets/gfx/3d/piedra01.glb" id="4_kkx0h"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="4_paryp"]
@@ -27,6 +28,21 @@ volumetric_fog_density = 0.02
 size = Vector3(34.0329, 1, 12.6217)
 
 [node name="Nivel" type="Node3D"]
+
+[node name="hojas" parent="." instance=ExtResource("1_yu6dn")]
+transform = Transform3D(0.280891, -0.0133807, 0.104503, 0.0114341, 0.299685, 0.0076385, -0.104734, -0.00316894, 0.281106, -4.79656, 0.00152129, 2.37468)
+
+[node name="hojas2" parent="." instance=ExtResource("1_yu6dn")]
+transform = Transform3D(0.212914, -0.00273706, -0.211329, 0.0114341, 0.299685, 0.0076385, 0.211037, -0.0134757, 0.212795, 4.02315, 0.00152129, 3.23597)
+
+[node name="hojas3" parent="." instance=ExtResource("1_yu6dn")]
+transform = Transform3D(0.294107, -0.0126944, 0.0577944, 0.0114341, 0.299685, 0.0076385, -0.0580569, -0.00528568, 0.294281, 8.34975, 0.048326, 3.23597)
+
+[node name="hojas5" parent="." instance=ExtResource("1_yu6dn")]
+transform = Transform3D(0.294107, -0.0126944, 0.0577944, 0.0114341, 0.299685, 0.0076385, -0.0580569, -0.00528568, 0.294281, 13.1508, 2.96579, -1.64135)
+
+[node name="hojas4" parent="." instance=ExtResource("1_yu6dn")]
+transform = Transform3D(0.212914, -0.00273706, -0.211329, 0.0114341, 0.299685, 0.0076385, 0.211037, -0.0134757, 0.212795, 6.16058, 0.048326, 3.23597)
 
 [node name="piedras" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.883, 0, 10.6304)
