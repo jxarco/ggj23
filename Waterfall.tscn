@@ -1,26 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://bib4q565ojpc2"]
+[gd_scene load_steps=12 format=3 uid="uid://87hoa71shqjr"]
 
-[ext_resource type="Shader" path="res://Waterfall.gdshader" id="1_x3e0l"]
+[ext_resource type="Script" path="res://waterfall.gd" id="1_ftc7k"]
 [ext_resource type="Texture2D" uid="uid://c2ndw0tewho01" path="res://assets/noise2.png" id="2_2xh01"]
+[ext_resource type="Shader" path="res://shaders/foam.gdshader" id="2_80u08"]
 [ext_resource type="Texture2D" uid="uid://b7ee0nfd5cpgb" path="res://assets/uniformclouds.jpg" id="2_j2onh"]
+[ext_resource type="Shader" path="res://shaders/Waterfall.gdshader" id="3_lkecg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t4uee"]
 render_priority = 0
-shader = ExtResource("1_x3e0l")
-shader_parameter/u_banding_steps = 16
+shader = ExtResource("3_lkecg")
+shader_parameter/u_banding_steps = 3
 shader_parameter/u_min_intensity = 0.1
 shader_parameter/u_max_intensity = 0.8
 shader_parameter/u_distortion = 10.0
-shader_parameter/u_speed = 1.0
+shader_parameter/u_speed = 0.5
 shader_parameter/tint_base = Color(0.482353, 0.65098, 1, 1)
 shader_parameter/u_noise_texture = ExtResource("2_j2onh")
 shader_parameter/u_displacement_texture = ExtResource("2_2xh01")
 
 [sub_resource type="QuadMesh" id="QuadMesh_05lo3"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvw2e"]
+render_priority = 0
+shader = ExtResource("2_80u08")
+
+[sub_resource type="BoxMesh" id="BoxMesh_j6h6t"]
+
+[sub_resource type="Curve" id="Curve_tl61b"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0.616667, -7.27274), 0.0, 0.0, 0, 0, Vector2(1, 101.818), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_0xus6"]
+_data = [Vector2(0.113333, 0), 0.0, 0.0, 0, 0, Vector2(0.266667, 0.263636), 0.0, 0.0, 0, 0, Vector2(0.83, 0.581818), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="Waterfall" type="Node3D"]
+script = ExtResource("1_ftc7k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.20277, 0, 0, 0, 3.07424, 0, 0, 0, 1, 0.0336075, 0.053861, 0)
 material_override = SubResource("ShaderMaterial_t4uee")
 mesh = SubResource("QuadMesh_05lo3")
+
+[node name="foam_particles" type="CPUParticles3D" parent="MeshInstance3D"]
+unique_name_in_owner = true
+transform = Transform3D(0.831414, 0, 0, 0, 0.325284, 0, 0, 0, 1, -0.0279418, -0.488693, 0.00200349)
+material_override = SubResource("ShaderMaterial_cvw2e")
+transparency = 0.27
+cast_shadow = 0
+gi_mode = 0
+amount = 21
+lifetime = 0.48
+local_coords = true
+mesh = SubResource("BoxMesh_j6h6t")
+emission_shape = 3
+emission_box_extents = Vector3(0.75, 0.25, 6.5)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 2)
+spread = 38.43
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+orbit_velocity_curve = null
+linear_accel_curve = SubResource("Curve_tl61b")
+scale_amount_curve = SubResource("Curve_0xus6")
