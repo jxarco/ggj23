@@ -14,7 +14,6 @@ sky_material = SubResource("PhysicalSkyMaterial_k22va")
 background_mode = 2
 sky = SubResource("Sky_23q63")
 tonemap_mode = 2
-sdfgi_enabled = true
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.005
