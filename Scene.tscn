@@ -1,27 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbq5tnw07mrka"]
+[gd_scene load_steps=11 format=3 uid="uid://cbq5tnw07mrka"]
 
 [ext_resource type="Script" path="res://Scene.gd" id="1_84ysa"]
 [ext_resource type="PackedScene" uid="uid://cpon6uc57bd78" path="res://Action.tscn" id="1_r8fxx"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="1_w27bx"]
-[ext_resource type="PackedScene" uid="uid://b80a1hiq0jb56" path="res://Waterfall.tscn" id="5_lbge5"]
+[ext_resource type="PackedScene" uid="uid://ufo7qg2n2id0" path="res://Nivel.tscn" id="5_u686y"]
 [ext_resource type="Texture2D" uid="uid://d0q0bydg2r2vt" path="res://assets/particula tierra.png" id="5_xybig"]
-[ext_resource type="PackedScene" uid="uid://du7yudr7u5yim" path="res://water_level.tscn" id="6_yfiuj"]
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_k22va"]
-
-[sub_resource type="Sky" id="Sky_23q63"]
-sky_material = SubResource("PhysicalSkyMaterial_k22va")
-
-[sub_resource type="Environment" id="Environment_k2447"]
-background_mode = 2
-sky = SubResource("Sky_23q63")
-tonemap_mode = 2
-glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.005
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hqpuy"]
-size = Vector3(4.62016, 0.115799, 3.12037)
+[ext_resource type="PackedScene" uid="uid://c3lvft73s5ufg" path="res://Mole.tscn" id="6_h5g88"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l5jo7"]
 font_size = 32
@@ -51,43 +35,26 @@ size = Vector2(0.5, 0.5)
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_84ysa")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999848, 0.0174524, 0, -0.0174524, 0.999848, -0.0158203, -0.0790607, 0.0389924)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_k2447")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-size = Vector3(4.60872, 0.123019, 3.11425)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_hqpuy")
-
 [node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34517, 0.15328, -1.20905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.14556, 0.15328, 3.25218)
 
 [node name="Label3" type="Label3D" parent="Mole"]
 text = "MOLE"
 
 [node name="Water" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45562, 0.553389, 0.117494)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.34725, 6.21762, -0.904707)
 
 [node name="Label" type="Label3D" parent="Water"]
 text = "WATER"
 
 [node name="Cow" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1446, 0.829053, 0.0672284)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1362, 3.30164, 0.372799)
 
 [node name="Label2" type="Label3D" parent="Cow"]
 text = "COW"
 
 [node name="Sun" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37777, 0.533048, 1.4139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5255, 6.28825, -1.82044)
 
 [node name="Label3" type="Label3D" parent="Sun"]
 text = "SUN"
@@ -99,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.808125, 0.490299, 1.43331)
 text = "ROOTS"
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.994984, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.31817, 0.994984, 4.04406)
 
 [node name="FPS" type="Label" parent="."]
 unique_name_in_owner = true
@@ -119,20 +86,13 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_iiqjx")
 draw_pass_1 = SubResource("QuadMesh_v4i0g")
 
-[node name="Waterfall" parent="." instance=ExtResource("5_lbge5")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39699, 1.74278, -3.17303)
+[node name="Nivel" parent="." instance=ExtResource("5_u686y")]
 
-[node name="Waterlevel" parent="." instance=ExtResource("6_yfiuj")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.48005, 0)
-visible = false
+[node name="MoleSprite" parent="." instance=ExtResource("6_h5g88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.223, -1, 1.618)
 
 [connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]
 [connection signal="player_entered" from="Water" to="." method="_on_water_player_entered"]
 [connection signal="player_entered" from="Cow" to="." method="_on_cow_player_entered"]
 [connection signal="player_entered" from="Sun" to="." method="_on_sun_player_entered"]
 [connection signal="player_entered" from="Roots" to="." method="_on_roots_player_entered"]
-[connection signal="player_released_waterfall" from="Player" to="Waterfall" method="_on_player_player_released_waterfall"]
-[connection signal="player_released_waterfall" from="Player" to="Waterlevel" method="_on_player_player_released_waterfall"]
-[connection signal="waterfall_is_stablished" from="Waterfall" to="Waterlevel" method="_on_waterfall_waterfall_is_stablished"]

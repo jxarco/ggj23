@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56cph5qsn56y"]
+
+[ext_resource type="PackedScene" path="res://assets/gfx/3d/tronco_cerrado.glb" id="1_580h8"]
+
+[node name="tronco_cerrado" instance=ExtResource("1_580h8")]
+
+[node name="StaticBody3D" parent="tronco_cerrado" index="0"]
+collision_layer = 2

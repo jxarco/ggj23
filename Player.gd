@@ -17,6 +17,7 @@ enum AnimState {
 
 var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
+var mole_meters := 0.0
 
 signal player_released_waterfall(depth)
 
@@ -28,6 +29,15 @@ func _process(delta):
 	if state.sunIsUp and $"../DirectionalLight3D".rotation.x > -PI*0.5:
 		var angle = move_toward($"../DirectionalLight3D".rotation.x, -PI*0.5, delta*0.1)
 		$"../DirectionalLight3D".rotation.x = angle
+		
+	if state.moleOnSurface and $"../MoleSprite".position.y < 1:
+		# Mole has to be 1 meter below 0 (-1) and go to 1 (2 units to reach objetive)
+		var rest = abs($"../MoleSprite".position.y - 1) / 2
+		$"../MoleSprite".position.y = move_toward($"../MoleSprite".position.y, 1.0, pow(rest, 1.5) * 0.5)
+	elif not state.moleOnSurface and $"../MoleSprite".position.y > -1:
+		# Mole returns from 1 to 0
+		var rest = abs($"../MoleSprite".position.y - 1) / 2
+		$"../MoleSprite".position.y = move_toward($"../MoleSprite".position.y, -1.0, pow(rest, 1.5) * 0.5)
 		
 	process_sprite_audio(delta)
 		
@@ -77,17 +87,13 @@ func _physics_process(delta):
 	elif velocity.x < 0.0:
 		mat.uv1_scale.x = 1
 
-#	var waterwayDone := false
-#	var wetGround := false
-#	var sunIsUp := false
-#	var grassEaten := false
-#	var groundFlooded := false
-
 func interact_mole():
 
-	if state.waterwayDone:
-		print("WATERWAY ALREADY DONE")
+	if state.moleReturns:
+		print("MOLE ALREADY INTERACTED")
 		return
+
+	state.moleOnSurface = true
 
 	if state.sunIsUp:
 		print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
@@ -99,6 +105,16 @@ func interact_mole():
 		$"../GroundParticles".emitting = true
 		state.actionSequence.push_back("MOLE")
 		state.waterwayDone = true
+		
+	# Mole returns home
+	var timer = Timer.new()
+	add_child(timer)
+	timer.connect("timeout", func ():
+		state.moleOnSurface = false
+		state.moleReturns = true
+		remove_child(timer)
+	)
+	timer.start(5.0)
 
 func interact_water():
 	if state.wetGround or state.groundFlooded:
@@ -164,7 +180,7 @@ func process_sprite_audio(delta):
 	if anim_state == AnimState.WALK:
 		elapsed_time += delta
 		var frame = walking_anim.current_frame
-		if (frame == 1 or frame == 4) and elapsed_time >= walking_anim.get_frame_duration(frame) + 0.05:
+		if (frame == 1 or frame == 4) and elapsed_time >= walking_anim.get_frame_duration(frame) + 0.01:
 			var index = randi() % 3
 			footstepsStreams[index].play()
 			elapsed_time = 0.0
