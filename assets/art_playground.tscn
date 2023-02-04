@@ -15,7 +15,8 @@ size = Vector3(10, 1, 6)
 sky_material = SubResource("PhysicalSkyMaterial_qdbxt")
 
 [sub_resource type="Environment" id="Environment_a6tyo"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.623529, 0.541176, 0.317647, 1)
 sky = SubResource("Sky_6i0h7")
 tonemap_mode = 2
 sdfgi_enabled = true
@@ -26,7 +27,7 @@ volumetric_fog_density = 0.005
 [node name="art_playground" type="Node3D"]
 
 [node name="piedra02" parent="." instance=ExtResource("1_qf827")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19712, 0, 1.62576)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.83724, 0, 1.62576)
 
 [node name="piedra01" parent="." instance=ExtResource("2_f2hue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70157, 0, -0.793577)
