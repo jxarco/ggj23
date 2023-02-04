@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d34ksba0fd5cj"]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ayeja"]
-[ext_resource type="AudioStream" uid="uid://cuiuwvs2cx5xj" path="res://assets/audio/SeedFootstep_1.wav" id="3_o4n00"]
-[ext_resource type="AudioStream" uid="uid://0r3vbh6c1qye" path="res://assets/audio/SeedFootstep_2.wav" id="4_augbr"]
-[ext_resource type="PackedScene" path="res://up_quad.tscn" id="5_g2gq6"]
-[ext_resource type="AudioStream" uid="uid://dq5t0oxbpwrrs" path="res://assets/audio/SeedFootstep_3.wav" id="5_u3kly"]
+[ext_resource type="AudioStream" uid="uid://bi3c5v3humujb" path="res://assets/audio/SeedFootstep_1.wav" id="3_o4n00"]
+[ext_resource type="AudioStream" uid="uid://c0x3d8vc3yik6" path="res://assets/audio/SeedFootstep_2.wav" id="4_augbr"]
+[ext_resource type="PackedScene" path="res://assets/up_quad.tscn" id="5_g2gq6"]
+[ext_resource type="AudioStream" uid="uid://bnsumru6flh75" path="res://assets/audio/SeedFootstep_3.wav" id="5_u3kly"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxh7k"]
 size = Vector3(1.16553, 1.68322, 0.106677)
