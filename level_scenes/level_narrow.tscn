@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsatv5dnkbpht"]
+
+[ext_resource type="PackedScene" uid="uid://djjtbt68tsx38" path="res://assets/gfx/3d/level/level_narrow.glb" id="1_yr61w"]
+
+[node name="level_narrow" instance=ExtResource("1_yr61w")]
+
+[node name="StaticBody3D" parent="piso_1_restante" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="StaticBody3D" parent="piso_1_variante" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="StaticBody3D" parent="piso_2" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="StaticBody3D" parent="rampa_simple" index="0"]
+collision_layer = 2
+collision_mask = 2

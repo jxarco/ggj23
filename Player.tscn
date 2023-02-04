@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ayeja"]
 [ext_resource type="AudioStream" uid="uid://bmrh4vsa53dvo" path="res://assets/audio/pisada1test.wav" id="3_ayexb"]
-[ext_resource type="PackedScene" path="res://up_quad.tscn" id="5_g2gq6"]
+[ext_resource type="PackedScene" uid="uid://do2hrqxwbqkdy" path="res://up_quad.tscn" id="5_g2gq6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxh7k"]
 size = Vector3(1.16553, 1.68322, 0.106677)
