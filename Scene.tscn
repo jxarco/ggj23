@@ -41,7 +41,7 @@ collision_mask = 0
 shape = SubResource("BoxShape3D_hqpuy")
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699068, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.173985, 0.907536, 0.153208)
 
 [node name="Water" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60372, 0.553389, 0)

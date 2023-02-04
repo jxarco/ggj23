@@ -1,25 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://d34ksba0fd5cj"]
+[gd_scene load_steps=7 format=3 uid="uid://d34ksba0fd5cj"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ayeja"]
-[ext_resource type="Texture2D" uid="uid://droc6pdmgua70" path="res://assets/gfx/frog.png" id="2_ycrku"]
+[ext_resource type="Texture2D" uid="uid://bofigbcap1vwx" path="res://assets/character-standing.png" id="2_0ma3t"]
+[ext_resource type="Texture2D" uid="uid://blgg4cfc24toc" path="res://assets/character-moving-1.png" id="3_gu8r5"]
+[ext_resource type="Texture2D" uid="uid://cvyksxkwq7wa5" path="res://assets/character-moving-2.png" id="4_j2ang"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8u0w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0ma3t")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0ma3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gu8r5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j2ang")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 10.0
+}]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxh7k"]
-size = Vector3(1.24278, 1.27037, 0.106677)
+size = Vector3(1.66164, 3.11299, 0.106677)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 5
 collision_mask = 6
 script = ExtResource("1_ayeja")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 unique_name_in_owner = true
-pixel_size = 0.0008
-texture = ExtResource("2_ycrku")
+sprite_frames = SubResource("SpriteFrames_q8u0w")
+animation = &"walking"
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.320214, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.132697, 0)
 collision_mask = 2
-spring_length = 1.832
+spring_length = 6.532
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 
