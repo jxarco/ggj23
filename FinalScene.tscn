@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlgaj6gpv1nb6"]
+
+[ext_resource type="PackedScene" uid="uid://ufo7qg2n2id0" path="res://Nivel.tscn" id="1_kreag"]
+
+[node name="FinalScene" type="Node3D"]
+
+[node name="Nivel" parent="." instance=ExtResource("1_kreag")]

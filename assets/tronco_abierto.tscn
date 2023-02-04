@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dp2sij0ol8sup"]
 
-[ext_resource type="Texture2D" uid="uid://m6yg1neur626" path="res://assets/gfx/3d/tronco_abierto_tronco_abierto_Material_BaseMap.png" id="1_bt1kk"]
+[ext_resource type="Texture2D" uid="uid://dfg7k8sdgfyo6" path="res://assets/gfx/3d/tronco_abierto_tronco_abierto_Material_BaseMap.png" id="1_bt1kk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iu2db"]
 resource_name = "tronco_abierto_material"
