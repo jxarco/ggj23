@@ -2,11 +2,14 @@ extends Node3D
 
 @onready var state = World.state
 
-#	var waterwayDone : bool = false
-#	var wetGround : bool
-#	var sunIsUp : bool
-#	var grassEaten : bool
+# STATES:
+#	waterwayDone : bool = false
+#	wetGround : bool
+#	sunIsUp : bool
+#	grassEaten : bool
 
+# ACTIONS: MOLE_CALL, FREE_WATER, COW_CALL, WAIT4SUN,ROOT
+	
 func _on_cow_player_entered(player):
 	print("cow")
 	if state.waterwayDone and state.wetGround and state.sunIsUp:
@@ -20,8 +23,13 @@ func _on_cow_player_entered(player):
 		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
 
 func _on_water_player_entered(player):
-	print("water")
-	pass # Replace with function body.
+	if state.waterwayDone and not state.grassEaten and not state.sunIsUp:
+		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
+		state.wetGround = true
+	elif state.waterwayDone and state.sunIsUp:
+		print("WATER EVAPORATES")
+	elif not state.waterwayDone:
+		print("FLOOD THE GROUND")
 
 func _on_mole_player_entered(player):
 	print("mole")
