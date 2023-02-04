@@ -18,6 +18,7 @@ collision_mask = 2
 spring_length = 3.866
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00936535, -0.158473, 0.00584435)
