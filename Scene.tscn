@@ -45,9 +45,13 @@ shape = SubResource("BoxShape3D_hqpuy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60372, 0.553389, 0)
 
 [node name="Cow" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42479, 0.525529, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5035, 0.77034, 0)
 
 [node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614718, -1.12073)
+
+[node name="Roots" parent="." instance=ExtResource("1_r8fxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417834, 1.58195)
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.994984, 0)
@@ -55,3 +59,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.994984, 0)
 [connection signal="player_entered" from="Water" to="." method="_on_water_player_entered"]
 [connection signal="player_entered" from="Cow" to="." method="_on_cow_player_entered"]
 [connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]
+[connection signal="player_entered" from="Roots" to="." method="_on_roots_player_entered"]

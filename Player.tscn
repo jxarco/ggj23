@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d34ksba0fd5cj"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ayeja"]
-[ext_resource type="PackedScene" path="res://up_quad.tscn" id="5_g2gq6"]
+[ext_resource type="PackedScene" uid="uid://do2hrqxwbqkdy" path="res://up_quad.tscn" id="5_g2gq6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxh7k"]
 size = Vector3(1.16553, 1.68322, 0.106677)

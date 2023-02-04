@@ -6,14 +6,10 @@ extends CharacterBody3D
 
 @onready var state = World.state
 
-
 var walking_anim = preload("res://assets/walking.tres")
 var standing_anim = preload("res://assets/standing.tres")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-
-#	get_node("Mesh/AnimationPlayer").play("Move", -1, 2)
 	pass
 
 func _process(_delta):
@@ -28,6 +24,8 @@ func _input(event):
 				interact_water()
 			World.Area.COW:
 				interact_cow()
+			World.Area.ROOTS:
+				interact_roots()
 			_:
 				print("No area!")
 
@@ -49,24 +47,16 @@ func _physics_process(delta):
 	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
 	if (abs(velocity.z) + abs(velocity.x)) / 2.0 > 0.00:
 		mat.albedo_texture = walking_anim
-
-#		sprite.play("walking")
 	else:
 		mat.albedo_texture = standing_anim
-#		sprite.play("standing")
 
 	if velocity.x > 0.0:
 		mat.uv1_scale.x = -1
 	elif velocity.x < 0.0:
 		mat.uv1_scale.x = 1
-#
-#	for i in range(get_slide_collision_count() - 1):
-#		var collision = get_slide_collision(i)
-#		print(collision)
 
 func interact_mole():
 
-	print("i'm in MOLE area")
 	if state.waterwayDone:
 		print("WATERWAY ALREADY DONE")
 		return
@@ -75,17 +65,18 @@ func interact_mole():
 		print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
 	elif not state.sunIsUp:
 		print("MOLE MAKES CORRECT WATERWAY")
+		state.actionSequence.push_back("MOLE")
 		state.waterwayDone = true
 
 func interact_water():
 
-	print("i'm in WATER area")
 	if state.wetGround:
 		print("WATER ALREADY TO THE WATERWAY")
 		return
 
 	if state.waterwayDone and not state.grassEaten and not state.sunIsUp:
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
+		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
@@ -94,7 +85,6 @@ func interact_water():
 
 func interact_cow():
 
-	print("i'm in COW area")
 	if state.grassEaten:
 		print("GRASS ALREADY EATEN")
 		return
@@ -102,6 +92,7 @@ func interact_cow():
 	if state.waterwayDone and state.wetGround and state.sunIsUp:
 		print("COW EATS GRASS")
 		state.grassEaten = true
+		state.actionSequence.push_back("COW")
 	elif state.waterwayDone and state.wetGround and not state.sunIsUp:
 		print("COW WAKES UP, GETS ANGRY AND GOES AWAY")
 	elif not state.waterwayDone and state.wetGround:
@@ -109,8 +100,7 @@ func interact_cow():
 	elif state.waterwayDone and not state.wetGround:
 		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
 
-func interact_root():
-	print("i'm in ROOT area")
+func interact_roots():
 	
 	if state.waterwayDone and state.wetGround and state.sunIsUp and state.grassEaten:
 		print("WIN")

@@ -6,7 +6,8 @@ enum Area {
 		NONE,
 		MOLE,
 		WATER,
-		COW
+		COW,
+		ROOTS
 	}
 
 class WorldState:
@@ -19,7 +20,7 @@ class WorldState:
 		ROOT
 	}
 	
-	var sequence : Array
+	var actionSequence : Array
 	
 	var waterwayDone : bool = false
 	var wetGround : bool
