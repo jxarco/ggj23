@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://wfpal3831rv4"]
+[gd_scene load_steps=9 format=3 uid="uid://ufo7qg2n2id0"]
 
 [ext_resource type="PackedScene" uid="uid://nl72guudu2p5" path="res://assets/gfx/3d/level/level_piso_1.glb" id="3_sbsp3"]
-[ext_resource type="PackedScene" uid="uid://cp3o5idlecbkj" path="res://assets/level_pisos_2_3.tscn" id="4_11p7b"]
-[ext_resource type="PackedScene" uid="uid://b4qcvh7wuhj2j" path="res://assets/level_rampa_simple.tscn" id="4_of202"]
+[ext_resource type="PackedScene" uid="uid://5wksrp6o45dd" path="res://assets/level_pisos_2_3.tscn" id="4_11p7b"]
+[ext_resource type="PackedScene" uid="uid://331tejtail5h" path="res://assets/level_rampa_simple.tscn" id="4_of202"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="4_paryp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ff7"]
