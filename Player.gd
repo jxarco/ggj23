@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var speed := 2.0
+@export var speed := 3.5
 @export var gravity := 15.0
 @export var current_area := World.Area.NONE
 
