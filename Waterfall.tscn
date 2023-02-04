@@ -26,7 +26,8 @@ shader_parameter/u_displacement_texture = ExtResource("2_2xh01")
 render_priority = 0
 shader = ExtResource("2_80u08")
 
-[sub_resource type="BoxMesh" id="BoxMesh_j6h6t"]
+[sub_resource type="SphereMesh" id="SphereMesh_st4ni"]
+radius = 1.5
 
 [sub_resource type="Curve" id="Curve_tl61b"]
 min_value = -200.0
@@ -35,7 +36,7 @@ _data = [Vector2(0.616667, -7.27274), 0.0, 0.0, 0, 0, Vector2(1, 101.818), 0.0, 
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_0xus6"]
-_data = [Vector2(0.113333, 0), 0.0, 0.0, 0, 0, Vector2(0.266667, 0.263636), 0.0, 0.0, 0, 0, Vector2(0.83, 0.581818), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.113333, 0), 0.0, 0.0, 0, 0, Vector2(0.266667, 0.263636), 0.0, 0.0, 0, 0, Vector2(0.753333, 0.409091), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [node name="Waterfall" type="Node3D"]
@@ -56,7 +57,7 @@ cast_shadow = 0
 amount = 21
 lifetime = 0.48
 local_coords = true
-mesh = SubResource("BoxMesh_j6h6t")
+mesh = SubResource("SphereMesh_st4ni")
 emission_shape = 3
 emission_box_extents = Vector3(0.75, 0.25, 6.5)
 particle_flag_disable_z = true

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://djoiqqih7wbri"]
+
+[ext_resource type="PackedScene" uid="uid://cppeyk3vce6sc" path="res://level_scenes/waterway/waterway.glb" id="1_i0r11"]
+[ext_resource type="Script" path="res://level_scenes/waterway/waterway.gd" id="2_v4n5i"]
+
+[node name="waterway" instance=ExtResource("1_i0r11")]
+script = ExtResource("2_v4n5i")
+
+[node name="waterway_1" parent="." index="0"]
+unique_name_in_owner = true
+visible = false
+
+[node name="waterway_2" parent="." index="1"]
+unique_name_in_owner = true
+visible = false
+
+[node name="waterway_0" parent="." index="2"]
+unique_name_in_owner = true
+
+[node name="Timer" type="Timer" parent="." index="3"]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

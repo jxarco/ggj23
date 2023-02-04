@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://ufo7qg2n2id0"]
 
 [ext_resource type="PackedScene" uid="uid://bmto0t14mxfw1" path="res://assets/gfx/3d/hojas.glb" id="1_yu6dn"]
-[ext_resource type="PackedScene" uid="uid://xiwonhq14p2j" path="res://piedra_01.tscn" id="2_1h57l"]
-[ext_resource type="PackedScene" uid="uid://dfv8gyxtr3a2t" path="res://piedra_02.tscn" id="3_c203i"]
-[ext_resource type="PackedScene" uid="uid://mbl42j4eotsv" path="res://piedra_03.tscn" id="4_45jkj"]
+[ext_resource type="PackedScene" path="res://piedra_01.tscn" id="2_1h57l"]
+[ext_resource type="PackedScene" path="res://piedra_02.tscn" id="3_c203i"]
+[ext_resource type="PackedScene" path="res://piedra_03.tscn" id="4_45jkj"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="4_paryp"]
 [ext_resource type="PackedScene" uid="uid://dp2sij0ol8sup" path="res://assets/tronco_abierto.tscn" id="5_ihn2v"]
 [ext_resource type="PackedScene" uid="uid://dsatv5dnkbpht" path="res://level_scenes/level_narrow.tscn" id="7_qokiv"]
-[ext_resource type="PackedScene" uid="uid://cehwwmavw0ljs" path="res://ramita.tscn" id="8_gmuaw"]
-[ext_resource type="PackedScene" uid="uid://b56cph5qsn56y" path="res://tronco_cerrado.tscn" id="9_bv22i"]
+[ext_resource type="PackedScene" path="res://ramita.tscn" id="8_gmuaw"]
+[ext_resource type="PackedScene" path="res://tronco_cerrado.tscn" id="9_bv22i"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_yu0jb"]
 
@@ -17,11 +17,10 @@ sky_material = SubResource("PhysicalSkyMaterial_yu0jb")
 
 [sub_resource type="Environment" id="Environment_61hb0"]
 background_mode = 1
-background_color = Color(0.623529, 0.541176, 0.317647, 1)
+background_color = Color(0.121569, 0.0980392, 0.0352941, 1)
 sky = SubResource("Sky_6i0h7")
 ambient_light_source = 1
 tonemap_mode = 2
-sdfgi_enabled = true
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 volumetric_fog_density = 0.0727
 volumetric_fog_albedo = Color(0.780392, 0.890196, 0.843137, 1)
@@ -118,8 +117,9 @@ transform = Transform3D(1.53579, -0.185208, 0.123017, -0.241209, -1.0235, 0.9571
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_61hb0")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+[node name="s" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(-0.999767, -0.0183974, 0.011313, 0.0159998, -0.279063, 0.96014, -0.0145071, 0.960097, 0.279292, -0.0158203, -0.0790607, 0.0389924)
+light_energy = 0.7
 shadow_enabled = true
 
 [node name="Layout" type="Node3D" parent="."]
