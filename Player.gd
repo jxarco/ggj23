@@ -27,9 +27,9 @@ func _ready():
 func _process(delta):
 	
 	var light = $"../Nivel/WorldEnvironment/DirectionalLight3D"
-	if state.sunIsUp and light.rotation.x > -PI*0.5:
-		var angle = move_toward(light.rotation.x, -PI*0.5, delta*0.1)
-		light.rotation.x = angle
+	if state.sunIsUp and light.energy < 0.7:
+		var energy = move_toward(light.energy, 0.7, delta*0.2)
+		light.energy = energy
 		
 	if state.moleOnSurface and $"../MoleSprite".position.y < 1:
 		# Mole has to be 1 meter below 0 (-1) and go to 1 (2 units to reach objetive)
