@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://ufo7qg2n2id0"]
+[gd_scene load_steps=10 format=3 uid="uid://ufo7qg2n2id0"]
 
-[ext_resource type="PackedScene" uid="uid://nl72guudu2p5" path="res://assets/gfx/3d/level/level_piso_1.glb" id="3_sbsp3"]
-[ext_resource type="PackedScene" uid="uid://5wksrp6o45dd" path="res://assets/level_pisos_2_3.tscn" id="4_11p7b"]
-[ext_resource type="PackedScene" uid="uid://331tejtail5h" path="res://assets/level_rampa_simple.tscn" id="4_of202"]
+[ext_resource type="PackedScene" uid="uid://c3hmu4upoaa0h" path="res://level_scenes/level_pisos_2_3.tscn" id="3_b5x64"]
+[ext_resource type="PackedScene" uid="uid://d2v1asshjfqht" path="res://level_scenes/level_piso_1.tscn" id="4_em7qi"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="4_paryp"]
+[ext_resource type="PackedScene" uid="uid://dwumu2xbw544w" path="res://assets/tronco_abierto.tscn" id="5_ihn2v"]
+[ext_resource type="PackedScene" uid="uid://wh53augnxwh8" path="res://level_scenes/level_rampa_simple.tscn" id="5_tpgud"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ff7"]
-size = Vector3(66.6461, 1, 12.6217)
+size = Vector3(34.0329, 1, 12.6217)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_yu0jb"]
 
@@ -17,37 +18,27 @@ sky_material = SubResource("PhysicalSkyMaterial_yu0jb")
 background_mode = 1
 background_color = Color(0.623529, 0.541176, 0.317647, 1)
 sky = SubResource("Sky_6i0h7")
+ambient_light_source = 1
 tonemap_mode = 2
 sdfgi_enabled = true
-glow_enabled = true
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.005
+volumetric_fog_density = 0.02
 
 [node name="Nivel" type="Node3D"]
 
-[node name="level_piso_1" parent="." instance=ExtResource("3_sbsp3")]
-
-[node name="level_rampa_simple" parent="." instance=ExtResource("4_of202")]
-
 [node name="Level_Colliders" type="Node3D" parent="."]
 
-[node name="Piso1_Collider" type="StaticBody3D" parent="Level_Colliders"]
-collision_layer = 5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Colliders/Piso1_Collider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4942, -0.490191, -4.08897)
-shape = SubResource("BoxShape3D_21ff7")
-
 [node name="Pared_Piso1_Fondo" type="StaticBody3D" parent="Level_Colliders"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -10.5961)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -7.76863, -10.5961)
 collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Colliders/Pared_Piso1_Fondo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4942, -0.490191, -2.85088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7263, -0.490191, -2.85088)
 shape = SubResource("BoxShape3D_21ff7")
 
 [node name="Player" parent="." instance=ExtResource("4_paryp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5101, 0.973723, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30687, 0.973723, -7)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_61hb0")
@@ -56,4 +47,12 @@ environment = SubResource("Environment_61hb0")
 transform = Transform3D(-0.999767, -0.0183974, 0.011313, 0.0159998, -0.279063, 0.96014, -0.0145071, 0.960097, 0.279292, -0.0158203, -0.0790607, 0.0389924)
 shadow_enabled = true
 
-[node name="level_pisos_2_3" parent="." instance=ExtResource("4_11p7b")]
+[node name="tronco_abierto" parent="." instance=ExtResource("5_ihn2v")]
+transform = Transform3D(0.986526, -0.0193944, 0.162452, -0.129925, 0.510581, 0.849957, -0.0994291, -0.859611, 0.501181, 13.2247, 1.16483, -5.97811)
+collision_layer = 5
+
+[node name="level_pisos_2_3" parent="." instance=ExtResource("3_b5x64")]
+
+[node name="level_piso_1" parent="level_pisos_2_3" instance=ExtResource("4_em7qi")]
+
+[node name="level_rampa_simple" parent="level_pisos_2_3/level_piso_1" instance=ExtResource("5_tpgud")]

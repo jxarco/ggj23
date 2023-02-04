@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cp1yxd2aylyed"]
+[gd_scene load_steps=10 format=3 uid="uid://djdnoigywk4l6"]
 
 [ext_resource type="PackedScene" uid="uid://mdpgpjy8q25j" path="res://assets/gfx/3d/piedra02.glb" id="1_qf827"]
 [ext_resource type="PackedScene" uid="uid://dsbsos6e81jyq" path="res://assets/gfx/3d/piedra01.glb" id="2_f2hue"]
