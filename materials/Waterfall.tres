@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d4csvsdhrdl0r"]
+
+[ext_resource type="Shader" path="res://shaders/Waterfall.gdshader" id="1_wcgxw"]
+[ext_resource type="Texture2D" uid="uid://bo3y4q63vovam" path="res://assets/gfx/noise2.png" id="2_dclnv"]
+[ext_resource type="Texture2D" uid="uid://blq5t0e53uki2" path="res://assets/gfx/uniformclouds.jpg" id="3_qgajc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wcgxw")
+shader_parameter/u_banding_steps = 7
+shader_parameter/u_min_intensity = 0.2
+shader_parameter/u_max_intensity = 0.8
+shader_parameter/u_distortion = 10.0
+shader_parameter/u_speed = 1.0
+shader_parameter/u_scale = 0.015
+shader_parameter/u_filter_radius = 5
+shader_parameter/tint_base = Color(0.513726, 0.533333, 0.584314, 1)
+shader_parameter/u_noise_texture = ExtResource("3_qgajc")
+shader_parameter/u_displacement_texture = ExtResource("2_dclnv")

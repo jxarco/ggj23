@@ -19,14 +19,17 @@ var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 var mole_meters := 0.0
 
+signal player_released_waterfall(depth)
+
 func _ready():
 	%Ambience_Night.play()
 
 func _process(delta):
 	
-	if state.sunIsUp and $"../DirectionalLight3D".rotation.x > -PI*0.5:
-		var angle = move_toward($"../DirectionalLight3D".rotation.x, -PI*0.5, delta*0.1)
-		$"../DirectionalLight3D".rotation.x = angle
+	var light = $"../Nivel/WorldEnvironment/DirectionalLight3D"
+	if state.sunIsUp and light.rotation.x > -PI*0.5:
+		var angle = move_toward(light.rotation.x, -PI*0.5, delta*0.1)
+		light.rotation.x = angle
 		
 	if state.moleOnSurface and $"../MoleSprite".position.y < 1:
 		# Mole has to be 1 meter below 0 (-1) and go to 1 (2 units to reach objetive)
@@ -115,7 +118,6 @@ func interact_mole():
 	timer.start(5.0)
 
 func interact_water():
-
 	if state.wetGround or state.groundFlooded:
 		print("WATER ALREADY FREED")
 		return
@@ -125,12 +127,14 @@ func interact_water():
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 		%RiverStream.play()
+		emit_signal("player_released_waterfall", 0.23)
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
 		%RiverStream.play()
+		emit_signal("player_released_waterfall", 0.288)
 
 func interact_sun():
 	
