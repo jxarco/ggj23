@@ -12,6 +12,10 @@ extends Node3D
 	
 func _on_cow_player_entered(player):
 	print("cow")
+	if state.grassEaten:
+		print("GRASS ALREADY EATEN")
+		return
+		
 	if state.waterwayDone and state.wetGround and state.sunIsUp:
 		print("COW EATS GRASS")
 		state.grassEaten = true
@@ -23,6 +27,10 @@ func _on_cow_player_entered(player):
 		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
 
 func _on_water_player_entered(player):
+	if state.wetGround:
+		print("WATER ALREADY TO THE WATERWAY")
+		return
+		
 	if state.waterwayDone and not state.grassEaten and not state.sunIsUp:
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
 		state.wetGround = true
