@@ -1,8 +1,11 @@
 extends Node3D
 
 signal player_entered(player)
+signal player_exited(player)
 
-# Called when the node enters the scene tree for the first time.
+# State of the actor
+var inside : bool = false
+
 func _ready():
 	pass # Replace with function body.
 
@@ -13,5 +16,9 @@ func _process(delta):
 
 
 func _on_area_3d_body_entered(body):
+	inside = true
 	emit_signal("player_entered", body)
-	pass
+
+func _on_area_3d_body_exited(body):
+	inside = false
+	emit_signal("player_exited", body)

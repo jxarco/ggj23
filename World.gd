@@ -2,6 +2,13 @@ extends Node
 
 # World attributes/conditions
 
+enum Area {
+		NONE,
+		MOLE,
+		WATER,
+		COW
+	}
+
 class WorldState:
 	
 	enum Actions {
