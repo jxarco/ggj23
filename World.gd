@@ -24,6 +24,8 @@ class WorldState:
 	var actionSequence : Array
 	
 	var waterwayDone := false
+	var moleOnSurface := false
+	var moleReturns := false
 	var wetGround := false
 	var sunIsUp := false
 	var grassEaten := false
