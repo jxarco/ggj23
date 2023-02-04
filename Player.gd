@@ -87,10 +87,12 @@ func interact_mole():
 
 	if state.sunIsUp:
 		print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
+		$"../GroundParticles".emitting = true
 	elif state.groundFlooded:
 		print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
 	elif not state.sunIsUp:
 		print("MOLE MAKES CORRECT WATERWAY")
+		$"../GroundParticles".emitting = true
 		state.actionSequence.push_back("MOLE")
 		state.waterwayDone = true
 
@@ -104,11 +106,13 @@ func interact_water():
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
+		%RiverStream.play()
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
+		%RiverStream.play()
 
 func interact_sun():
 	

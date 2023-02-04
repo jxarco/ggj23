@@ -20,7 +20,6 @@ background_color = Color(0.623529, 0.541176, 0.317647, 1)
 sky = SubResource("Sky_6i0h7")
 ambient_light_source = 1
 tonemap_mode = 2
-sdfgi_enabled = true
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
