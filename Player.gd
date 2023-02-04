@@ -5,9 +5,9 @@ extends CharacterBody3D
 @export var current_area := World.Area.NONE
 
 @onready var state = World.state
+@onready var footstepsStreams = [%SeedFootstep_1, %SeedFootstep_2, %SeedFootstep_3]
 
 var standing_anim = preload("res://assets/semilla_idle/standing.tres")
-#var standing_anim = preload("res://assets/test.tres")
 var walking_anim = preload("res://assets/semilla_walk/walking.tres")
 
 enum AnimState {
@@ -156,7 +156,8 @@ func process_sprite_audio(delta):
 		elapsed_time += delta
 		var frame = walking_anim.current_frame
 		if (frame == 1 or frame == 4) and elapsed_time >= walking_anim.get_frame_duration(frame) + 0.05:
-			%AudioStream.play()
+			var index = randi() % 3
+			footstepsStreams[index].play()
 			elapsed_time = 0.0
 	else:
 		elapsed_time = 0.0

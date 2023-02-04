@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d34ksba0fd5cj"]
+[gd_scene load_steps=7 format=3 uid="uid://d34ksba0fd5cj"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ayeja"]
-[ext_resource type="AudioStream" uid="uid://bmrh4vsa53dvo" path="res://assets/audio/pisada1test.wav" id="3_ayexb"]
+[ext_resource type="AudioStream" uid="uid://cweoh0v7c327b" path="res://assets/audio/SeedFootstep_1.wav" id="3_o4n00"]
+[ext_resource type="AudioStream" uid="uid://q3uofpgcaeuc" path="res://assets/audio/SeedFootstep_2.wav" id="4_augbr"]
 [ext_resource type="PackedScene" path="res://up_quad.tscn" id="5_g2gq6"]
+[ext_resource type="AudioStream" uid="uid://dwny8c13355q5" path="res://assets/audio/SeedFootstep_3.wav" id="5_u3kly"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxh7k"]
 size = Vector3(1.16553, 1.68322, 0.106677)
@@ -28,6 +30,16 @@ shape = SubResource("BoxShape3D_oxh7k")
 unique_name_in_owner = true
 transform = Transform3D(-1.70302, 0, -8.74228e-08, 0, 1, 0, 1.48883e-07, 0, -1, 0, 0, 0)
 
-[node name="AudioStream" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreams" type="Node" parent="."]
+
+[node name="SeedFootstep_1" type="AudioStreamPlayer2D" parent="AudioStreams"]
 unique_name_in_owner = true
-stream = ExtResource("3_ayexb")
+stream = ExtResource("3_o4n00")
+
+[node name="SeedFootstep_2" type="AudioStreamPlayer2D" parent="AudioStreams"]
+unique_name_in_owner = true
+stream = ExtResource("4_augbr")
+
+[node name="SeedFootstep_3" type="AudioStreamPlayer2D" parent="AudioStreams"]
+unique_name_in_owner = true
+stream = ExtResource("5_u3kly")
