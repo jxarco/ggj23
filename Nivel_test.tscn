@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://uyytb3w4u73e"]
+
+[ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="1_rvedd"]
+[ext_resource type="PackedScene" uid="uid://dwumu2xbw544w" path="res://assets/tronco_abierto.tscn" id="2_bhgdm"]
+[ext_resource type="PackedScene" uid="uid://c3hmu4upoaa0h" path="res://level_scenes/level_pisos_2_3.tscn" id="3_2282w"]
+[ext_resource type="PackedScene" uid="uid://d2v1asshjfqht" path="res://level_scenes/level_piso_1.tscn" id="4_pcttm"]
+[ext_resource type="PackedScene" uid="uid://wh53augnxwh8" path="res://level_scenes/level_rampa_simple.tscn" id="5_g28t3"]
+[ext_resource type="PackedScene" uid="uid://dsnlgfgtvtajj" path="res://EnvironmentParticles.tscn" id="6_ovrdb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21ff7"]
+size = Vector3(34.0329, 1, 12.6217)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_yu0jb"]
+
+[sub_resource type="Sky" id="Sky_6i0h7"]
+sky_material = SubResource("PhysicalSkyMaterial_yu0jb")
+
+[sub_resource type="Environment" id="Environment_61hb0"]
+background_mode = 1
+sky = SubResource("Sky_6i0h7")
+tonemap_mode = 2
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+volumetric_fog_density = 0.02
+
+[node name="Nivel" type="Node3D"]
+
+[node name="Level_Colliders" type="Node3D" parent="."]
+
+[node name="Pared_Piso1_Fondo" type="StaticBody3D" parent="Level_Colliders"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -7.76863, -10.5961)
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Colliders/Pared_Piso1_Fondo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7263, -0.490191, -2.85088)
+shape = SubResource("BoxShape3D_21ff7")
+
+[node name="Player" parent="." instance=ExtResource("1_rvedd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30687, 0.973723, -7)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_61hb0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.999767, -0.0183974, 0.011313, 0.0159998, -0.279063, 0.96014, -0.0145071, 0.960097, 0.279292, -0.0158203, -0.0790607, 0.0389924)
+shadow_enabled = true
+
+[node name="tronco_abierto" parent="." instance=ExtResource("2_bhgdm")]
+transform = Transform3D(0.986526, -0.0193944, 0.162452, -0.129925, 0.510581, 0.849957, -0.0994291, -0.859611, 0.501181, 13.2247, 1.16483, -5.97811)
+collision_layer = 5
+
+[node name="level_pisos_2_3" parent="." instance=ExtResource("3_2282w")]
+
+[node name="level_piso_1" parent="level_pisos_2_3" instance=ExtResource("4_pcttm")]
+
+[node name="level_rampa_simple" parent="level_pisos_2_3/level_piso_1" instance=ExtResource("5_g28t3")]
+
+[node name="EnvironmentParticles" parent="." instance=ExtResource("6_ovrdb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.49068, 0, -5.38295)

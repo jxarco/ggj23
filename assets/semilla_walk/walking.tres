@@ -1,11 +1,11 @@
 [gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://cwcucs7ociapo"]
 
-[ext_resource type="Texture2D" uid="uid://07t704hrknf0" path="res://assets/semilla_walk/SEMILLA_WALK_01.png" id="1_to16r"]
-[ext_resource type="Texture2D" uid="uid://kjl6bvoit1dx" path="res://assets/semilla_walk/SEMILLA_WALK_02.png" id="2_fst27"]
-[ext_resource type="Texture2D" uid="uid://d05iaxd6md0sn" path="res://assets/semilla_walk/SEMILLA_WALK_03.png" id="3_oqygx"]
-[ext_resource type="Texture2D" uid="uid://dkr8u168lkg2e" path="res://assets/semilla_walk/SEMILLA_WALK_04.png" id="4_v6hhs"]
-[ext_resource type="Texture2D" uid="uid://dklhwpfbqg2a8" path="res://assets/semilla_walk/SEMILLA_WALK_05.png" id="5_qjhi4"]
-[ext_resource type="Texture2D" uid="uid://b68ci2aq3fmyd" path="res://assets/semilla_walk/SEMILLA_WALK_06.png" id="6_20qkr"]
+[ext_resource type="Texture2D" uid="uid://dfuev1jgwl35h" path="res://assets/semilla_walk/SEMILLA_WALK_01.png" id="1_to16r"]
+[ext_resource type="Texture2D" uid="uid://bhsd3c6fwlfxq" path="res://assets/semilla_walk/SEMILLA_WALK_02.png" id="2_fst27"]
+[ext_resource type="Texture2D" uid="uid://bhcywcmx2tq68" path="res://assets/semilla_walk/SEMILLA_WALK_03.png" id="3_oqygx"]
+[ext_resource type="Texture2D" uid="uid://o241v3pwvelk" path="res://assets/semilla_walk/SEMILLA_WALK_04.png" id="4_v6hhs"]
+[ext_resource type="Texture2D" uid="uid://p3aqnumu53a8" path="res://assets/semilla_walk/SEMILLA_WALK_05.png" id="5_qjhi4"]
+[ext_resource type="Texture2D" uid="uid://wx51v10af5bf" path="res://assets/semilla_walk/SEMILLA_WALK_06.png" id="6_20qkr"]
 
 [resource]
 frames = 6
