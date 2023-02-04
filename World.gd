@@ -6,6 +6,7 @@ enum Area {
 		NONE,
 		MOLE,
 		WATER,
+		SUN,
 		COW,
 		ROOTS
 	}
@@ -15,16 +16,17 @@ class WorldState:
 	enum Actions {
 		MOLE_CALL,
 		FREE_WATER,
-		COW_CALL,
 		WAIT4SUN,
+		COW_CALL,
 		ROOT
 	}
 	
 	var actionSequence : Array
 	
-	var waterwayDone : bool = false
-	var wetGround : bool
-	var sunIsUp : bool
-	var grassEaten : bool
+	var waterwayDone := false
+	var wetGround := false
+	var sunIsUp := false
+	var grassEaten := false
+	var groundFlooded := false
 
 var state = WorldState.new()

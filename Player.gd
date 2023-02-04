@@ -22,6 +22,8 @@ func _input(event):
 				interact_mole()
 			World.Area.WATER:
 				interact_water()
+			World.Area.SUN:
+				interact_sun()
 			World.Area.COW:
 				interact_cow()
 			World.Area.ROOTS:
@@ -55,6 +57,12 @@ func _physics_process(delta):
 	elif velocity.x < 0.0:
 		mat.uv1_scale.x = 1
 
+#	var waterwayDone := false
+#	var wetGround := false
+#	var sunIsUp := false
+#	var grassEaten := false
+#	var groundFlooded := false
+
 func interact_mole():
 
 	if state.waterwayDone:
@@ -63,6 +71,8 @@ func interact_mole():
 
 	if state.sunIsUp:
 		print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
+	elif state.groundFlooded:
+		print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
 	elif not state.sunIsUp:
 		print("MOLE MAKES CORRECT WATERWAY")
 		state.actionSequence.push_back("MOLE")
@@ -70,11 +80,11 @@ func interact_mole():
 
 func interact_water():
 
-	if state.wetGround:
-		print("WATER ALREADY TO THE WATERWAY")
+	if state.wetGround or state.groundFlooded:
+		print("WATER ALREADY FREED")
 		return
 
-	if state.waterwayDone and not state.grassEaten and not state.sunIsUp:
+	if state.waterwayDone and not state.sunIsUp:
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
@@ -82,6 +92,17 @@ func interact_water():
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
+		state.groundFlooded = true
+
+func interact_sun():
+	
+	if state.sunIsUp:
+		print("SUN IS ALREADY UP")
+		return
+
+	print("SUN IS UP!")
+	state.sunIsUp = true
+	state.actionSequence.push_back("SUN")
 
 func interact_cow():
 
@@ -93,17 +114,21 @@ func interact_cow():
 		print("COW EATS GRASS")
 		state.grassEaten = true
 		state.actionSequence.push_back("COW")
-	elif state.waterwayDone and state.wetGround and not state.sunIsUp:
-		print("COW WAKES UP, GETS ANGRY AND GOES AWAY")
-	elif not state.waterwayDone and state.wetGround:
+	elif not state.waterwayDone and state.groundFlooded:
 		print("COW DRINKS WATER")
 	elif state.waterwayDone and not state.wetGround:
 		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
+	elif not state.sunIsUp:
+		print("COW WAKES UP, GETS ANGRY AND GOES AWAY")
 
 func interact_roots():
 	
 	if state.waterwayDone and state.wetGround and state.sunIsUp and state.grassEaten:
-		print("WIN")
+		print("WIN CASE!!")
+		# Check in case something is really bugged
+#		for act in state.actionSequence:
+#			print(act)
+			
 	elif state.waterwayDone and not state.wetGround and not state.sunIsUp:
 		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
 	elif state.waterwayDone and state.wetGround:

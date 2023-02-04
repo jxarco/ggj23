@@ -8,6 +8,10 @@ func _on_water_player_entered(player):
 	print("WATER area")
 	player.current_area = World.Area.WATER
 
+func _on_sun_player_entered(player):
+	print("SUN area")
+	player.current_area = World.Area.SUN
+
 func _on_cow_player_entered(player):
 	print("COW area")
 	player.current_area = World.Area.COW
