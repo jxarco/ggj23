@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbq5tnw07mrka"]
+[gd_scene load_steps=8 format=3 uid="uid://dcewgy1v2ftuh"]
 
 [ext_resource type="PackedScene" uid="uid://cpon6uc57bd78" path="res://Action.tscn" id="1_r8fxx"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="1_w27bx"]
+[ext_resource type="Script" path="res://Cow.gd" id="3_frbjh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pkand"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -41,3 +42,6 @@ shape = SubResource("BoxShape3D_hqpuy")
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699068, 0)
+
+[node name="CowActor" type="Node3D" parent="."]
+script = ExtResource("3_frbjh")
