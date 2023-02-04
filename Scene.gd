@@ -27,6 +27,7 @@ func _on_cow_player_entered(player):
 		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
 
 func _on_water_player_entered(player):
+	print("water")
 	if state.wetGround:
 		print("WATER ALREADY TO THE WATERWAY")
 		return
@@ -41,7 +42,7 @@ func _on_water_player_entered(player):
 
 func _on_mole_player_entered(player):
 	print("mole")
-	if state.waterwayDone:
+	if state.waterwayDone: #CHECK ALSO IF IT'S STILL ALIVE
 		print("WATERWAY ALREADY DONE")
 		return
 		
@@ -50,3 +51,5 @@ func _on_mole_player_entered(player):
 	elif not state.sunIsUp:
 		print("MOLE MAKES CORRECT WATERWAY")
 		state.waterwayDone = true
+	if state.wetGround:
+		print("MOLE DIES")
