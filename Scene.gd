@@ -1,5 +1,8 @@
 extends Node3D
 
+func _process(delta):
+	%FPS.text = "FPS: " + str(Engine.get_frames_per_second())
+
 func _on_mole_player_entered(player):
 	print("MOLE area")
 	player.current_area = World.Area.MOLE
