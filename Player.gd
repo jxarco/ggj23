@@ -106,11 +106,13 @@ func interact_water():
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
+		%RiverStream.play()
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
+		%RiverStream.play()
 
 func interact_sun():
 	
