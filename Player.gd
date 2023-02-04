@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var current_area := World.Area.NONE
 
 @onready var state = World.state
-@onready var sprite := %AnimatedSprite3D
+
 
 var walking_anim = preload("res://assets/walking.tres")
 var standing_anim = preload("res://assets/standing.tres")
