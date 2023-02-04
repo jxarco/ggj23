@@ -1,0 +1,11 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://md7lmdlydfbm"]
+
+[ext_resource type="Texture2D" uid="uid://c2rudx1sy0fxo" path="res://assets/semilla_walk/SEMILLA_WALK_01.png" id="1_3133s"]
+[ext_resource type="Texture2D" uid="uid://b81djvi12twnq" path="res://assets/semilla_walk/SEMILLA_WALK_02.png" id="2_ulfs8"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_3133s")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("2_ulfs8")
+frame_1/duration = 0.2

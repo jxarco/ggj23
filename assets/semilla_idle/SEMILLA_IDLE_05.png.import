@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://droc6pdmgua70"
-path.s3tc="res://.godot/imported/frog.png-29151c091c43fbbadfdb1fe04d08208f.s3tc.ctex"
+uid="uid://bxiqhp8hr4jjg"
+path.s3tc="res://.godot/imported/SEMILLA_IDLE_05.png-3a0caecb9ee39201bd207c29c450a460.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/gfx/frog.png"
-dest_files=["res://.godot/imported/frog.png-29151c091c43fbbadfdb1fe04d08208f.s3tc.ctex"]
+source_file="res://assets/semilla_idle/SEMILLA_IDLE_05.png"
+dest_files=["res://.godot/imported/SEMILLA_IDLE_05.png-3a0caecb9ee39201bd207c29c450a460.s3tc.ctex"]
 
 [params]
 

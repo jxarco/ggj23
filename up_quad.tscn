@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://do2hrqxwbqkdy"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" uid="uid://dpjhc8dxmts1i" path="res://assets/up_quad.glb" id="1_vlsa8"]
-[ext_resource type="Texture2D" uid="uid://bot5kg5isufoq" path="res://assets/standing.tres" id="2_vvt6e"]
+[ext_resource type="PackedScene" uid="uid://d3cfb6tc8b2wn" path="res://assets/up_quad.glb" id="1_vlsa8"]
+[ext_resource type="Texture2D" uid="uid://dtlataok4w2kf" path="res://assets/semilla_idle/standing.tres" id="2_vvt6e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvrlq"]
 transparency = 1
