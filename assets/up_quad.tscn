@@ -1,10 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh6xvk1etjtl"]
+[gd_scene load_steps=6 format=3 uid="uid://lmjq5hcsjrbf"]
 
-[ext_resource type="PackedScene" uid="uid://dpjhc8dxmts1i" path="res://assets/up_quad.glb" id="1_vlsa8"]
+[ext_resource type="PackedScene" uid="uid://b6dpr4gonf72f" path="res://assets/up_quad.glb" id="1_vlsa8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucolj"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vorej"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
+"format": 4097,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_t8jnx"]
+resource_name = "up_quad_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0),
+"format": 4119,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_ucolj"),
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 255, 255, 50, 243, 50, 243, 255, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 50, 243, 255, 255, 101, 198, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 255, 255, 0, 240, 0, 240, 255, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 240, 255, 255, 254, 199)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vorej")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bm2i"]
 
 [node name="up_quad" instance=ExtResource("1_vlsa8")]
 
 [node name="Plane" parent="." index="0"]
+mesh = SubResource("ArrayMesh_t8jnx")
 surface_material_override/0 = SubResource("StandardMaterial3D_5bm2i")
