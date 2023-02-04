@@ -9,16 +9,18 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t4uee"]
 render_priority = 0
 shader = ExtResource("3_lkecg")
-shader_parameter/u_banding_steps = 3
-shader_parameter/u_min_intensity = 0.1
+shader_parameter/u_banding_steps = 7
+shader_parameter/u_min_intensity = 0.2
 shader_parameter/u_max_intensity = 0.8
 shader_parameter/u_distortion = 10.0
-shader_parameter/u_speed = 0.5
-shader_parameter/tint_base = Color(0.482353, 0.65098, 1, 1)
+shader_parameter/u_speed = 1.0
+shader_parameter/u_scale = 0.015
+shader_parameter/u_filter_radius = 5
+shader_parameter/tint_base = Color(0.513726, 0.533333, 0.584314, 1)
 shader_parameter/u_noise_texture = ExtResource("2_j2onh")
 shader_parameter/u_displacement_texture = ExtResource("2_2xh01")
 
-[sub_resource type="QuadMesh" id="QuadMesh_05lo3"]
+[sub_resource type="QuadMesh" id="QuadMesh_j6oi3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cvw2e"]
 render_priority = 0
@@ -40,17 +42,17 @@ point_count = 4
 script = ExtResource("1_ftc7k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.20277, 0, 0, 0, 3.07424, 0, 0, 0, 1, 0.0336075, 0.053861, 0)
+transform = Transform3D(1.20855, -0.0434446, -0.147916, 0.0243469, 3.02418, 0.0703375, 0.130643, -0.161698, 1.35524, 0.0336075, -0.103517, -0.272244)
 material_override = SubResource("ShaderMaterial_t4uee")
-mesh = SubResource("QuadMesh_05lo3")
+transparency = 0.11
+mesh = SubResource("QuadMesh_j6oi3")
 
-[node name="foam_particles" type="CPUParticles3D" parent="MeshInstance3D"]
+[node name="foam_particles" type="CPUParticles3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.831414, 0, 0, 0, 0.325284, 0, 0, 0, 1, -0.0279418, -0.488693, 0.00200349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, -1.4485, 0.00200349)
 material_override = SubResource("ShaderMaterial_cvw2e")
 transparency = 0.27
 cast_shadow = 0
-gi_mode = 0
 amount = 21
 lifetime = 0.48
 local_coords = true
