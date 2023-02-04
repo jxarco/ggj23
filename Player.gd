@@ -4,8 +4,8 @@ extends CharacterBody3D
 @export var gravity := 15.0
 @export var current_area := World.Area.NONE
 
-@onready var sprite := %Sprite3D
 @onready var state = World.state
+@onready var sprite := %AnimatedSprite3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,6 +38,16 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+	
+	if (abs(velocity.z) + abs(velocity.x)) / 2.0 > 0.00:
+		sprite.play("walking")
+	else:
+		sprite.play("standing")
+	
+	if velocity.x > 0.0:
+		sprite.flip_h = false
+	elif velocity.x < 0.0:
+		sprite.flip_h = true
 #
 #	for i in range(get_slide_collision_count() - 1):
 #		var collision = get_slide_collision(i)
