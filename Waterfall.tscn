@@ -1,22 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://b80a1hiq0jb56"]
+[gd_scene load_steps=20 format=3 uid="uid://b80a1hiq0jb56"]
 
 [ext_resource type="Script" path="res://waterfall.gd" id="1_ftc7k"]
 [ext_resource type="Texture2D" uid="uid://bo3y4q63vovam" path="res://assets/gfx/noise2.png" id="2_2xh01"]
+[ext_resource type="Shader" path="res://shaders/Starting_Waterfall.gdshader" id="2_036qm"]
 [ext_resource type="Shader" path="res://shaders/foam.gdshader" id="2_80u08"]
 [ext_resource type="Texture2D" uid="uid://blq5t0e53uki2" path="res://assets/gfx/uniformclouds.jpg" id="2_j2onh"]
-[ext_resource type="Shader" path="res://shaders/Waterfall.gdshader" id="3_lkecg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4uee"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bonj2"]
 render_priority = 0
-shader = ExtResource("3_lkecg")
+shader = ExtResource("2_036qm")
 shader_parameter/u_banding_steps = 7
 shader_parameter/u_min_intensity = 0.2
 shader_parameter/u_max_intensity = 0.8
 shader_parameter/u_distortion = 10.0
 shader_parameter/u_speed = 1.0
-shader_parameter/u_scale = 0.015
-shader_parameter/u_filter_radius = 5
-shader_parameter/tint_base = Color(0.513726, 0.533333, 0.584314, 1)
+shader_parameter/u_total_time = 1.0
+shader_parameter/u_current_time = 0.0
+shader_parameter/tint_base = Color(0.462745, 0.462745, 0.462745, 1)
 shader_parameter/u_noise_texture = ExtResource("2_j2onh")
 shader_parameter/u_displacement_texture = ExtResource("2_2xh01")
 
@@ -28,6 +28,7 @@ shader = ExtResource("2_80u08")
 
 [sub_resource type="SphereMesh" id="SphereMesh_st4ni"]
 radius = 1.5
+height = 2.0
 
 [sub_resource type="Curve" id="Curve_tl61b"]
 min_value = -200.0
@@ -39,12 +40,50 @@ point_count = 2
 _data = [Vector2(0.113333, 0), 0.0, 0.0, 0, 0, Vector2(0.266667, 0.263636), 0.0, 0.0, 0, 0, Vector2(0.753333, 0.409091), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ecul"]
+shading_mode = 0
+diffuse_mode = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_hk42n"]
+
+[sub_resource type="Curve" id="Curve_ttjn1"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -130.909), 0.0, 0.0, 0, 0, Vector2(0.658088, -61.8182), 0.0, 0.0, 0, 0, Vector2(1, -138.182), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c0n5x"]
+curve = SubResource("Curve_ttjn1")
+
+[sub_resource type="Curve" id="Curve_gjekd"]
+_data = [Vector2(0.106618, 0.0090909), 0.0, 0.0, 0, 0, Vector2(0.341912, 0.345455), 0.0, 0.0, 0, 0, Vector2(0.735294, 0.727273), 0.0, 0.0, 0, 0, Vector2(1, 0.0090909), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_o3cox"]
+curve = SubResource("Curve_gjekd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1b6q3"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.25, 0.5)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+flatness = 0.88
+gravity = Vector3(0, -9, 0)
+linear_accel_curve = SubResource("CurveTexture_c0n5x")
+angle_curve = SubResource("CurveTexture_hk42n")
+scale_curve = SubResource("CurveTexture_o3cox")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ynrge"]
+resource_local_to_scene = true
+radius = 0.65
+
 [node name="Waterfall" type="Node3D"]
 script = ExtResource("1_ftc7k")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="waterfall_body" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1.20855, -0.0434446, -0.147916, 0.0243469, 3.02418, 0.0703375, 0.130643, -0.161698, 1.35524, 0.0336075, -0.103517, -0.272244)
-material_override = SubResource("ShaderMaterial_t4uee")
+material_override = SubResource("ShaderMaterial_bonj2")
 transparency = 0.11
 mesh = SubResource("QuadMesh_j6oi3")
 
@@ -54,6 +93,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, -1.4485, 0.0020
 material_override = SubResource("ShaderMaterial_cvw2e")
 transparency = 0.27
 cast_shadow = 0
+emitting = false
 amount = 21
 lifetime = 0.48
 local_coords = true
@@ -69,3 +109,21 @@ orbit_velocity_max = 0.0
 orbit_velocity_curve = null
 linear_accel_curve = SubResource("Curve_tl61b")
 scale_amount_curve = SubResource("Curve_0xus6")
+
+[node name="particles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.73191, 0)
+material_override = SubResource("StandardMaterial3D_3ecul")
+gi_mode = 0
+emitting = false
+amount = 20
+sub_emitter = NodePath(".")
+lifetime = 0.55
+speed_scale = 4.0
+explosiveness = 0.07
+randomness = 0.03
+visibility_aabb = AABB(-1.98577, -1.00324, -1.93122, 3.97155, 2.00647, 3.86245)
+local_coords = true
+trail_lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_1b6q3")
+draw_pass_1 = SubResource("SphereMesh_ynrge")
