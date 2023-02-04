@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://du7yudr7u5yim"]
 
-[ext_resource type="Material" uid="uid://bj53wuq4vgfhg" path="res://water_level.tres" id="1_mxvmv"]
+[ext_resource type="Material" path="res://water_level.tres" id="1_mxvmv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fvgs4"]
 subdivide_width = 69

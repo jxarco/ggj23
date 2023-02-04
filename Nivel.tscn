@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://qkc5lwpw581d" path="res://assets/gfx/3d/piedra01.glb" id="4_kkx0h"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="4_paryp"]
 [ext_resource type="PackedScene" uid="uid://dp2sij0ol8sup" path="res://assets/tronco_abierto.tscn" id="5_ihn2v"]
-[ext_resource type="PackedScene" uid="uid://dsatv5dnkbpht" path="res://level_scenes/level_narrow.tscn" id="7_qokiv"]
+[ext_resource type="PackedScene" path="res://level_scenes/level_narrow.tscn" id="7_qokiv"]
 [ext_resource type="PackedScene" uid="uid://dsnlgfgtvtajj" path="res://particles/EnvironmentParticles.tscn" id="9_caoci"]
 [ext_resource type="PackedScene" uid="uid://c15v10nweqvc7" path="res://assets/gfx/3d/piedra03.glb" id="9_ttqet"]
 
