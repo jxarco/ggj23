@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bib4q565ojpc2"]
+
+[ext_resource type="Shader" path="res://Waterfall.gdshader" id="1_x3e0l"]
+[ext_resource type="Texture2D" uid="uid://c2ndw0tewho01" path="res://assets/noise2.png" id="2_2xh01"]
+[ext_resource type="Texture2D" uid="uid://b7ee0nfd5cpgb" path="res://assets/uniformclouds.jpg" id="2_j2onh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4uee"]
+render_priority = 0
+shader = ExtResource("1_x3e0l")
+shader_parameter/u_banding_steps = 16
+shader_parameter/u_min_intensity = 0.1
+shader_parameter/u_max_intensity = 0.8
+shader_parameter/u_distortion = 10.0
+shader_parameter/u_speed = 1.0
+shader_parameter/tint_base = Color(0.482353, 0.65098, 1, 1)
+shader_parameter/u_noise_texture = ExtResource("2_j2onh")
+shader_parameter/u_displacement_texture = ExtResource("2_2xh01")
+
+[sub_resource type="QuadMesh" id="QuadMesh_05lo3"]
+
+[node name="Waterfall" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.20277, 0, 0, 0, 3.07424, 0, 0, 0, 1, 0.0336075, 0.053861, 0)
+material_override = SubResource("ShaderMaterial_t4uee")
+mesh = SubResource("QuadMesh_05lo3")
