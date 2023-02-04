@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ufo7qg2n2id0"]
+[gd_scene load_steps=10 format=3 uid="uid://ufo7qg2n2id0"]
 
 [ext_resource type="PackedScene" uid="uid://c3hmu4upoaa0h" path="res://level_scenes/level_pisos_2_3.tscn" id="3_b5x64"]
 [ext_resource type="PackedScene" uid="uid://d2v1asshjfqht" path="res://level_scenes/level_piso_1.tscn" id="4_em7qi"]
 [ext_resource type="PackedScene" uid="uid://d34ksba0fd5cj" path="res://Player.tscn" id="4_paryp"]
-[ext_resource type="PackedScene" uid="uid://dwumu2xbw544w" path="res://assets/tronco_abierto.tscn" id="5_ihn2v"]
+[ext_resource type="PackedScene" uid="uid://dp2sij0ol8sup" path="res://assets/tronco_abierto.tscn" id="5_ihn2v"]
 [ext_resource type="PackedScene" uid="uid://wh53augnxwh8" path="res://level_scenes/level_rampa_simple.tscn" id="5_tpgud"]
-[ext_resource type="PackedScene" path="res://assets/gfx/3d/tronco_cerrado.glb" id="6_ertwm"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_yu0jb"]
 
@@ -29,7 +28,10 @@ size = Vector3(34.0329, 1, 12.6217)
 [node name="Nivel" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("4_paryp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30687, 0.973723, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.30687, 0.973723, 0.637695)
+
+[node name="tronco_abierto" parent="." instance=ExtResource("5_ihn2v")]
+transform = Transform3D(0.999273, -0.0381262, 0, 0.0381262, 0.999273, 0, 0, 0, 1, 12.1535, 1.34937, -0.0202913)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_61hb0")
@@ -42,14 +44,12 @@ shadow_enabled = true
 
 [node name="level_rampa_simple" parent="Layout" instance=ExtResource("5_tpgud")]
 
-[node name="level_piso_1" parent="Layout" instance=ExtResource("4_em7qi")]
-
 [node name="level_pisos_2_3" parent="Layout" instance=ExtResource("3_b5x64")]
 
 [node name="Level_Colliders" type="Node3D" parent="Layout"]
 
 [node name="Pared_Piso1_Fondo" type="StaticBody3D" parent="Layout/Level_Colliders"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -7.76863, -10.5961)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.07663, -7.08989, -9.17207)
 collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Level_Colliders/Pared_Piso1_Fondo"]
@@ -58,9 +58,4 @@ shape = SubResource("BoxShape3D_21ff7")
 
 [node name="Environment_3D_assets" type="Node3D" parent="."]
 
-[node name="tronco_abierto" parent="Environment_3D_assets" instance=ExtResource("5_ihn2v")]
-transform = Transform3D(0.986526, -0.0193944, 0.162452, -0.129925, 0.510581, 0.849957, -0.0994291, -0.859611, 0.501181, 13.2247, 1.16483, -5.97811)
-collision_layer = 5
-
-[node name="tronco_cerrado" parent="." instance=ExtResource("6_ertwm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22047, -0.43446, -9.24789)
+[node name="level_piso_1" parent="." instance=ExtResource("4_em7qi")]
