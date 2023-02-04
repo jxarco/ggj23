@@ -25,7 +25,7 @@ size = Vector3(4.62016, 0.115799, 3.12037)
 script = ExtResource("1_84ysa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.999767, -0.0183974, 0.011313, 0.0159998, -0.279063, 0.96014, -0.0145071, 0.960097, 0.279292, -0.0158203, -0.0790607, 0.0389924)
+transform = Transform3D(1, 0, 0, 0, 0.999848, 0.0174524, 0, -0.0174524, 0.999848, -0.0158203, -0.0790607, 0.0389924)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

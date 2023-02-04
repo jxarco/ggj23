@@ -12,8 +12,12 @@ var standing_anim = preload("res://assets/standing.tres")
 func _ready():
 	pass
 
-func _process(_delta):
-	pass
+func _process(delta):
+	
+	if state.sunIsUp and $"../DirectionalLight3D".rotation.x > -PI*0.5:
+		var angle = move_toward($"../DirectionalLight3D".rotation.x, -PI*0.5, delta*0.1)
+		$"../DirectionalLight3D".rotation.x = angle
+		
 
 func _input(event):
 	if event.is_action_pressed("Interact"):
