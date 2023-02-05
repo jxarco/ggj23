@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6plqf88njp3i"]
+
+[ext_resource type="Script" path="res://FinalScreen.gd" id="1_ournl"]
+[ext_resource type="Texture2D" uid="uid://baijwc0hohxpu" path="res://assets/FINAL_SCREEN_WIN.png" id="2_v1v4x"]
+[ext_resource type="Texture2D" uid="uid://ed7p3qk5uls1" path="res://assets/FINAL_SCREEN_LOSE.png" id="3_joycv"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ournl")
+
+[node name="WinScreen" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v1v4x")
+stretch_mode = 5
+
+[node name="LoseScreen" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_joycv")
