@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b03y6ykvooryt"
+uid="uid://c11fcu8uc1fi1"
 path="res://.godot/imported/piedra01.glb-0f4f6522edf8b64878ea40dfe7fd0017.scn"
 
 [deps]
@@ -28,5 +28,11 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"meshes": {
+"piedra01_Cube002": {
+"save_to_file/path": "res://particles/rocasa_particulasa.res"
+}
+}
+}
 gltf/embedded_image_handling=1
