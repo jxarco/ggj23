@@ -32,9 +32,14 @@ func _ready():
 func _process(delta):
 	
 	var light : DirectionalLight3D = $"../Nivel/WorldEnvironment/DirectionalLight3D"
-	if state.sunIsUp and light.light_energy < 0.7:
-		var energy = move_toward(light.light_energy, 0.7, delta*0.2)
+	if state.sunIsUp:
+		var energy = move_toward(light.light_energy, 0.9, delta*0.2)
 		light.light_energy = energy
+		# Interpolate also color tint (Color())
+		light.light_color.r = move_toward(light.light_color.r, 0.55, delta*0.2)
+		light.light_color.g = move_toward(light.light_color.g, 0.7, delta*0.2)
+		light.light_color.b = move_toward(light.light_color.b, 1, delta*0.2)
+		
 	process_sprite_audio(delta)
 	
 	if moleIsUp:
@@ -119,7 +124,7 @@ func _on_mole_anim_animation_finished(anim_name):
 		elif not state.sunIsUp:
 			print("MOLE MAKES CORRECT WATERWAY")
 			$"../waterway".start_waterway()
-			
+			$AudioStreams/MoleDigging.play()
 			state.actionSequence.push_back("MOLE")
 			state.waterwayDone = true
 		
