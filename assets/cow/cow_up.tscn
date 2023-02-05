@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba8b5hwhl0nh0"]
+
+[ext_resource type="PackedScene" uid="uid://cdfh0twstc08q" path="res://assets/cow/cow_up.glb" id="1_xf4jg"]
+
+[node name="cow_up" instance=ExtResource("1_xf4jg")]

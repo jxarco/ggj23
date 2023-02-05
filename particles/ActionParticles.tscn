@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://jqoths1gbps8"]
+[gd_scene load_steps=5 format=3 uid="uid://jqoths1gbps8"]
 
 [ext_resource type="Texture2D" uid="uid://cbv62w67g7hqb" path="res://assets/gfx/env_particle.png" id="1_4fg4j"]
+[ext_resource type="Material" uid="uid://dt7yd888yv4ns" path="res://particles/GroundParticles.tres" id="2_dehlw"]
 [ext_resource type="ArrayMesh" uid="uid://dn6emgcndr33v" path="res://assets/part_up_quad_Plane.res" id="2_vuviy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6w6wr"]
@@ -11,36 +12,6 @@ emission_enabled = true
 emission = Color(0.607843, 0.419608, 0, 1)
 emission_energy_multiplier = 5.62
 
-[sub_resource type="Gradient" id="Gradient_2x1wu"]
-offsets = PackedFloat32Array(0, 0.121495, 0.707165, 1)
-colors = PackedColorArray(0.752941, 0.780392, 0, 0.0823529, 0.752941, 0.780392, 0, 0.596078, 0.466667, 0.133333, 0, 0.780392, 0.466667, 0.133333, 0, 0.00392157)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ijsr4"]
-gradient = SubResource("Gradient_2x1wu")
-
-[sub_resource type="Curve" id="Curve_nrm5d"]
-_data = [Vector2(0, 0.0797102), 0.0, 0.0, 0, 0, Vector2(0.737588, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.335539), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_4vrm0"]
-curve = SubResource("Curve_nrm5d")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m5olp"]
-emission_shape = 1
-emission_sphere_radius = 0.2
-direction = Vector3(0, 1, 0)
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 0.1
-initial_velocity_max = 0.5
-scale_min = 0.1
-scale_max = 0.25
-scale_curve = SubResource("CurveTexture_4vrm0")
-color_ramp = SubResource("GradientTexture1D_ijsr4")
-turbulence_enabled = true
-turbulence_noise_strength = 0.01
-turbulence_noise_scale = 1.45
-turbulence_influence_min = 0.01
-
 [node name="EnvironmentParticles" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
@@ -48,5 +19,5 @@ material_override = SubResource("StandardMaterial3D_6w6wr")
 amount = 150
 lifetime = 1.64
 visibility_aabb = AABB(-27.8839, -15.0686, -18.8245, 55.7677, 30.1371, 37.6491)
-process_material = SubResource("ParticleProcessMaterial_m5olp")
+process_material = ExtResource("2_dehlw")
 draw_pass_1 = ExtResource("2_vuviy")

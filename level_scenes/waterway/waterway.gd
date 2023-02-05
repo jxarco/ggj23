@@ -20,6 +20,9 @@ func _on_timer_timeout():
 	current_step = current_step - 1
 	
 	if current_step == 2:
+
+#		$"../GroundParticles".position = Vector3($"../MoleSprite".position.x, $"../MoleSprite".position.y, $"../MoleSprite".position.z)
+#		$"../GroundParticles".emitting = true
 		%waterway_0.hide()
 		%waterway_1.show()
 		%Timer.start(1)
