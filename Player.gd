@@ -31,13 +31,12 @@ var grow_sequence : Array
 
 signal player_released_waterfall(flood)
 signal player_set_day()
+signal win()
+signal lose()
 
 func _ready():
 	World.global_player = self
 	%Ambience_Night.play()
-	
-	
-	state.wetGround = true
 
 func _process(delta):
 	
@@ -236,10 +235,10 @@ func interact_roots():
 	# Caso 0 - Horrible
 	if not state.wetGround and not state.sunIsUp:
 		print("0 - SHOOT DOES NOT GROW")
-		#Gestionar derrota
+		emit_signal("lose")
 		return
 	# Caso 1 - Malo
-	elif state.wetGround and !state.sunIsUp and state.grassEaten:
+	elif state.wetGround and !state.sunIsUp and not state.grassEaten:
 		print("1 - SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
 		game_case = 1
 	# Caso 2 - Menos malo
@@ -272,25 +271,25 @@ func interact_roots():
 	match game_case:
 		1:
 			grow_sequence.push_back(0)
-			pass
+			grow_sequence.push_back(-1)
 		2:
 			grow_sequence.push_back(0)
 			grow_sequence.push_back(1)
 			grow_sequence.push_back(2)
-			pass
+			grow_sequence.push_back(-1)
 		3:
 			grow_sequence.push_back(0)
 			grow_sequence.push_back(1)
 			grow_sequence.push_back(2)
 			grow_sequence.push_back(3)
-			pass
+			grow_sequence.push_back(-1)
 	
 		
 	character_enabled = false
 
 func process_final_plant(delta):
 	
-		grow_current_time += delta
+		grow_current_time += delta * 1.5
 		
 		var base_layer : MeshInstance3D = $FinalPlant/base_layer
 		var top_layer : MeshInstance3D = $FinalPlant/top_layer
@@ -302,10 +301,34 @@ func process_final_plant(delta):
 		var mat_t : ShaderMaterial = tayo.get_surface_override_material(0)
 		var mat_tf : ShaderMaterial = tayo_final.get_surface_override_material(0)
 		
+		if grow_sequence.size() == 0:
+			return
+			
 		var next = grow_sequence[0]
 		match next:
 			0:
-				mat_bl.set_shader_parameter("u_current_time", grow_current_time)
+				mat_bl.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
+				if grow_current_time >= 2:
+					grow_current_time = 0
+					grow_sequence.pop_front()
+			1:
+				mat_t.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
+				if grow_current_time >= 2:
+					grow_current_time = 0
+					grow_sequence.pop_front()
+			2:
+				mat_tl.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
+				if grow_current_time >= 2:
+					grow_current_time = 0
+					grow_sequence.pop_front()
+			3:
+				mat_tf.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
+				if grow_current_time >= 2:
+					grow_current_time = 0
+					grow_sequence.pop_front()
+			-1:
+				emit_signal("win")
+				pass
 		
 
 func process_sprite_audio(delta):
@@ -339,3 +362,11 @@ func _on_animation_player_animation_finished(anim_name):
 		$AnimationPlayer.play_backwards("focus_water_elevate")
 		
 	isBackwardsAnim = true
+
+
+func _on_win():
+	$"../Control/WinScreen".show()
+
+
+func _on_lose():
+	$"../Control/LoseScreen".show()

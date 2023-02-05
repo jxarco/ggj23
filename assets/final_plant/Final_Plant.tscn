@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7hqe6hwyxer3"]
+[gd_scene load_steps=17 format=3 uid="uid://b7hqe6hwyxer3"]
 
 [ext_resource type="Texture2D" uid="uid://c0u5nbamhvr3o" path="res://assets/final_plant/PLANTA_FINAL_01.png" id="1_5thbj"]
 [ext_resource type="Shader" path="res://shaders/Final_Plant.gdshader" id="1_ifwmb"]
@@ -39,19 +39,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_py2s6")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6im4o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qst5q"]
 render_priority = 0
 shader = ExtResource("7_nscxe")
 shader_parameter/u_total_time = 2.0
-shader_parameter/u_current_time = 2.0
+shader_parameter/u_current_time = 0.0
 shader_parameter/u_color_channel = ExtResource("4_gbny2")
 shader_parameter/u_mask = ExtResource("5_yefjw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sp3jv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcqn3"]
+render_priority = 0
+shader = ExtResource("7_nscxe")
+shader_parameter/u_total_time = 2.0
+shader_parameter/u_current_time = 0.0
+shader_parameter/u_color_channel = ExtResource("4_gbny2")
+shader_parameter/u_mask = ExtResource("5_yefjw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gj4ce"]
 render_priority = 0
 shader = ExtResource("1_ifwmb")
-shader_parameter/u_total_time = 1.0
-shader_parameter/u_current_time = 1.0
+shader_parameter/u_total_time = 2.0
+shader_parameter/u_current_time = 0.0
 shader_parameter/u_color_channel = ExtResource("3_fa3jl")
 shader_parameter/u_mask = ExtResource("6_6bn1k")
 
@@ -63,6 +71,14 @@ shader_parameter/u_current_time = 2.0
 shader_parameter/u_color_channel = ExtResource("1_5thbj")
 shader_parameter/u_mask = ExtResource("3_kgji8")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wxyn"]
+render_priority = 0
+shader = ExtResource("1_ifwmb")
+shader_parameter/u_total_time = 2.0
+shader_parameter/u_current_time = 0.0
+shader_parameter/u_color_channel = ExtResource("3_fa3jl")
+shader_parameter/u_mask = ExtResource("6_6bn1k")
+
 [node name="FinalPlant" type="Node3D"]
 transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 0, 0)
 
@@ -71,21 +87,21 @@ unique_name_in_owner = true
 transform = Transform3D(0.4, -2.84217e-14, 7.6233e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.04998, 1.52181, -1.58543e-07)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_6im4o")
+surface_material_override/0 = SubResource("ShaderMaterial_qst5q")
 
 [node name="tayo_final" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.4, -2.84217e-14, 9.31736e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.04667, 2.4592, -1.58043e-07)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_6im4o")
+surface_material_override/0 = SubResource("ShaderMaterial_mcqn3")
 
 [node name="top_layer" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 1.98952e-13, -7.19978e-21, 0, -3.49691e-08, -1, -2.41585e-13, 0.8, -4.37114e-08, -0.971543, 2.285, 0.014)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_sp3jv")
+surface_material_override/0 = SubResource("ShaderMaterial_gj4ce")
 
 [node name="base_layer" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
@@ -93,4 +109,4 @@ transform = Transform3D(1, 0, 0, 0, -3.49691e-08, -0.8, 0, 0.8, -3.49691e-08, -1
 material_override = SubResource("ShaderMaterial_lsh5p")
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_sp3jv")
+surface_material_override/0 = SubResource("ShaderMaterial_6wxyn")
