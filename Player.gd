@@ -28,6 +28,7 @@ var playing_mole_backwards : bool = false
 
 signal player_released_waterfall(flood)
 signal player_set_day()
+signal reset_requested()
 
 func _ready():
 	World.global_player = self
@@ -221,9 +222,11 @@ func interact_roots():
 		
 	elif state.waterwayDone and not state.wetGround and not state.sunIsUp:
 		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
+		
 	elif state.waterwayDone and state.wetGround:
 		print("SHOOT AND SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
-		
+	
+	emit_signal("reset_requested")
 	character_enabled = false
 	
 
@@ -258,3 +261,5 @@ func _on_animation_player_animation_finished(anim_name):
 		$AnimationPlayer.play_backwards("focus_water_elevate")
 		
 	isBackwardsAnim = true
+
+
