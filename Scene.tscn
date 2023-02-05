@@ -160,7 +160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68786, 6.28825, -1.82044)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81629, -0.298886, 1.43331)
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1402, 1.02917, 3.33251)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14044, 1.02646, 3.33284)
 
 [node name="FPS" type="Label" parent="."]
 unique_name_in_owner = true
