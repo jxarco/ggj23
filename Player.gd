@@ -196,10 +196,7 @@ func interact_cow():
 
 func _on_cow_anim_animation_finished(anim_name):
 	print("GRASS DISAPEARS")
-	
-	$"../MoleAnim".play("grass_scale")
-	$"../MoleAnim".speed_scale = -1
-
+	$"../Grass".visible = false
 
 func interact_roots():
 	
