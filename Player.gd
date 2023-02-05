@@ -23,6 +23,7 @@ var elapsed_time := 0.0
 var mole_meters := 0.0
 
 signal player_released_waterfall(flood)
+signal player_set_day()
 
 func _ready():
 	World.global_player = self
@@ -128,40 +129,35 @@ func _on_mole_anim_animation_finished(anim_name):
 		$"../GroundParticles".emitting = false
 		
 func interact_water():
-	if state.wetGround or state.groundFlooded:
-		print("WATER ALREADY FREED")
+
+	if state.sunIsUp:
+		print("WATER EVAPORATED")
 		return
 
-	if state.waterwayDone and not state.sunIsUp:
+	if state.waterwayDone:
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 		%RiverStream.play()
+		$"../waterway".set_wet()
 		emit_signal("player_released_waterfall", false)
-	elif state.waterwayDone and state.sunIsUp:
-		print("WATER EVAPORATES")
-	elif not state.waterwayDone:
+	else:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
 		%RiverStream.play()
+		$"../waterway".set_wet()
 		emit_signal("player_released_waterfall", true)
 
 func interact_sun():
-	
-	if state.sunIsUp: 
-		print("SUN IS ALREADY UP")
-		return
 
+	emit_signal("player_set_day")
+	
 	print("SUN IS UP!")
 	state.sunIsUp = true
 	state.actionSequence.push_back("SUN")
 	%Kikiriki.play()
 
 func interact_cow():
-
-	if state.grassEaten:
-		print("GRASS ALREADY EATEN")
-		return
 
 	if state.waterwayDone and state.wetGround and state.sunIsUp:
 		print("COW EATS GRASS")

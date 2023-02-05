@@ -9,6 +9,7 @@
 script = ExtResource("1_qcsvn")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Action"]]
+unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 4
 

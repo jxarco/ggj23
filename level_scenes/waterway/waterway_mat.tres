@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cid5881mjpiea"]
+
+[ext_resource type="Texture2D" uid="uid://ctkjmduvwcngv" path="res://assets/gfx/3d/level/level_narrow_suelo_seco_diffuse.png" id="1_v2ka1"]
+
+[resource]
+albedo_texture = ExtResource("1_v2ka1")
