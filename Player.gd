@@ -8,7 +8,7 @@ var current_area_ref = null
 
 @onready var state = World.state
 @onready var footstepsStreams = [%SeedFootstep_1, %SeedFootstep_2, %SeedFootstep_3]
-
+var moleIsUp = false
 var standing_anim = preload("res://assets/semilla_idle/standing.tres")
 var walking_anim = preload("res://assets/semilla_walk/walking.tres")
 
@@ -34,8 +34,12 @@ func _process(delta):
 	if state.sunIsUp and light.light_energy < 0.7:
 		var energy = move_toward(light.light_energy, 0.7, delta*0.2)
 		light.light_energy = energy
-
 	process_sprite_audio(delta)
+	
+	if moleIsUp:
+		$"../GroundParticles".position.x-=0.01
+		$"../GroundParticles".position.y-=0.002
+		
 		
 func _input(event):
 	
@@ -97,24 +101,32 @@ func _physics_process(delta):
 
 func interact_mole():
 	$"../MoleAnim".play("mole_up")
-	
+	moleIsUp = true
+	$"../GroundParticles".position = $"../Mole".position
+	$"../GroundParticles".position.x-= 0.05
+	$"../GroundParticles".position.y+= 0.1
+	$"../GroundParticles".emitting = true
+
 func _on_mole_anim_animation_finished(anim_name):
 	
 	if anim_name == "mole_up":
 		if state.sunIsUp:
 			print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
-			$"../GroundParticles".emitting = true
+
 		elif state.groundFlooded:
 			print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
 		elif not state.sunIsUp:
 			print("MOLE MAKES CORRECT WATERWAY")
 			$"../waterway".start_waterway()
-			$"../GroundParticles".emitting = true
+			
 			state.actionSequence.push_back("MOLE")
 			state.waterwayDone = true
-			
+		
 		$"../MoleAnim".play("mole_dig")
-	
+	elif anim_name == "mole_dig":
+		moleIsUp = false
+		$"../GroundParticles".emitting = false
+		
 func interact_water():
 	if state.wetGround or state.groundFlooded:
 		print("WATER ALREADY FREED")
