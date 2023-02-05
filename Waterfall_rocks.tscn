@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dal7rtugxvxc8"]
+[gd_scene load_steps=5 format=3 uid="uid://dal7rtugxvxc8"]
 
 [ext_resource type="Script" path="res://StoneCascade.gd" id="1_1lp3b"]
 [ext_resource type="ArrayMesh" uid="uid://p0gl3khq2xi7" path="res://particles/rocasa_particulasa.tres" id="2_v2mtx"]
+[ext_resource type="PackedScene" uid="uid://xiwonhq14p2j" path="res://piedra_01.tscn" id="3_2kdye"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhenx"]
 emission_shape = 3
@@ -24,3 +25,24 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_qhenx")
 draw_pass_1 = ExtResource("2_v2mtx")
+
+[node name="piedra" parent="." instance=ExtResource("3_2kdye")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.126572, 0)
+
+[node name="piedra2" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.761742, 0, 0)
+
+[node name="piedra3" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.761742, 0, -0.676126)
+
+[node name="piedra4" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(0.28545, -0.381587, 0.879153, 0.117841, 0.924333, 0.362935, -0.951121, -2.98023e-08, 0.308818, -0.357641, 2.38419e-07, -0.413508)
+
+[node name="piedra5" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(0.949442, 0, 0.313943, 0, 1, 0, -0.313943, 0, 0.949442, 0.125102, 0, -0.522851)
+
+[node name="piedra6" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(-0.569409, 0, 0.822055, 0, 1, 0, -0.822055, 0, -0.569409, 1.56795, -0.219375, 0)
+
+[node name="piedra7" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(-0.319422, 0, 0.947612, 0, 1, 0, -0.947612, 0, -0.319422, -1.47373, 0, 0)
