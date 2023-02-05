@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://du7yudr7u5yim" path="res://water_level.tscn" id="6_yfiuj"]
 [ext_resource type="PackedScene" uid="uid://bp7u0yr8e8qp0" path="res://level_scenes/waterway/waterway.tscn" id="7_h7ger"]
 [ext_resource type="PackedScene" uid="uid://dsnlgfgtvtajj" path="res://particles/EnvironmentParticles.tscn" id="10_mjebn"]
-[ext_resource type="PackedScene" uid="uid://djyv71d2gjjhp" path="res://Menu.tscn" id="11_mhdag"]
+[ext_resource type="PackedScene" path="res://Menu.tscn" id="11_mhdag"]
 [ext_resource type="PackedScene" uid="uid://dal7rtugxvxc8" path="res://Waterfall_rocks.tscn" id="11_yhtqy"]
 [ext_resource type="PackedScene" path="res://water_level_small.tscn" id="12_nowmu"]
 [ext_resource type="PackedScene" uid="uid://dklbo2wxj0o11" path="res://assets/grass/Grass.tscn" id="12_r8xx3"]
