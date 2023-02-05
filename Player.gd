@@ -158,6 +158,7 @@ func interact_sun():
 	print("SUN IS UP!")
 	state.sunIsUp = true
 	state.actionSequence.push_back("SUN")
+	%Kikiriki.play()
 
 func interact_cow():
 
