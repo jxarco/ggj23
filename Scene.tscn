@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://b80a1hiq0jb56" path="res://Waterfall.tscn" id="5_lbge5"]
 [ext_resource type="PackedScene" uid="uid://ufo7qg2n2id0" path="res://Nivel.tscn" id="5_u686y"]
 [ext_resource type="Texture2D" uid="uid://d0q0bydg2r2vt" path="res://assets/particula tierra.png" id="5_xybig"]
-[ext_resource type="PackedScene" uid="uid://cjsjs6giux52o" path="res://Mole.tscn" id="6_h5g88"]
+[ext_resource type="PackedScene" uid="uid://c3lvft73s5ufg" path="res://Mole.tscn" id="6_h5g88"]
 [ext_resource type="PackedScene" uid="uid://du7yudr7u5yim" path="res://water_level.tscn" id="6_yfiuj"]
 [ext_resource type="PackedScene" uid="uid://bp7u0yr8e8qp0" path="res://level_scenes/waterway/waterway.tscn" id="7_h7ger"]
 [ext_resource type="PackedScene" uid="uid://dsnlgfgtvtajj" path="res://particles/EnvironmentParticles.tscn" id="10_mjebn"]
-[ext_resource type="PackedScene" uid="uid://3a7a7707gkc6" path="res://Menu.tscn" id="11_mhdag"]
+[ext_resource type="PackedScene" path="res://Menu.tscn" id="11_mhdag"]
 [ext_resource type="PackedScene" uid="uid://dal7rtugxvxc8" path="res://Waterfall_rocks.tscn" id="11_yhtqy"]
-[ext_resource type="PackedScene" uid="uid://csuxsu7jmccaj" path="res://water_level_small.tscn" id="12_nowmu"]
+[ext_resource type="PackedScene" path="res://water_level_small.tscn" id="12_nowmu"]
 [ext_resource type="PackedScene" uid="uid://dklbo2wxj0o11" path="res://assets/grass/Grass.tscn" id="12_r8xx3"]
 [ext_resource type="Script" path="res://water_level_small.gd" id="13_pbb7r"]
 
@@ -180,7 +180,6 @@ target_pos = -0.211
 
 [node name="water_level_large" parent="." instance=ExtResource("6_yfiuj")]
 transform = Transform3D(0.0604397, -0.00329383, 3.23517, -0.165244, 1.20925, 0.0267714, -1.3267, -0.150765, 0.144048, -6.77559, -2.9785, -3.82057)
-target_pos = -0.606
 
 [node name="Menu" parent="." instance=ExtResource("11_mhdag")]
 
@@ -194,5 +193,3 @@ transform = Transform3D(-0.01, 0, -1.50996e-09, 0, 0.01, 0, 1.50996e-09, 0, -0.0
 [connection signal="player_entered" from="Sun" to="." method="_on_sun_player_entered"]
 [connection signal="player_entered" from="Roots" to="." method="_on_roots_player_entered"]
 [connection signal="player_released_waterfall" from="Player" to="Waterfall" method="_on_player_player_released_waterfall"]
-[connection signal="waterfall_has_flooded" from="Waterfall" to="water_level_large" method="_on_waterfall_waterfall_has_flooded"]
-[connection signal="waterfall_is_pond" from="Waterfall" to="water_level_small" method="_on_waterfall_waterfall_is_pond"]
