@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://mbl42j4eotsv"]
 
-[ext_resource type="PackedScene" uid="uid://bwutgnjilajdn" path="res://assets/gfx/3d/piedra03.glb" id="1_t5ldk"]
+[ext_resource type="PackedScene" uid="uid://c15v10nweqvc7" path="res://assets/gfx/3d/piedra03.glb" id="1_t5ldk"]
 
 [node name="piedra03" instance=ExtResource("1_t5ldk")]
 
