@@ -63,10 +63,10 @@ emission_texture = ExtResource("3_m7rg0")
 uv1_scale = Vector3(-1, 1, 1)
 
 [node name="SmallGrass" type="Node3D"]
-transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, -1.44165, 0, 2.17683e-07)
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 0, 0)
 
 [node name="Layer1" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.98, 4.26326e-14, -4.23516e-22, 0, -4.37114e-08, -1, -4.26326e-14, 1, -4.37114e-08, -0.892311, 0.99605, 4.22687e-08)
+transform = Transform3D(0.98, 4.26326e-14, 0, 0, -4.37114e-08, -1, -4.26326e-14, 1, -4.37114e-08, -0.892311, 0.99605, 4.22687e-08)
 mesh = SubResource("ArrayMesh_27hib")
 surface_material_override/0 = SubResource("StandardMaterial3D_6ds3u")
 
@@ -83,7 +83,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_03med")
 
 [node name="Layer4" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, -2.84217e-14, 5.92923e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -0.895572, 1.54344, -1.35228e-07)
+transform = Transform3D(0.4, -2.84217e-14, 5.92923e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_70dw7")

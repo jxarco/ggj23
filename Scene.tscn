@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://water_level_top.gd" id="15_74udx"]
 [ext_resource type="PackedScene" uid="uid://dwkfjro0yu3lb" path="res://assets/cow/Cow.tscn" id="16_lmfwn"]
 [ext_resource type="PackedScene" uid="uid://fhj1bev08jgr" path="res://assets/cow/cow_legs.tscn" id="17_xresg"]
+[ext_resource type="PackedScene" uid="uid://b7hqe6hwyxer3" path="res://assets/final_plant/Final_Plant.tscn" id="18_ja1qw"]
 
 [sub_resource type="Animation" id="Animation_4eykt"]
 resource_name = "grass_scale"
@@ -117,7 +118,7 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_cm1gr"]
 resource_name = "cow_head"
-length = 4.0
+length = 5.5
 loop_mode = 2
 step = 0.104
 tracks/0/type = "position_3d"
@@ -126,7 +127,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 9.2095, 14.5317, 3.89679, 3.016, 1, -5.87045, 3.45, 3.897, 3.224, 1, -5.82432, 3.83395, 3.897, 3.432, 1, -5.87045, 3.45, 3.897, 3.64, 1, -5.82432, 3.83395, 3.897, 3.848, 1, -5.87045, 3.45, 3.897)
+tracks/0/keys = PackedFloat32Array(0, 1, 9.2095, 14.5317, 3.89679, 3.016, 1, -5.87045, 3.45, 3.897, 3.224, 1, -5.82432, 3.83395, 3.897, 3.432, 1, -5.87045, 3.45, 3.897, 3.64, 1, -5.82432, 3.83395, 3.897, 3.848, 1, -5.87045, 3.45, 3.897, 4.056, 1, -5.87045, 3.45, 3.897, 4.264, 1, -5.82432, 3.83395, 3.897, 4.472, 1, -5.87045, 3.45, 3.897, 4.68, 1, -5.82432, 3.83395, 3.897, 4.888, 1, -5.87045, 3.45, 3.897, 5.408, 1, 9.2095, 14.5317, 3.89679)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v4vkn"]
 _data = {
@@ -145,7 +146,7 @@ libraries = {
 }
 
 [node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.14556, 0.15328, 3.25218)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.90241, 0.15328, 3.25218)
 
 [node name="Water" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9821, 6.21762, -0.49013)
@@ -157,7 +158,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0955, 3.30164, -1.23373)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68786, 6.28825, -1.82044)
 
 [node name="Roots" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81629, -0.298886, 1.43331)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42697, -0.298886, 2.24534)
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1402, 1.02917, 3.33251)
@@ -219,6 +220,7 @@ transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -7.69062, -0.0211153, 3.83681
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 9.2095, 14.5317, 3.89679)
 
 [node name="CowAnim" type="AnimationPlayer" parent="CowSprite"]
+movie_quit_on_finish = true
 libraries = {
 "": SubResource("AnimationLibrary_v4vkn")
 }
@@ -237,6 +239,9 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.28891, 0.148288, 2.99
 
 [node name="Leg4" parent="Cow Legs" instance=ExtResource("17_xresg")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.52367, 0.0721407, 3.1342)
+
+[node name="Flower" parent="." instance=ExtResource("18_ja1qw")]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -9.14667, 0, 3.67782)
 
 [connection signal="animation_finished" from="MoleAnim" to="Player" method="_on_mole_anim_animation_finished"]
 [connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]
