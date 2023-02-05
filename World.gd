@@ -32,3 +32,4 @@ class WorldState:
 	var groundFlooded := false
 
 var state = WorldState.new()
+var global_player = null
