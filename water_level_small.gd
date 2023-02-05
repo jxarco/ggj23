@@ -19,5 +19,5 @@ func _process(_delta):
 	set_position(Vector3(position.x, move_toward(position.y, target_pos, _delta * 0.5), position.z))
 
 
-func _on_waterfall_waterfall_has_flooded():
+func _on_waterfall_waterfall_is_pond():
 	water_level_changed = true

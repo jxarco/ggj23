@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://du7yudr7u5yim" path="res://water_level.tscn" id="6_yfiuj"]
 [ext_resource type="PackedScene" uid="uid://bp7u0yr8e8qp0" path="res://level_scenes/waterway/waterway.tscn" id="7_h7ger"]
 [ext_resource type="PackedScene" uid="uid://dsnlgfgtvtajj" path="res://particles/EnvironmentParticles.tscn" id="10_mjebn"]
+[ext_resource type="PackedScene" uid="uid://dal7rtugxvxc8" path="res://Waterfall_rocks.tscn" id="11_yhtqy"]
+[ext_resource type="PackedScene" uid="uid://csuxsu7jmccaj" path="res://water_level_small.tscn" id="12_nowmu"]
+[ext_resource type="Script" path="res://water_level_small.gd" id="13_pbb7r"]
 [ext_resource type="PackedScene" path="res://Menu.tscn" id="11_mhdag"]
 
 [sub_resource type="Animation" id="Animation_32dg4"]
@@ -90,7 +93,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68786, 6.28825, -1.82044)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.808125, 0.490299, 1.43331)
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.95273, 1.32276, 3.31482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11204, 1.21218, 3.40848)
 
 [node name="FPS" type="Label" parent="."]
 unique_name_in_owner = true
@@ -115,16 +118,24 @@ draw_pass_1 = SubResource("QuadMesh_v4i0g")
 [node name="MoleSprite" parent="." instance=ExtResource("6_h5g88")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5488, -0.741678, 2.67803)
 
-[node name="water_level" parent="." instance=ExtResource("6_yfiuj")]
-transform = Transform3D(0.0604397, -0.00329383, 3.23517, -0.165244, 1.20925, 0.0267714, -1.3267, -0.150765, 0.144048, -6.77559, -4.84438, -3.82057)
-visible = false
-
 [node name="Waterfall" parent="." instance=ExtResource("5_lbge5")]
 transform = Transform3D(-0.0592925, 0.0322805, 1.53562, -0.129136, 0.979403, -0.0611087, -1.01914, -0.125979, -0.0815974, -10.4819, -0.40973, 1.58418)
 
 [node name="waterway" parent="." instance=ExtResource("7_h7ger")]
 
 [node name="EnvironmentParticles" parent="." instance=ExtResource("10_mjebn")]
+
+[node name="Waterfall_rocks" parent="." instance=ExtResource("11_yhtqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.46081, 5.89313, -0.167088)
+
+[node name="water_level_small" parent="." instance=ExtResource("12_nowmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.096, -2.45133, 1.2252)
+script = ExtResource("13_pbb7r")
+target_pos = -0.211
+
+[node name="water_level_large" parent="." instance=ExtResource("6_yfiuj")]
+transform = Transform3D(0.0604397, -0.00329383, 3.23517, -0.165244, 1.20925, 0.0267714, -1.3267, -0.150765, 0.144048, -6.77559, -2.9785, -3.82057)
+target_pos = -0.606
 
 [node name="Menu" parent="." instance=ExtResource("11_mhdag")]
 
@@ -134,6 +145,6 @@ transform = Transform3D(-0.0592925, 0.0322805, 1.53562, -0.129136, 0.979403, -0.
 [connection signal="player_entered" from="Cow" to="." method="_on_cow_player_entered"]
 [connection signal="player_entered" from="Sun" to="." method="_on_sun_player_entered"]
 [connection signal="player_entered" from="Roots" to="." method="_on_roots_player_entered"]
-[connection signal="player_released_waterfall" from="Player" to="water_level" method="_on_player_player_released_waterfall"]
 [connection signal="player_released_waterfall" from="Player" to="Waterfall" method="_on_player_player_released_waterfall"]
-[connection signal="waterfall_is_stablished" from="Waterfall" to="water_level" method="_on_waterfall_waterfall_is_stablished"]
+[connection signal="waterfall_has_flooded" from="Waterfall" to="water_level_large" method="_on_waterfall_waterfall_has_flooded"]
+[connection signal="waterfall_is_pond" from="Waterfall" to="water_level_small" method="_on_waterfall_waterfall_is_pond"]
