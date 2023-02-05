@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cspyds0lnkgqv"]
+
+[ext_resource type="PackedScene" uid="uid://4dhr0og6l1xx" path="res://assets/gfx/3d/monolit.glb" id="1_hcgm6"]
+
+[node name="monolit" instance=ExtResource("1_hcgm6")]
+
+[node name="StaticBody3D" parent="monolit" index="0"]
+collision_layer = 2
