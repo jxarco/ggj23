@@ -8,11 +8,16 @@ func _ready():
 
 func _process(_delta):
 	pass
+	
+func deactivate():
+	%EnvironmentParticles/GPUParticles3D.emitting = false
 
 func _on_area_3d_body_entered(body):
+	body.current_area_ref = $"."
 	emit_signal("player_entered", body)
 
 func _on_area_3d_body_exited(body):
+	body.current_area_ref = null
 	emit_signal("player_exited", body)
 	# Reset area on exit
 	body.current_area = World.Area.NONE

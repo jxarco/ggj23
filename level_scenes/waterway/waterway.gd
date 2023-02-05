@@ -13,7 +13,7 @@ func _process(delta):
 	pass
 
 func start_waterway():
-	%Timer.start(3)
+	%Timer.start(1.5)
 
 func _on_timer_timeout():
 	
