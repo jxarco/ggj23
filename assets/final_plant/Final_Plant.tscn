@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7hqe6hwyxer3"]
+
+[ext_resource type="Texture2D" uid="uid://c0u5nbamhvr3o" path="res://assets/final_plant/PLANTA_FINAL_01.png" id="1_5thbj"]
+[ext_resource type="Texture2D" uid="uid://cokw80ya214ji" path="res://assets/small_grass/HOJA_SUELO_01.png" id="1_53v87"]
+[ext_resource type="Texture2D" uid="uid://d38cgb581nb4b" path="res://assets/small_grass/HOJA_SUELO_02.png" id="2_wcmig"]
+[ext_resource type="Texture2D" uid="uid://bukoc5537nol3" path="res://assets/final_plant/PLANTA_FINAL_02.png" id="3_fa3jl"]
+[ext_resource type="Texture2D" uid="uid://cdubhqwnvyrfl" path="res://assets/small_grass/HOJA_SUELO_03.png" id="3_m7rg0"]
+[ext_resource type="Texture2D" uid="uid://bfqbx3awfy8t0" path="res://assets/final_plant/PLANTA_FINAL_03.png" id="5_v1ovq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n027w"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_py2s6"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
+"format": 4097,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_27hib"]
+resource_name = "up_quad_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0),
+"format": 4119,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_n027w"),
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 255, 255, 50, 243, 50, 243, 255, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 50, 243, 255, 255, 101, 198, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 255, 255, 0, 240, 0, 240, 255, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 240, 255, 255, 254, 199)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_py2s6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ds3u"]
+transparency = 1
+albedo_texture = ExtResource("1_5thbj")
+emission_texture = ExtResource("1_53v87")
+uv1_scale = Vector3(-1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1ep2"]
+transparency = 1
+albedo_texture = ExtResource("3_fa3jl")
+emission_texture = ExtResource("2_wcmig")
+uv1_scale = Vector3(-1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03med"]
+transparency = 1
+albedo_texture = ExtResource("5_v1ovq")
+emission_texture = ExtResource("3_m7rg0")
+uv1_scale = Vector3(-1, 1, 1)
+
+[node name="SmallGrass" type="Node3D"]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, -1.44165, 0, 2.17683e-07)
+
+[node name="Layer1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.98, 4.26326e-14, -1.69407e-21, 0, -4.37114e-08, -1, -4.26326e-14, 1, -4.37114e-08, -0.883899, 0.99605, 4.35388e-08)
+mesh = SubResource("ArrayMesh_27hib")
+surface_material_override/0 = SubResource("StandardMaterial3D_6ds3u")
+
+[node name="Layer2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 1.98952e-13, -1.05879e-20, 0, -3.49691e-08, -1, -2.41585e-13, 0.8, -4.37114e-08, -0.952358, 2.2848, -1.43803e-07)
+mesh = SubResource("ArrayMesh_27hib")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_s1ep2")
+
+[node name="Layer3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, -2.84217e-14, 5.0822e-21, 0, -1.74846e-08, -2.2, 2.84217e-14, 0.4, -9.61651e-08, -0.895572, 2.2979, -1.35228e-07)
+mesh = SubResource("ArrayMesh_27hib")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_03med")
