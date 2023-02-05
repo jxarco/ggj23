@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dal7rtugxvxc8"]
+[gd_scene load_steps=5 format=3 uid="uid://dal7rtugxvxc8"]
 
 [ext_resource type="Script" path="res://StoneCascade.gd" id="1_1lp3b"]
-[ext_resource type="ArrayMesh" uid="uid://p0gl3khq2xi7" path="res://particles/rocasa_particulasa.tres" id="2_v2mtx"]
+[ext_resource type="ArrayMesh" uid="uid://dc5prrlmyjqxq" path="res://particles/rocasa_particulasa.tres" id="2_v2mtx"]
+[ext_resource type="PackedScene" uid="uid://xiwonhq14p2j" path="res://piedra_01.tscn" id="3_2kdye"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhenx"]
 emission_shape = 3
@@ -24,3 +25,24 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_qhenx")
 draw_pass_1 = ExtResource("2_v2mtx")
+
+[node name="piedra" parent="." instance=ExtResource("3_2kdye")]
+transform = Transform3D(0.460234, 0, 0, 0, 0.434539, 0, 0, 0, 0.5, 0, 0.126572, 0)
+
+[node name="piedra2" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(0.757865, 0, 0, 0, 0.636572, 0, 0, 0, 0.706541, -0.168932, 0.785439, -0.966146)
+
+[node name="piedra3" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.761742, 0, -0.676126)
+
+[node name="piedra4" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(-0.941547, -0.399367, 0.0420311, -0.274907, 0.568864, -0.580546, 0.275611, -0.796915, -0.435476, 0.963809, 0.969594, 0.757124)
+
+[node name="piedra5" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(0.949442, 0, 0.313943, -0.312927, -0.0803729, 0.94637, 0.0252325, -0.996765, -0.0763094, -0.8123, -0.51667, -1.73161)
+
+[node name="piedra6" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(-0.569409, 0, 0.822055, 0, 1, 0, -0.822055, 0, -0.569409, 1.68185, -0.219375, 0.742556)
+
+[node name="piedra7" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(-0.49882, -0.549474, 0.139007, -0.858527, 0.327376, 0.0560294, -0.118784, -0.058701, -0.988705, -1.53392, -0.06952, 0)

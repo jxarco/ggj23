@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cbq5tnw07mrka"]
+[gd_scene load_steps=37 format=3 uid="uid://cbq5tnw07mrka"]
 
 [ext_resource type="Script" path="res://Scene.gd" id="1_84ysa"]
 [ext_resource type="PackedScene" uid="uid://cpon6uc57bd78" path="res://Action.tscn" id="1_r8fxx"]
@@ -9,16 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://c3lvft73s5ufg" path="res://Mole.tscn" id="6_h5g88"]
 [ext_resource type="PackedScene" uid="uid://du7yudr7u5yim" path="res://water_level.tscn" id="6_yfiuj"]
 [ext_resource type="PackedScene" uid="uid://bp7u0yr8e8qp0" path="res://level_scenes/waterway/waterway.tscn" id="7_h7ger"]
+[ext_resource type="PackedScene" uid="uid://xiwonhq14p2j" path="res://piedra_01.tscn" id="10_eqfue"]
 [ext_resource type="PackedScene" uid="uid://dsnlgfgtvtajj" path="res://particles/EnvironmentParticles.tscn" id="10_mjebn"]
-[ext_resource type="PackedScene" uid="uid://3a7a7707gkc6" path="res://Menu.tscn" id="11_mhdag"]
+[ext_resource type="PackedScene" uid="uid://bna4d60youic1" path="res://Menu.tscn" id="11_mhdag"]
 [ext_resource type="PackedScene" uid="uid://dal7rtugxvxc8" path="res://Waterfall_rocks.tscn" id="11_yhtqy"]
 [ext_resource type="PackedScene" uid="uid://2e7uwvla0b0" path="res://water_level_small.tscn" id="12_nowmu"]
 [ext_resource type="PackedScene" uid="uid://dklbo2wxj0o11" path="res://assets/grass/Grass.tscn" id="12_r8xx3"]
 [ext_resource type="Script" path="res://water_level_small.gd" id="13_pbb7r"]
-[ext_resource type="PackedScene" uid="uid://c013q83sm2j5u" path="res://water_level_top.tscn" id="14_0b4ia"]
+[ext_resource type="PackedScene" path="res://water_level_top.tscn" id="14_0b4ia"]
 [ext_resource type="Script" path="res://water_level_top.gd" id="15_74udx"]
 [ext_resource type="PackedScene" uid="uid://dwkfjro0yu3lb" path="res://assets/cow/Cow.tscn" id="16_lmfwn"]
 [ext_resource type="PackedScene" uid="uid://fhj1bev08jgr" path="res://assets/cow/cow_legs.tscn" id="17_xresg"]
+[ext_resource type="PackedScene" uid="uid://b7hqe6hwyxer3" path="res://assets/final_plant/Final_Plant.tscn" id="18_ja1qw"]
 
 [sub_resource type="Animation" id="Animation_4eykt"]
 resource_name = "grass_scale"
@@ -117,7 +119,7 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_cm1gr"]
 resource_name = "cow_head"
-length = 4.0
+length = 5.5
 loop_mode = 2
 step = 0.104
 tracks/0/type = "position_3d"
@@ -126,7 +128,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 9.2095, 14.5317, 3.89679, 3.016, 1, -5.87045, 3.45, 3.897, 3.224, 1, -5.82432, 3.83395, 3.897, 3.432, 1, -5.87045, 3.45, 3.897, 3.64, 1, -5.82432, 3.83395, 3.897, 3.848, 1, -5.87045, 3.45, 3.897)
+tracks/0/keys = PackedFloat32Array(0, 1, 9.2095, 14.5317, 3.89679, 3.016, 1, -5.87045, 3.45, 3.897, 3.224, 1, -5.82432, 3.83395, 3.897, 3.432, 1, -5.87045, 3.45, 3.897, 3.64, 1, -5.82432, 3.83395, 3.897, 3.848, 1, -5.87045, 3.45, 3.897, 4.056, 1, -5.87045, 3.45, 3.897, 4.264, 1, -5.82432, 3.83395, 3.897, 4.472, 1, -5.87045, 3.45, 3.897, 4.68, 1, -5.82432, 3.83395, 3.897, 4.888, 1, -5.87045, 3.45, 3.897, 5.408, 1, 9.2095, 14.5317, 3.89679)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v4vkn"]
 _data = {
@@ -145,7 +147,7 @@ libraries = {
 }
 
 [node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.14556, 0.15328, 3.25218)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.90241, 0.15328, 3.25218)
 
 [node name="Water" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9821, 6.21762, -0.49013)
@@ -157,10 +159,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0955, 3.30164, -1.23373)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68786, 6.28825, -1.82044)
 
 [node name="Roots" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81629, -0.298886, 1.43331)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42697, -0.298886, 2.24534)
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11204, 6.96676, -1.38327)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1402, 1.02917, 3.33251)
 
 [node name="FPS" type="Label" parent="."]
 unique_name_in_owner = true
@@ -193,8 +195,32 @@ transform = Transform3D(-0.0231103, 0.0377753, 1.53749, -0.159189, 0.975254, -0.
 
 [node name="EnvironmentParticles" parent="." instance=ExtResource("10_mjebn")]
 
+[node name="staticrocks" type="Node3D" parent="."]
+transform = Transform3D(-0.24378, 0, -0.169403, 0, 0.134186, 0, 0.178257, 0, -0.231672, -10.2098, 5.96509, -0.799994)
+
+[node name="piedra2" parent="staticrocks" instance=ExtResource("10_eqfue")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, -4.17233e-07, 0, 1, 0.553661, -1.8489, 3.23339)
+
+[node name="piedra3" parent="staticrocks" instance=ExtResource("10_eqfue")]
+transform = Transform3D(1.3195, 0, -5.96046e-08, 0, 1.57091, 0, 4.17233e-07, 0, 1.41535, 2.27916, -2.54958, 0.315323)
+
+[node name="piedra3" parent="staticrocks/piedra3" instance=ExtResource("10_eqfue")]
+transform = Transform3D(-0.853963, 0, -1.07896, 0, 1.57091, 0, 1.00589, 0, -0.915995, 1.15608, -0.587948, 1.14234)
+
+[node name="piedra5" parent="staticrocks" instance=ExtResource("10_eqfue")]
+transform = Transform3D(1.25279, 1.78814e-07, 0.414247, -0.491582, -0.126259, 1.48667, 0.0357127, -1.41077, -0.108004, 0.555389, -2.6216, -0.951338)
+
+[node name="piedra5" parent="staticrocks/piedra5" instance=ExtResource("10_eqfue")]
+transform = Transform3D(0.767828, 0.774774, -1.05197, 0.995341, -0.012011, 0.917617, 0.481804, -1.18566, -0.66691, -0.469298, -0.587862, -0.671631)
+
+[node name="piedra6" parent="staticrocks" instance=ExtResource("10_eqfue")]
+transform = Transform3D(-0.751333, 0, 1.0847, 0, 1.57091, 0, -1.16349, 0, -0.805911, 3.01753, -2.15458, 2.41841)
+
+[node name="piedra7" parent="staticrocks" instance=ExtResource("10_eqfue")]
+transform = Transform3D(-0.658191, -0.725029, 0.183419, -1.34867, 0.51428, 0.0880175, -0.168121, -0.0830822, -1.39936, -0.845367, -2.90361, -2.32388)
+
 [node name="Waterfall_rocks" parent="." instance=ExtResource("11_yhtqy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.524, 5.55484, -0.167088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7472, 5.63315, -0.472413)
 
 [node name="water_level_small" parent="." instance=ExtResource("12_nowmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.096, -2.45133, 1.2252)
@@ -202,11 +228,11 @@ script = ExtResource("13_pbb7r")
 target_pos = -0.211
 
 [node name="water_level_large" parent="." instance=ExtResource("6_yfiuj")]
-transform = Transform3D(0.0604397, -0.00329383, 3.23517, -0.165244, 1.20925, 0.0267714, -1.3267, -0.150765, 0.144048, -6.77559, -2.9785, -3.82057)
+transform = Transform3D(0.0671654, -0.00329685, 3.2512, -0.183632, 1.21036, 0.0269042, -1.47433, -0.150904, 0.144762, -6.77559, -2.9785, -1.85458)
 target_pos = -0.606
 
 [node name="water_level_top" parent="." instance=ExtResource("14_0b4ia")]
-transform = Transform3D(0.490432, 0, 0, 0, 1, 0, 0, 0, 0.46591, -10.3815, 5.64496, -1.48212)
+transform = Transform3D(0.490432, 0, 0, 0, 1, 0, 0, 0, 0.46591, -10.3815, 5.64496, -1.84998)
 script = ExtResource("15_74udx")
 target_pos = 4.7
 
@@ -219,6 +245,7 @@ transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -7.69062, -0.0211153, 3.83681
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 9.2095, 14.5317, 3.89679)
 
 [node name="CowAnim" type="AnimationPlayer" parent="CowSprite"]
+movie_quit_on_finish = true
 libraries = {
 "": SubResource("AnimationLibrary_v4vkn")
 }
@@ -237,6 +264,9 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.28891, 0.148288, 2.99
 
 [node name="Leg4" parent="Cow Legs" instance=ExtResource("17_xresg")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.52367, 0.0721407, 3.1342)
+
+[node name="Flower" parent="." instance=ExtResource("18_ja1qw")]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -9.14667, 0, 3.67782)
 
 [connection signal="animation_finished" from="MoleAnim" to="Player" method="_on_mole_anim_animation_finished"]
 [connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]

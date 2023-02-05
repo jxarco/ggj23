@@ -18,6 +18,4 @@ func _process(delta):
 func _on_player_player_released_waterfall(depth):
 	
 	$GPUParticles3D.emitting = true
-	
-	#print("test", %piedra1/piedra_rb.linear_velocity)
-	pass # Replace with function body.
+	$piedra.hide()
