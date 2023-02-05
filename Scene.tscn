@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cbq5tnw07mrka"]
+[gd_scene load_steps=38 format=3 uid="uid://cbq5tnw07mrka"]
 
 [ext_resource type="Script" path="res://Scene.gd" id="1_84ysa"]
 [ext_resource type="PackedScene" uid="uid://cpon6uc57bd78" path="res://Action.tscn" id="1_r8fxx"]
@@ -6,16 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://b80a1hiq0jb56" path="res://Waterfall.tscn" id="5_lbge5"]
 [ext_resource type="PackedScene" uid="uid://ufo7qg2n2id0" path="res://Nivel.tscn" id="5_u686y"]
 [ext_resource type="Texture2D" uid="uid://d0q0bydg2r2vt" path="res://assets/particula tierra.png" id="5_xybig"]
-[ext_resource type="PackedScene" uid="uid://c3lvft73s5ufg" path="res://Mole.tscn" id="6_h5g88"]
+[ext_resource type="PackedScene" uid="uid://cjsjs6giux52o" path="res://Mole.tscn" id="6_h5g88"]
 [ext_resource type="PackedScene" uid="uid://du7yudr7u5yim" path="res://water_level.tscn" id="6_yfiuj"]
-[ext_resource type="PackedScene" uid="uid://bp7u0yr8e8qp0" path="res://level_scenes/waterway/waterway.tscn" id="7_h7ger"]
+[ext_resource type="PackedScene" uid="uid://djoiqqih7wbri" path="res://level_scenes/waterway/waterway.tscn" id="7_h7ger"]
 [ext_resource type="PackedScene" uid="uid://dsnlgfgtvtajj" path="res://particles/EnvironmentParticles.tscn" id="10_mjebn"]
-[ext_resource type="PackedScene" uid="uid://3a7a7707gkc6" path="res://Menu.tscn" id="11_mhdag"]
-[ext_resource type="PackedScene" uid="uid://dal7rtugxvxc8" path="res://Waterfall_rocks.tscn" id="11_yhtqy"]
-[ext_resource type="PackedScene" uid="uid://2e7uwvla0b0" path="res://water_level_small.tscn" id="12_nowmu"]
+[ext_resource type="PackedScene" path="res://staticrocks.tscn" id="11_5goj8"]
+[ext_resource type="PackedScene" path="res://Menu.tscn" id="11_mhdag"]
+[ext_resource type="PackedScene" path="res://Waterfall_rocks.tscn" id="11_yhtqy"]
+[ext_resource type="PackedScene" path="res://water_level_small.tscn" id="12_nowmu"]
 [ext_resource type="PackedScene" uid="uid://dklbo2wxj0o11" path="res://assets/grass/Grass.tscn" id="12_r8xx3"]
 [ext_resource type="Script" path="res://water_level_small.gd" id="13_pbb7r"]
-[ext_resource type="PackedScene" uid="uid://c013q83sm2j5u" path="res://water_level_top.tscn" id="14_0b4ia"]
+[ext_resource type="PackedScene" path="res://water_level_top.tscn" id="14_0b4ia"]
 [ext_resource type="Script" path="res://water_level_top.gd" id="15_74udx"]
 [ext_resource type="PackedScene" uid="uid://dwkfjro0yu3lb" path="res://assets/cow/Cow.tscn" id="16_lmfwn"]
 [ext_resource type="PackedScene" uid="uid://fhj1bev08jgr" path="res://assets/cow/cow_legs.tscn" id="17_xresg"]
@@ -118,14 +119,14 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_xmj23"]
 resource_name = "cow_head"
-length = 8.0
+length = 10.0
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("CowSprite")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 12.9312, 13.6641, 3.89694, 1.6, 1, -5.40705, 4.27027, 3.89694, 5.5, 1, -5.40705, 4.27027, 3.89694, 8, 1, 14.2438, 13.8628, 3.89694)
+tracks/0/keys = PackedFloat32Array(0, 1, 12.931, 13.664, 4, 3.2, 1, -5.407, 4.27, 4, 6.1, 1, -5.407, 4.27, 4, 9.9, 1, 14.244, 13.863, 4)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hbnpe"]
 _data = {
@@ -195,6 +196,8 @@ transform = Transform3D(-0.0231103, 0.0377753, 1.53749, -0.159189, 0.975254, -0.
 [node name="Waterfall_rocks" parent="." instance=ExtResource("11_yhtqy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.524, 5.55484, -0.167088)
 
+[node name="staticrocks" parent="." instance=ExtResource("11_5goj8")]
+
 [node name="water_level_small" parent="." instance=ExtResource("12_nowmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.096, -2.45133, 1.2252)
 script = ExtResource("13_pbb7r")
@@ -205,7 +208,7 @@ transform = Transform3D(0.0604397, -0.00329383, 3.23517, -0.165244, 1.20925, 0.0
 target_pos = -0.606
 
 [node name="water_level_top" parent="." instance=ExtResource("14_0b4ia")]
-transform = Transform3D(0.490432, 0, 0, 0, 1, 0, 0, 0, 0.46591, -10.3815, 5.64496, -1.48212)
+transform = Transform3D(0.490432, 0, 0, 0, 1, 0, 0, 0, 0.46591, -10.3815, 5.64496, -1.96102)
 script = ExtResource("15_74udx")
 target_pos = 4.7
 
@@ -215,7 +218,7 @@ target_pos = 4.7
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -7.69062, -0.0211153, 3.83681)
 
 [node name="CowSprite" parent="." instance=ExtResource("16_lmfwn")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12.9312, 13.6641, 3.89694)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 12.931, 13.664, 4)
 
 [node name="Cow Legs" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.734, 0, 0, 0, 1, 11.5358, 5.93468, -2.24528)
