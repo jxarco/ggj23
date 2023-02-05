@@ -186,7 +186,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0.0122051, 0.002
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86967, -1.16024, 2.67803)
 
 [node name="Waterfall" parent="." instance=ExtResource("5_lbge5")]
-transform = Transform3D(-0.0231103, 0.0377753, 1.53749, -0.159189, 0.975254, -0.0634928, -1.01635, -0.153612, -0.0250152, -10.4819, -0.65717, 2.40965)
+transform = Transform3D(-0.0231103, 0.0402721, 1.40724, -0.159189, 1.03972, -0.058114, -1.01635, -0.163765, -0.022896, -10.2793, -0.926701, 2.83733)
 
 [node name="waterway" parent="." instance=ExtResource("7_h7ger")]
 

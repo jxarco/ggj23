@@ -31,7 +31,6 @@ func _process(delta):
 
 	#flowing = true
 
-
 func _on_player_player_released_waterfall(flood):
 	flowing = true
 	has_flooded = flood

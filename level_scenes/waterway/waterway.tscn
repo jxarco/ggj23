@@ -45,7 +45,7 @@ unique_name_in_owner = true
 
 [node name="waterway_col" type="StaticBody3D" parent="." index="5"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1755, 0, 2.68901)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3683, 0, 2.68901)
 collision_layer = 0
 collision_mask = 0
 
