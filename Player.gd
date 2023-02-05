@@ -142,10 +142,12 @@ func _on_mole_anim_animation_finished(anim_name):
 			print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
 			$"../MoleAnim".play_backwards("mole_up")
 			playing_mole_backwards = true
+			$AudioStreams/MoleDiggingWrong.play()
 		elif state.groundFlooded:
 			print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
 			$"../MoleAnim".play_backwards("mole_up")
 			playing_mole_backwards = true
+			$AudioStreams/MoleDiggingWrong.play()
 		elif not state.sunIsUp:
 			print("MOLE MAKES CORRECT WATERWAY")
 			$"../MoleAnim".play("mole_dig")
@@ -188,7 +190,9 @@ func interact_sun():
 	state.sunIsUp = true
 	state.actionSequence.push_back("SUN")
 	%Kikiriki.play()
-	play_anim("focus_water")
+	
+	if state.wetGround or state.groundFlooded:
+		play_anim("focus_water")
 	
 	%Ambience_Night.stop()
 	%Ambience_Day.play()
