@@ -40,21 +40,21 @@ cull_mode = 2
 albedo_texture = ExtResource("1_ppo8n")
 emission_enabled = true
 emission_texture = ExtResource("1_ppo8n")
-uv1_scale = Vector3(-1, 1, 1)
+texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1ep2"]
 transparency = 1
 albedo_texture = ExtResource("2_bbqv7")
 emission_enabled = true
 emission_texture = ExtResource("2_bbqv7")
-uv1_scale = Vector3(-1, 1, 1)
+texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03med"]
 transparency = 1
 albedo_texture = ExtResource("3_mdjyx")
 emission_enabled = true
 emission_texture = ExtResource("3_mdjyx")
-uv1_scale = Vector3(-1, 1, 1)
+texture_repeat = false
 
 [node name="SmallGrass" type="Node3D"]
 transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, -1.44165, 0, 2.17683e-07)
