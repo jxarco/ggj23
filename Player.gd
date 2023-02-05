@@ -33,6 +33,7 @@ signal player_released_waterfall(flood)
 signal player_set_day()
 signal win()
 signal lose()
+signal reset_requested()
 
 func _ready():
 	World.global_player = self
@@ -200,6 +201,7 @@ func interact_sun():
 	
 	if state.wetGround or state.groundFlooded:
 		play_anim("focus_water")
+		%RiverStream.stop()
 	
 	%Ambience_Night.stop()
 	%Ambience_Day.play()
@@ -235,7 +237,12 @@ func interact_roots():
 	# Caso 0 - Horrible
 	if not state.wetGround and not state.sunIsUp:
 		print("0 - SHOOT DOES NOT GROW")
-		emit_signal("lose")
+		var timer = Timer.new()
+		add_child(timer)
+		timer.timeout.connect(func ():
+			emit_signal("lose")
+		)
+		timer.start(3)
 		return
 	# Caso 1 - Malo
 	elif state.wetGround and !state.sunIsUp and not state.grassEaten:
@@ -251,6 +258,7 @@ func interact_roots():
 		game_case = 3
 		
 	$FinalPlant.visible = true
+	%Sprite.visible = false
 	growing = true
 		
 	var base_layer : MeshInstance3D = $FinalPlant/base_layer
@@ -327,7 +335,14 @@ func process_final_plant(delta):
 					grow_current_time = 0
 					grow_sequence.pop_front()
 			-1:
-				emit_signal("win")
+				
+				var timer = Timer.new()
+				add_child(timer)
+				timer.timeout.connect(func ():
+					emit_signal("win")
+				)
+				timer.start(3)
+				
 				pass
 		
 
@@ -366,7 +381,18 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_win():
 	$"../Control/WinScreen".show()
-
+	var timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(func ():
+		emit_signal("reset_requested")
+	)
+	timer.start(3)
 
 func _on_lose():
 	$"../Control/LoseScreen".show()
+	var timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(func ():
+		emit_signal("reset_requested")
+	)
+	timer.start(3)

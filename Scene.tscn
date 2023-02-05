@@ -20,9 +20,9 @@
 [ext_resource type="Script" path="res://water_level_top.gd" id="15_74udx"]
 [ext_resource type="PackedScene" uid="uid://dwkfjro0yu3lb" path="res://assets/cow/Cow.tscn" id="16_lmfwn"]
 [ext_resource type="PackedScene" uid="uid://fhj1bev08jgr" path="res://assets/cow/cow_legs.tscn" id="17_xresg"]
-[ext_resource type="PackedScene" uid="uid://b7hqe6hwyxer3" path="res://assets/final_plant/Final_Plant.tscn" id="18_ja1qw"]
+[ext_resource type="PackedScene" uid="uid://bkjy25lx0uuxa" path="res://FinalScreen.tscn" id="21_0prec"]
 
-[sub_resource type="Animation" id="Animation_4eykt"]
+[sub_resource type="Animation" id="Animation_o3xng"]
 resource_name = "grass_scale"
 length = 3.0
 tracks/0/type = "scale_3d"
@@ -33,7 +33,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1.6, 1, 1, 1, 1, 2.2, 1, 1.25, 1.25, 1.25, 3, 1, 1.5, 1.5, 1.5)
 
-[sub_resource type="Animation" id="Animation_32dg4"]
+[sub_resource type="Animation" id="Animation_o72hy"]
 resource_name = "mole_dig"
 length = 5.0
 tracks/0/type = "position_3d"
@@ -44,7 +44,7 @@ tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, -7.86967, 0.871222, 2.67803, 1, 1, -8.02683, -0.4275, 2.67803, 1.8, 1, -8.87521, -1.13826, 2.67803, 2.7, 1, -9.68954, -0.412294, 2.67803, 3.6, 1, -10.6832, -1.03081, 2.67803, 4.3, 1, -12.5488, -0.741678, 2.67803, 5, 1, -13.8675, -1.03081, 2.67803)
 
-[sub_resource type="Animation" id="Animation_at02o"]
+[sub_resource type="Animation" id="Animation_feqkf"]
 resource_name = "mole_up"
 length = 1.5
 tracks/0/type = "position_3d"
@@ -55,7 +55,7 @@ tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, -7.86967, -1.16024, 2.67803, 1.5, 1, -7.86967, 0.871222, 2.67803)
 
-[sub_resource type="Animation" id="Animation_c5buf"]
+[sub_resource type="Animation" id="Animation_yvyjd"]
 resource_name = "particles_mole"
 length = 5.0
 tracks/0/type = "position_3d"
@@ -66,34 +66,34 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, -7.897, 0.498, 3, 1.5, 1, -8.687, -0.054, 3, 2.8, 1, -10.079, -0.054, 3, 3.6, 1, -11.078, -0.161, 3)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kmmtu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6x4h"]
 _data = {
-"grass_scale": SubResource("Animation_4eykt"),
-"mole_dig": SubResource("Animation_32dg4"),
-"mole_up": SubResource("Animation_at02o"),
-"particles_mole": SubResource("Animation_c5buf")
+"grass_scale": SubResource("Animation_o3xng"),
+"mole_dig": SubResource("Animation_o72hy"),
+"mole_up": SubResource("Animation_feqkf"),
+"particles_mole": SubResource("Animation_yvyjd")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_paypo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdye0"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_l5jo7"]
+[sub_resource type="LabelSettings" id="LabelSettings_12shq"]
 font_size = 32
 
-[sub_resource type="Gradient" id="Gradient_2x1wu"]
+[sub_resource type="Gradient" id="Gradient_8ay22"]
 offsets = PackedFloat32Array(0, 0.121495, 0.512195, 1)
 colors = PackedColorArray(0.752941, 0.780392, 0, 0.0823529, 0.752941, 0.780392, 0, 0.596078, 0.606334, 0.437678, 0.250691, 1, 0.466667, 0.133333, 0, 0.00392157)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ijsr4"]
-gradient = SubResource("Gradient_2x1wu")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yilfq"]
+gradient = SubResource("Gradient_8ay22")
 
-[sub_resource type="Curve" id="Curve_nrm5d"]
+[sub_resource type="Curve" id="Curve_uayss"]
 _data = [Vector2(0, 0.0797102), 0.0, 0.0, 0, 0, Vector2(0.737588, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.335539), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_4vrm0"]
-curve = SubResource("Curve_nrm5d")
+[sub_resource type="CurveTexture" id="CurveTexture_hjms7"]
+curve = SubResource("Curve_uayss")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yglkw"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vb36w"]
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector3(0, 2.288, 0)
@@ -102,22 +102,22 @@ gravity = Vector3(0, -0.928, 0)
 initial_velocity_min = 1.28
 initial_velocity_max = 1.42
 scale_min = 0.4
-scale_curve = SubResource("CurveTexture_4vrm0")
-color_ramp = SubResource("GradientTexture1D_ijsr4")
+scale_curve = SubResource("CurveTexture_hjms7")
+color_ramp = SubResource("GradientTexture1D_yilfq")
 turbulence_noise_strength = 0.01
 turbulence_noise_scale = 1.45
 turbulence_influence_min = 0.01
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yuqc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1yry"]
 transparency = 1
-albedo_color = Color(1, 1, 1, 0.870588)
+albedo_color = Color(1, 1, 0.321569, 1)
 albedo_texture = ExtResource("5_xybig")
 
-[sub_resource type="QuadMesh" id="QuadMesh_v4i0g"]
-material = SubResource("StandardMaterial3D_1yuqc")
+[sub_resource type="QuadMesh" id="QuadMesh_8i680"]
+material = SubResource("StandardMaterial3D_f1yry")
 size = Vector2(0.5, 0.5)
 
-[sub_resource type="Animation" id="Animation_xmj23"]
+[sub_resource type="Animation" id="Animation_igbop"]
 resource_name = "cow_head"
 length = 10.0
 tracks/0/type = "position_3d"
@@ -128,9 +128,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 12.931, 13.664, 4, 3.2, 1, -5.407, 4.27, 4, 6.1, 1, -5.407, 4.27, 4, 9.9, 1, 14.244, 13.863, 4)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hbnpe"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rju6j"]
 _data = {
-"cow_head": SubResource("Animation_xmj23")
+"cow_head": SubResource("Animation_igbop")
 }
 
 [node name="Node3D" type="Node3D"]
@@ -140,8 +140,8 @@ script = ExtResource("1_84ysa")
 unique_name_in_owner = true
 root_node = NodePath("../MoleSprite")
 libraries = {
-"": SubResource("AnimationLibrary_kmmtu"),
-"particles": SubResource("AnimationLibrary_paypo")
+"": SubResource("AnimationLibrary_w6x4h"),
+"particles": SubResource("AnimationLibrary_pdye0")
 }
 
 [node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
@@ -168,7 +168,7 @@ offset_left = 25.0
 offset_top = 20.0
 offset_right = 152.0
 offset_bottom = 67.0
-label_settings = SubResource("LabelSettings_l5jo7")
+label_settings = SubResource("LabelSettings_12shq")
 
 [node name="GroundParticles" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.897, 0.498, 3)
@@ -177,8 +177,8 @@ amount = 56
 lifetime = 2.18
 speed_scale = 1.5
 visibility_aabb = AABB(-10.8969, -5.42056, -4, 21.7938, 10.8411, 8)
-process_material = SubResource("ParticleProcessMaterial_yglkw")
-draw_pass_1 = SubResource("QuadMesh_v4i0g")
+process_material = SubResource("ParticleProcessMaterial_vb36w")
+draw_pass_1 = SubResource("QuadMesh_8i680")
 
 [node name="Nivel" parent="." instance=ExtResource("5_u686y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0.0122051, 0.00293636)
@@ -235,13 +235,12 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.28891, 0.121141, 2.99
 [node name="Leg4" parent="Cow Legs" instance=ExtResource("17_xresg")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.52367, 0.0721407, 3.1342)
 
-[node name="Flower" parent="." instance=ExtResource("18_ja1qw")]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -9.14667, 0, 3.67782)
-
 [node name="CowAnim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hbnpe")
+"": SubResource("AnimationLibrary_rju6j")
 }
+
+[node name="Control" parent="." instance=ExtResource("21_0prec")]
 
 [connection signal="animation_finished" from="MoleAnim" to="Player" method="_on_mole_anim_animation_finished"]
 [connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]
@@ -253,6 +252,7 @@ libraries = {
 [connection signal="player_released_waterfall" from="Player" to="Waterfall_rocks" method="_on_player_player_released_waterfall"]
 [connection signal="player_set_day" from="Player" to="Waterfall" method="_on_player_player_set_day"]
 [connection signal="player_set_day" from="Player" to="water_level_top" method="_on_player_player_set_day"]
+[connection signal="reset_requested" from="Player" to="." method="_on_player_reset_requested"]
 [connection signal="waterfall_has_flooded" from="Waterfall" to="water_level_large" method="_on_waterfall_waterfall_has_flooded"]
 [connection signal="waterfall_is_pond" from="Waterfall" to="water_level_small" method="_on_waterfall_waterfall_is_pond"]
 [connection signal="animation_finished" from="CowAnim" to="Player" method="_on_cow_anim_animation_finished"]

@@ -42,4 +42,3 @@ func _on_player_player_set_day():
 	%particles.emitting = false
 	%particles2.emitting = false
 	%waterfall_body.get_active_material(0).set_shader_parameter("u_current_time", 0)
-
