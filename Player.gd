@@ -28,6 +28,7 @@ var playing_mole_backwards : bool = false
 var growing := false
 var grow_current_time := 0.0
 var grow_sequence : Array
+var cam_out = false
 
 signal player_released_waterfall(flood)
 signal player_set_day()
@@ -58,6 +59,10 @@ func _process(delta):
 	
 	if growing:
 		process_final_plant(delta)
+		
+	if cam_out:
+		$SpringArm3D.position.y = move_toward($SpringArm3D.position.y, 2, delta)
+		$SpringArm3D.position.z = move_toward($SpringArm3D.position.z, 1.5, delta)
 		
 func _input(event):
 	
@@ -231,6 +236,7 @@ func interact_roots():
 	
 	enable_movement = false
 	character_enabled = false
+	cam_out = true
 	
 	var game_case = 0
 	
