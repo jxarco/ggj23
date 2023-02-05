@@ -10,6 +10,12 @@ func _ready():
 func _process(delta):
 	pass
 
+func _input(event):
+	if event.is_action_pressed("Interact"):
+		World.global_player.character_enabled = true
+		$"../..".visible = false
+		$"../../MusicStream".volume_db = -15
+		
 
 func _on_pressed():
 	World.global_player.character_enabled = true
