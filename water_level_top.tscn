@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://2e7uwvla0b0"]
+[gd_scene load_steps=4 format=3 uid="uid://c013q83sm2j5u"]
 
-[ext_resource type="Script" path="res://water_level.gd" id="1_k3abv"]
-[ext_resource type="Material" uid="uid://bj53wuq4vgfhg" path="res://water_level.tres" id="2_ul7cn"]
+[ext_resource type="Script" path="res://water_level.gd" id="1_jeny3"]
+[ext_resource type="Material" uid="uid://bj53wuq4vgfhg" path="res://water_level.tres" id="2_ufutj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fvgs4"]
 subdivide_width = 79
 subdivide_depth = 69
 
 [node name="water_level" type="Node3D"]
-script = ExtResource("1_k3abv")
+script = ExtResource("1_jeny3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.47061, 0, 0, 0, 0.498946, 0, 0, 0, 2.93834, 0, 0, 0)
-material_override = ExtResource("2_ul7cn")
+material_override = ExtResource("2_ufutj")
 mesh = SubResource("PlaneMesh_fvgs4")
