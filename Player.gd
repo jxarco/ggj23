@@ -19,7 +19,7 @@ var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 var mole_meters := 0.0
 
-signal player_released_waterfall(depth)
+signal player_released_waterfall(flood)
 
 func _ready():
 	%Ambience_Night.play()
@@ -129,14 +129,14 @@ func interact_water():
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 		%RiverStream.play()
-		emit_signal("player_released_waterfall", -1.5)
+		emit_signal("player_released_waterfall", false)
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
 		%RiverStream.play()
-		emit_signal("player_released_waterfall", -1.3)
+		emit_signal("player_released_waterfall", true)
 
 func interact_sun():
 	
