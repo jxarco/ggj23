@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://csuxsu7jmccaj"]
+[gd_scene load_steps=4 format=3 uid="uid://2e7uwvla0b0"]
 
 [ext_resource type="Script" path="res://water_level.gd" id="1_k3abv"]
 [ext_resource type="Material" uid="uid://bj53wuq4vgfhg" path="res://water_level.tres" id="2_ul7cn"]

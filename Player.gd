@@ -23,6 +23,7 @@ var elapsed_time := 0.0
 var mole_meters := 0.0
 
 signal player_released_waterfall(flood)
+signal player_set_day()
 
 func _ready():
 	World.global_player = self
@@ -128,30 +129,29 @@ func _on_mole_anim_animation_finished(anim_name):
 		$"../GroundParticles".emitting = false
 		
 func interact_water():
-	if state.wetGround or state.groundFlooded:
-		print("WATER ALREADY FREED")
+
+	if state.sunIsUp:
+		print("WATER EVAPORATED")
 		return
 
-	if state.waterwayDone and not state.sunIsUp:
+	if state.waterwayDone:
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 		%RiverStream.play()
+		$"../waterway".set_wet()
 		emit_signal("player_released_waterfall", false)
-	elif state.waterwayDone and state.sunIsUp:
-		print("WATER EVAPORATES")
-	elif not state.waterwayDone:
+	else:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
 		%RiverStream.play()
+		$"../waterway".set_wet()
 		emit_signal("player_released_waterfall", true)
 
 func interact_sun():
-	
-	if state.sunIsUp: 
-		print("SUN IS ALREADY UP")
-		return
 
+	emit_signal("player_set_day")
+	
 	print("SUN IS UP!")
 	state.sunIsUp = true
 	state.actionSequence.push_back("SUN")
@@ -159,14 +159,11 @@ func interact_sun():
 
 func interact_cow():
 
-	if state.grassEaten:
-		print("GRASS ALREADY EATEN")
-		return
-
 	if state.waterwayDone and state.wetGround and state.sunIsUp:
 		print("COW EATS GRASS")
 		state.grassEaten = true
 		state.actionSequence.push_back("COW")
+		$"../CowSprite/CowAnim".play("cow_head")
 	elif not state.waterwayDone and state.groundFlooded:
 		print("COW DRINKS WATER")
 	elif state.waterwayDone and not state.wetGround:
@@ -174,10 +171,17 @@ func interact_cow():
 	elif not state.sunIsUp:
 		print("COW WAKES UP, GETS ANGRY AND GOES AWAY")
 
+func _on_cow_anim_animation_finished(anim_name):
+	print("GRASS DISAPEARS")
+	$"../MoleAnim".play("grass_scale")
+	$"../MoleAnim".speed_scale = -1
+
+
 func interact_roots():
 	
 	if state.waterwayDone and state.wetGround and state.sunIsUp and state.grassEaten:
 		print("WIN CASE!!")
+		
 	elif state.waterwayDone and not state.wetGround and not state.sunIsUp:
 		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
 	elif state.waterwayDone and state.wetGround:
@@ -197,3 +201,5 @@ func process_sprite_audio(delta):
 			elapsed_time = 0.0
 	else:
 		elapsed_time = 0.0
+
+

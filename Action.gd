@@ -11,6 +11,8 @@ func _process(_delta):
 	
 func deactivate():
 	%EnvironmentParticles/GPUParticles3D.emitting = false
+	%Area3D.collision_layer = 0
+	%Area3D.collision_mask = 0
 
 func _on_area_3d_body_entered(body):
 	body.current_area_ref = $"."

@@ -16,7 +16,7 @@ shader_parameter/u_distortion = 10.0
 shader_parameter/u_speed = 1.0
 shader_parameter/u_total_time = 1.0
 shader_parameter/u_current_time = 0.0
-shader_parameter/tint_base = Color(0.517647, 0.733333, 1, 1)
+shader_parameter/tint_base = Color(0.619608, 0.784314, 1, 1)
 shader_parameter/u_noise_texture = ExtResource("2_j2onh")
 shader_parameter/u_displacement_texture = ExtResource("2_2xh01")
 

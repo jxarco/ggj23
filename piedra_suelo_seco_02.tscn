@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceg8y5tedusek"]
+
+[ext_resource type="PackedScene" uid="uid://cqapmmth4kyuc" path="res://assets/gfx/3d/piedra_suelo_seco_02.glb" id="1_tcw6x"]
+
+[node name="piedra_suelo_seco_02" instance=ExtResource("1_tcw6x")]
+
+[node name="StaticBody3D" parent="piedra_suelo_seco_01" index="0"]
+collision_layer = 2

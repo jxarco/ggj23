@@ -1,90 +1,48 @@
-[gd_scene load_steps=9 format=3 uid="uid://dal7rtugxvxc8"]
+[gd_scene load_steps=5 format=3 uid="uid://dal7rtugxvxc8"]
 
 [ext_resource type="Script" path="res://StoneCascade.gd" id="1_1lp3b"]
-[ext_resource type="PackedScene" uid="uid://xiwonhq14p2j" path="res://piedra_01.tscn" id="1_jxma0"]
-[ext_resource type="PackedScene" uid="uid://mbl42j4eotsv" path="res://piedra_03.tscn" id="2_gckp6"]
-[ext_resource type="PackedScene" uid="uid://dfv8gyxtr3a2t" path="res://piedra_02.tscn" id="3_n1dvo"]
+[ext_resource type="ArrayMesh" uid="uid://dc5prrlmyjqxq" path="res://particles/rocasa_particulasa.tres" id="2_v2mtx"]
+[ext_resource type="PackedScene" uid="uid://xiwonhq14p2j" path="res://piedra_01.tscn" id="3_2kdye"]
 
-[sub_resource type="GDScript" id="GDScript_4n3wb"]
-script/source = "extends MeshInstance3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
-
-[sub_resource type="Curve3D" id="Curve3D_f4wm5"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.449, 0.13, 0.02, 0, 0, 0, 0, 0, 0, -0.924719, -0.815467, -0.246509, 0, 0, 0, 0, 0, 0, -1.58847, -1.71581, -0.392521, 0, 0, 0, 0, 0, 0, -1.76374, -2.99935, -0.447725, 0, 0, 0, 0, 0, 0, 2.2973, -7.16822, 0.381236),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bwlap"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gpfl2"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhenx"]
+emission_shape = 3
+emission_box_extents = Vector3(1, -2.904, 1)
+direction = Vector3(0, 1, 0.4)
+spread = 8.63
+initial_velocity_min = 3.16
+initial_velocity_max = 6.68
+scale_min = 0.1
+scale_max = 0.5
 
 [node name="Waterfall_rocks" type="Node3D"]
 script = ExtResource("1_1lp3b")
 
-[node name="StoneFall" type="MeshInstance3D" parent="."]
-script = SubResource("GDScript_4n3wb")
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 22
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qhenx")
+draw_pass_1 = ExtResource("2_v2mtx")
 
-[node name="Path3D" type="Path3D" parent="StoneFall"]
-transform = Transform3D(-0.101317, -0.0201508, 0.566855, -0.178632, 0.361128, -0.129119, -0.192305, -0.324834, -0.17871, 0.446178, 0.959995, 0.304055)
-visible = false
-curve = SubResource("Curve3D_f4wm5")
+[node name="piedra" parent="." instance=ExtResource("3_2kdye")]
+transform = Transform3D(0.460234, 0, 0, 0, 0.434539, 0, 0, 0, 0.5, 0, 0.126572, 0)
 
-[node name="PathFollow3D" type="PathFollow3D" parent="StoneFall/Path3D"]
-transform = Transform3D(-0.190455, -0.549599, -0.81343, 2.98023e-08, 0.828596, -0.559846, 0.981696, -0.106625, -0.15781, 0.449, 0.13, 0.02)
+[node name="piedra2" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(0.757865, 0, 0, 0, 0.636572, 0, 0, 0, 0.706541, -0.168932, 0.785439, -0.966146)
 
-[node name="piedra_rb" type="RigidBody3D" parent="StoneFall"]
-transform = Transform3D(-0.101316, -0.0201508, 0.566854, -0.178632, 0.361128, -0.129119, -0.192305, -0.324834, -0.17871, 0.437252, 2.07035, 0.261011)
-mass = 0.04
-physics_material_override = SubResource("PhysicsMaterial_bwlap")
-freeze_mode = 1
+[node name="piedra3" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.761742, 0, -0.676126)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StoneFall/piedra_rb"]
-shape = SubResource("ConvexPolygonShape3D_gpfl2")
+[node name="piedra4" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(-0.941547, -0.399367, 0.0420311, -0.274907, 0.568864, -0.580546, 0.275611, -0.796915, -0.435476, 0.963809, 0.969594, 0.757124)
 
-[node name="piedra1" parent="StoneFall" instance=ExtResource("2_gckp6")]
-unique_name_in_owner = true
-transform = Transform3D(-0.101316, -0.0201508, 0.566854, -0.178632, 0.361128, -0.129119, -0.192305, -0.324834, -0.17871, 0.437252, 2.07035, 0.261011)
+[node name="piedra5" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(0.949442, 0, 0.313943, -0.312927, -0.0803729, 0.94637, 0.0252325, -0.996765, -0.0763094, -0.8123, -0.51667, -1.73161)
 
-[node name="piedra2" parent="StoneFall" instance=ExtResource("2_gckp6")]
-unique_name_in_owner = true
-transform = Transform3D(0.298492, -0.0213364, 0.979424, 0.245121, 0.637933, 0, -1.44862, 0.103548, 0.201813, 0, 0.59664, 0)
+[node name="piedra6" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(-0.569409, 0, 0.822055, 0, 1, 0, -0.822055, 0, -0.569409, 1.68185, -0.219375, 0.742556)
 
-[node name="piedra3" parent="StoneFall" instance=ExtResource("1_jxma0")]
-unique_name_in_owner = true
-transform = Transform3D(-0.422234, -0.0349914, 0.067163, -0.0202043, 0.346142, 0.188617, -0.0630643, 0.123383, -0.510105, 1.01911, 0.640285, 0.031256)
-
-[node name="piedra05" parent="StoneFall" instance=ExtResource("1_jxma0")]
-unique_name_in_owner = true
-transform = Transform3D(-0.280143, 0, -0.0369466, 0, 0.215433, 0, 0.0390647, 0, -0.421217, -0.755449, 0.273347, -0.269226)
-
-[node name="piedra04" parent="StoneFall" instance=ExtResource("2_gckp6")]
-unique_name_in_owner = true
-transform = Transform3D(2.24769, 0, 0, 0, 0.418136, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="piedra06" parent="StoneFall" instance=ExtResource("2_gckp6")]
-unique_name_in_owner = true
-transform = Transform3D(-0.0949073, -0.50737, -0.100973, 0.0364788, 0.133887, -0.356603, 0.228274, -0.23234, 0.0150055, 0.769085, 0.249739, -0.539359)
-
-[node name="piedra08" parent="StoneFall" instance=ExtResource("2_gckp6")]
-unique_name_in_owner = true
-transform = Transform3D(0.198955, 0.0567575, -0.177561, 0.0470418, 0.338624, 0.0971949, 0.191476, -0.142168, 0.160618, 1.25581, 0.0302768, -0.152692)
-
-[node name="piedra07" parent="StoneFall" instance=ExtResource("2_gckp6")]
-unique_name_in_owner = true
-transform = Transform3D(-0.255513, 0.0958897, 0.0420667, -0.0645059, 0.196575, -0.11542, -0.0811411, -0.45823, -0.0407108, 1.06219, 0.0521499, 0.332767)
-
-[node name="piedra02" parent="StoneFall" instance=ExtResource("3_n1dvo")]
-unique_name_in_owner = true
-transform = Transform3D(0.602023, -0.394616, -0.269037, 1.11935, 0.228799, 0, 0.168167, -0.110231, 0.96313, -0.965488, 0.56937, -0.869362)
+[node name="piedra7" parent="piedra" instance=ExtResource("3_2kdye")]
+transform = Transform3D(-0.49882, -0.549474, 0.139007, -0.858527, 0.327376, 0.0560294, -0.118784, -0.058701, -0.988705, -1.53392, -0.06952, 0)
