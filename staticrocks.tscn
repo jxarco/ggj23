@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://deyiqbatiwgy5"]
+
+[ext_resource type="PackedScene" uid="uid://xiwonhq14p2j" path="res://piedra_01.tscn" id="1_rwlah"]
+
+[node name="staticrocks" type="Node3D"]
+transform = Transform3D(-0.24378, 0, -0.169403, 0, 0.134186, 0, 0.178257, 0, -0.231672, -10.2098, 5.96509, -0.799994)
+
+[node name="piedra2" parent="." instance=ExtResource("1_rwlah")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, -4.17233e-07, 0, 1, 0.553661, -1.8489, 3.23339)
+
+[node name="piedra3" parent="." instance=ExtResource("1_rwlah")]
+transform = Transform3D(1.3195, 0, -5.96046e-08, 0, 1.57091, 0, 4.17233e-07, 0, 1.41535, 2.27916, -2.54958, 0.315323)
+
+[node name="piedra3" parent="piedra3" instance=ExtResource("1_rwlah")]
+transform = Transform3D(-0.853963, 0, -1.07896, 0, 1.57091, 0, 1.00589, 0, -0.915995, 1.15608, -0.587948, 1.14234)
+
+[node name="piedra5" parent="." instance=ExtResource("1_rwlah")]
+transform = Transform3D(1.25279, 1.78814e-07, 0.414247, -0.491582, -0.126259, 1.48667, 0.0357127, -1.41077, -0.108004, 0.555389, -2.6216, -0.951338)
+
+[node name="piedra5" parent="piedra5" instance=ExtResource("1_rwlah")]
+transform = Transform3D(0.767828, 0.774774, -1.05197, 0.995341, -0.012011, 0.917617, 0.481804, -1.18566, -0.66691, -0.469298, -0.587862, -0.671631)
+
+[node name="piedra6" parent="." instance=ExtResource("1_rwlah")]
+transform = Transform3D(-0.751333, 0, 1.0847, 0, 1.57091, 0, -1.16349, 0, -0.805911, 3.01753, -2.15458, 2.41841)
+
+[node name="piedra7" parent="." instance=ExtResource("1_rwlah")]
+transform = Transform3D(-0.658191, -0.725029, 0.183419, -1.34867, 0.51428, 0.0880175, -0.168121, -0.0830822, -1.39936, -0.845367, -2.90361, -2.32388)
