@@ -1,8 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bj53wuq4vgfhg"]
 
 [ext_resource type="Shader" path="res://shaders/water_level.gdshader" id="1_k66rs"]
-[ext_resource type="Texture2D" uid="uid://bclw3pug2qnwd" path="res://assets/gfx/noise2.png" id="2_fb12w"]
-[ext_resource type="Texture2D" uid="uid://bpku3p4efyqa4" path="res://assets/gfx/uniformclouds.jpg" id="3_w5np6"]
+[ext_resource type="Texture2D" uid="uid://bo3y4q63vovam" path="res://assets/gfx/noise2.png" id="2_fb12w"]
+[ext_resource type="Texture2D" uid="uid://blq5t0e53uki2" path="res://assets/gfx/uniformclouds.jpg" id="3_w5np6"]
 
 [resource]
 render_priority = 0
