@@ -5,3 +5,4 @@
 [node name="CowHeadSprite" type="Node3D"]
 
 [node name="cow_up" parent="." instance=ExtResource("1_a7132")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
