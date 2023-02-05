@@ -1,5 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba8b5hwhl0nh0"]
+[gd_scene load_steps=4 format=3 uid="uid://ba8b5hwhl0nh0"]
 
 [ext_resource type="PackedScene" uid="uid://cdfh0twstc08q" path="res://assets/cow/cow_up.glb" id="1_xf4jg"]
+[ext_resource type="Texture2D" uid="uid://c1ris23vm3k3p" path="res://assets/VACA_CABEZA.png" id="2_6vjj0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn1fy"]
+transparency = 1
+albedo_texture = ExtResource("2_6vjj0")
+uv1_scale = Vector3(-1, 1, 1)
 
 [node name="cow_up" instance=ExtResource("1_xf4jg")]
+
+[node name="Plane001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_jn1fy")

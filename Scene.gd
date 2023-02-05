@@ -3,7 +3,7 @@ extends Node3D
 func _ready():
 	$Menu/MusicStream.play()
 
-func _process(delta):
+func _process(_delta):
 	%FPS.text = "FPS: " + str(Engine.get_frames_per_second())
 
 func _on_mole_player_entered(player):

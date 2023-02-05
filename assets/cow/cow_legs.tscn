@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://fhj1bev08jgr"]
+
+[ext_resource type="Texture2D" uid="uid://bu45g8tqfgmdx" path="res://assets/VACA_PATA.png" id="1_utipg"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m41ae"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ixgg"]
+transparency = 1
+albedo_texture = ExtResource("1_utipg")
+
+[node name="Cow Legs" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.411, 0, 0, 0, -7.99481e-08, -1.218, 0, 1.829, -5.32405e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_m41ae")
+surface_material_override/0 = SubResource("StandardMaterial3D_5ixgg")

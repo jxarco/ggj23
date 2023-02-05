@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwkfjro0yu3lb"]
+
+[ext_resource type="PackedScene" uid="uid://ba8b5hwhl0nh0" path="res://assets/cow/cow_up.tscn" id="1_a7132"]
+
+[node name="CowHeadSprite" type="Node3D"]
+
+[node name="cow_up" parent="." instance=ExtResource("1_a7132")]
