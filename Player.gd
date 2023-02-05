@@ -35,9 +35,14 @@ func _ready():
 func _process(delta):
 	
 	var light : DirectionalLight3D = $"../Nivel/WorldEnvironment/DirectionalLight3D"
-	if state.sunIsUp and light.light_energy < 0.7:
-		var energy = move_toward(light.light_energy, 0.7, delta*0.2)
+	if state.sunIsUp:
+		var energy = move_toward(light.light_energy, 0.9, delta*0.2)
 		light.light_energy = energy
+		# Interpolate also color tint (Color())
+		light.light_color.r = move_toward(light.light_color.r, 0.96, delta*0.2)
+		light.light_color.g = move_toward(light.light_color.g, 0.88, delta*0.2)
+		light.light_color.b = move_toward(light.light_color.b, 0.76, delta*0.2)
+		
 	process_sprite_audio(delta)
 	
 	if moleIsUp:
@@ -131,7 +136,7 @@ func _on_mole_anim_animation_finished(anim_name):
 		elif not state.sunIsUp:
 			print("MOLE MAKES CORRECT WATERWAY")
 			$"../waterway".start_waterway()
-			
+			$AudioStreams/MoleDigging.play()
 			state.actionSequence.push_back("MOLE")
 			state.waterwayDone = true
 		
@@ -187,11 +192,15 @@ func interact_cow():
 
 func _on_cow_anim_animation_finished(anim_name):
 	print("GRASS DISAPEARS")
+	$"../MoleAnim".play("grass_scale")
+	$"../MoleAnim".speed_scale = -1
+
 
 func interact_roots():
 	
 	if state.waterwayDone and state.wetGround and state.sunIsUp and state.grassEaten:
 		print("WIN CASE!!")
+		
 	elif state.waterwayDone and not state.wetGround and not state.sunIsUp:
 		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
 	elif state.waterwayDone and state.wetGround:
