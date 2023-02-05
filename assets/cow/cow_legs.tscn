@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://fhj1bev08jgr"]
 
-[ext_resource type="Texture2D" uid="uid://bu45g8tqfgmdx" path="res://assets/VACA_PATA.png" id="1_utipg"]
+[ext_resource type="Texture2D" uid="uid://btuld86nr7o7r" path="res://assets/VACA_PATA.png" id="1_utipg"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m41ae"]
 

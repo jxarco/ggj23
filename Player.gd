@@ -163,7 +163,7 @@ func interact_cow():
 		print("COW EATS GRASS")
 		state.grassEaten = true
 		state.actionSequence.push_back("COW")
-		$"../CowSprite/CowAnim".play("cow_head")
+		$"../CowAnim".play("cow_head")
 	elif not state.waterwayDone and state.groundFlooded:
 		print("COW DRINKS WATER")
 	elif state.waterwayDone and not state.wetGround:
@@ -173,6 +173,7 @@ func interact_cow():
 
 func _on_cow_anim_animation_finished(anim_name):
 	print("GRASS DISAPEARS")
+	
 	$"../MoleAnim".play("grass_scale")
 	$"../MoleAnim".speed_scale = -1
 
