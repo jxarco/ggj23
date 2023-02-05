@@ -166,14 +166,13 @@ func interact_roots():
 	
 	if state.waterwayDone and state.wetGround and state.sunIsUp and state.grassEaten:
 		print("WIN CASE!!")
-		# Check in case something is really bugged
-#		for act in state.actionSequence:
-#			print(act)
-			
 	elif state.waterwayDone and not state.wetGround and not state.sunIsUp:
 		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
 	elif state.waterwayDone and state.wetGround:
 		print("SHOOT AND SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
+		
+	character_enabled = false
+	
 
 func process_sprite_audio(delta):
 	

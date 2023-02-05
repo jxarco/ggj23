@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cbq5tnw07mrka"]
+[gd_scene load_steps=21 format=3 uid="uid://cbq5tnw07mrka"]
 
 [ext_resource type="Script" path="res://Scene.gd" id="1_84ysa"]
 [ext_resource type="PackedScene" uid="uid://cpon6uc57bd78" path="res://Action.tscn" id="1_r8fxx"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://du7yudr7u5yim" path="res://water_level.tscn" id="6_yfiuj"]
 [ext_resource type="PackedScene" uid="uid://bp7u0yr8e8qp0" path="res://level_scenes/waterway/waterway.tscn" id="7_h7ger"]
 [ext_resource type="PackedScene" uid="uid://dsnlgfgtvtajj" path="res://particles/EnvironmentParticles.tscn" id="10_mjebn"]
-[ext_resource type="PackedScene" path="res://Menu.tscn" id="11_mhdag"]
+[ext_resource type="PackedScene" uid="uid://djyv71d2gjjhp" path="res://Menu.tscn" id="11_mhdag"]
+[ext_resource type="PackedScene" uid="uid://dklbo2wxj0o11" path="res://assets/grass/Grass.tscn" id="12_r8xx3"]
 
 [sub_resource type="Animation" id="Animation_32dg4"]
 resource_name = "mole_dig"
@@ -34,8 +35,20 @@ tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, -7.86967, -1.16024, 2.67803, 1.5, 1, -7.86967, 0.871222, 2.67803)
 
+[sub_resource type="Animation" id="Animation_4eykt"]
+resource_name = "grass_scale"
+length = 3.0
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Grass")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1.6, 1, 1, 1, 1, 2.2, 1, 1.25, 1.25, 1.25, 3, 1, 1.5, 1.5, 1.5)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kmmtu"]
 _data = {
+"grass_scale": SubResource("Animation_4eykt"),
 "mole_dig": SubResource("Animation_32dg4"),
 "mole_up": SubResource("Animation_at02o")
 }
@@ -113,7 +126,7 @@ draw_pass_1 = SubResource("QuadMesh_v4i0g")
 [node name="Nivel" parent="." instance=ExtResource("5_u686y")]
 
 [node name="MoleSprite" parent="." instance=ExtResource("6_h5g88")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5488, -0.741678, 2.67803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87661, 0.183844, 2.67803)
 
 [node name="water_level" parent="." instance=ExtResource("6_yfiuj")]
 transform = Transform3D(0.0604397, -0.00329383, 3.23517, -0.165244, 1.20925, 0.0267714, -1.3267, -0.150765, 0.144048, -6.77559, -4.84438, -3.82057)
@@ -127,6 +140,9 @@ transform = Transform3D(-0.0592925, 0.0322805, 1.53562, -0.129136, 0.979403, -0.
 [node name="EnvironmentParticles" parent="." instance=ExtResource("10_mjebn")]
 
 [node name="Menu" parent="." instance=ExtResource("11_mhdag")]
+
+[node name="Grass" parent="." instance=ExtResource("12_r8xx3")]
+transform = Transform3D(-0.01, 0, -1.50996e-09, 0, 0.01, 0, 1.50996e-09, 0, -0.01, -7.69062, -0.0211153, 3.83681)
 
 [connection signal="animation_finished" from="MoleAnim" to="Player" method="_on_mole_anim_animation_finished"]
 [connection signal="player_entered" from="Mole" to="." method="_on_mole_player_entered"]
