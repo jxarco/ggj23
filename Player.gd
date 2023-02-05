@@ -95,27 +95,29 @@ func interact_mole():
 		return
 
 	state.moleOnSurface = true
-
-	if state.sunIsUp:
-		print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
-		$"../GroundParticles".emitting = true
-	elif state.groundFlooded:
-		print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
-	elif not state.sunIsUp:
-		print("MOLE MAKES CORRECT WATERWAY")
-		$"../GroundParticles".emitting = true
-		state.actionSequence.push_back("MOLE")
-		state.waterwayDone = true
 		
 	# Mole returns home
 	var timer = Timer.new()
 	add_child(timer)
 	timer.connect("timeout", func ():
+		
+		if state.sunIsUp:
+			print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
+			$"../GroundParticles".emitting = true
+		elif state.groundFlooded:
+			print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
+		elif not state.sunIsUp:
+			print("MOLE MAKES CORRECT WATERWAY")
+			$"../waterway".start_waterway()
+			$"../GroundParticles".emitting = true
+			state.actionSequence.push_back("MOLE")
+			state.waterwayDone = true
+		
 		state.moleOnSurface = false
 		state.moleReturns = true
 		remove_child(timer)
 	)
-	timer.start(5.0)
+	timer.start(2.0)
 
 func interact_water():
 	if state.wetGround or state.groundFlooded:

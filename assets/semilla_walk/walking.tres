@@ -1,4 +1,4 @@
-[gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://c5aes7jb51fr0"]
+[gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://cwcucs7ociapo"]
 
 [ext_resource type="Texture2D" uid="uid://07t704hrknf0" path="res://assets/semilla_walk/SEMILLA_WALK_01.png" id="1_to16r"]
 [ext_resource type="Texture2D" uid="uid://kjl6bvoit1dx" path="res://assets/semilla_walk/SEMILLA_WALK_02.png" id="2_fst27"]
