@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://lmjq5hcsjrbf"]
 
 [ext_resource type="PackedScene" uid="uid://b6dpr4gonf72f" path="res://assets/up_quad.glb" id="1_vlsa8"]
-[ext_resource type="Texture2D" uid="uid://dtlataok4w2kf" path="res://assets/semilla_idle/standing.tres" id="2_88q86"]
+[ext_resource type="Texture2D" uid="uid://dwl2vtf8n0u0l" path="res://assets/semilla_idle/standing.tres" id="2_88q86"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucolj"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_vorej"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_80ucs"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
 "format": 4097,
@@ -31,13 +31,13 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 255, 255, 50, 243, 50, 243, 255, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 50, 243, 255, 255, 101, 198, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 255, 255, 0, 240, 0, 240, 255, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 240, 255, 255, 254, 199)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vorej")
+shadow_mesh = SubResource("ArrayMesh_80ucs")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bm2i"]
 transparency = 3
 alpha_hash_scale = 1.0
 alpha_antialiasing_mode = 1
-alpha_antialiasing_edge = 0.69
+alpha_antialiasing_edge = 0.3
 albedo_texture = ExtResource("2_88q86")
 metallic_specular = 0.0
 

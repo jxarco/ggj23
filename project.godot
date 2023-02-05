@@ -66,3 +66,7 @@ Exit={
 3d_physics/layer_1="player"
 3d_physics/layer_2="world"
 3d_physics/layer_3="action"
+
+[rendering]
+
+anti_aliasing/quality/screen_space_aa=1

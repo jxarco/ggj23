@@ -1,4 +1,4 @@
-[gd_resource type="AnimatedTexture" load_steps=6 format=3 uid="uid://dtlataok4w2kf"]
+[gd_resource type="AnimatedTexture" load_steps=6 format=3 uid="uid://dwl2vtf8n0u0l"]
 
 [ext_resource type="Texture2D" uid="uid://krq76n4ts1yj" path="res://assets/semilla_idle/SEMILLA_IDLE_01.png" id="1_f3khh"]
 [ext_resource type="Texture2D" uid="uid://cde3pna5lxs1u" path="res://assets/semilla_idle/SEMILLA_IDLE_02.png" id="2_63n8g"]
