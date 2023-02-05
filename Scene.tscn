@@ -6,17 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://b80a1hiq0jb56" path="res://Waterfall.tscn" id="5_lbge5"]
 [ext_resource type="PackedScene" uid="uid://ufo7qg2n2id0" path="res://Nivel.tscn" id="5_u686y"]
 [ext_resource type="Texture2D" uid="uid://d0q0bydg2r2vt" path="res://assets/particula tierra.png" id="5_xybig"]
-[ext_resource type="PackedScene" uid="uid://cjsjs6giux52o" path="res://Mole.tscn" id="6_h5g88"]
+[ext_resource type="PackedScene" uid="uid://c3lvft73s5ufg" path="res://Mole.tscn" id="6_h5g88"]
 [ext_resource type="PackedScene" uid="uid://du7yudr7u5yim" path="res://water_level.tscn" id="6_yfiuj"]
-[ext_resource type="PackedScene" uid="uid://djoiqqih7wbri" path="res://level_scenes/waterway/waterway.tscn" id="7_h7ger"]
+[ext_resource type="PackedScene" uid="uid://bp7u0yr8e8qp0" path="res://level_scenes/waterway/waterway.tscn" id="7_h7ger"]
 [ext_resource type="PackedScene" uid="uid://dsnlgfgtvtajj" path="res://particles/EnvironmentParticles.tscn" id="10_mjebn"]
 [ext_resource type="PackedScene" path="res://staticrocks.tscn" id="11_5goj8"]
-[ext_resource type="PackedScene" path="res://Menu.tscn" id="11_mhdag"]
-[ext_resource type="PackedScene" path="res://Waterfall_rocks.tscn" id="11_yhtqy"]
-[ext_resource type="PackedScene" path="res://water_level_small.tscn" id="12_nowmu"]
+[ext_resource type="PackedScene" uid="uid://3a7a7707gkc6" path="res://Menu.tscn" id="11_mhdag"]
+[ext_resource type="PackedScene" uid="uid://dal7rtugxvxc8" path="res://Waterfall_rocks.tscn" id="11_yhtqy"]
+[ext_resource type="PackedScene" uid="uid://2e7uwvla0b0" path="res://water_level_small.tscn" id="12_nowmu"]
 [ext_resource type="PackedScene" uid="uid://dklbo2wxj0o11" path="res://assets/grass/Grass.tscn" id="12_r8xx3"]
 [ext_resource type="Script" path="res://water_level_small.gd" id="13_pbb7r"]
-[ext_resource type="PackedScene" path="res://water_level_top.tscn" id="14_0b4ia"]
+[ext_resource type="PackedScene" uid="uid://c013q83sm2j5u" path="res://water_level_top.tscn" id="14_0b4ia"]
 [ext_resource type="Script" path="res://water_level_top.gd" id="15_74udx"]
 [ext_resource type="PackedScene" uid="uid://dwkfjro0yu3lb" path="res://assets/cow/Cow.tscn" id="16_lmfwn"]
 [ext_resource type="PackedScene" uid="uid://fhj1bev08jgr" path="res://assets/cow/cow_legs.tscn" id="17_xresg"]
@@ -187,7 +187,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0.0122051, 0.002
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86967, -1.16024, 2.67803)
 
 [node name="Waterfall" parent="." instance=ExtResource("5_lbge5")]
-transform = Transform3D(-0.0231103, 0.0377753, 1.53749, -0.159189, 0.975254, -0.0634928, -1.01635, -0.153612, -0.0250152, -10.4819, -0.65717, 2.40965)
+transform = Transform3D(-0.0231103, 0.0402721, 1.40724, -0.159189, 1.03972, -0.058114, -1.01635, -0.163765, -0.022896, -10.2793, -0.926701, 2.83733)
 
 [node name="waterway" parent="." instance=ExtResource("7_h7ger")]
 

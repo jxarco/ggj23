@@ -24,6 +24,7 @@ var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 var mole_meters := 0.0
 var enable_movement : bool = true
+var playing_mole_backwards : bool = false
 
 signal player_released_waterfall(flood)
 signal player_set_day()
@@ -45,8 +46,8 @@ func _process(delta):
 		
 	process_sprite_audio(delta)
 	
-	if moleIsUp:
-		$"../GroundParticles".position.x-=0.012
+	if moleIsUp and not state.sunIsUp and not state.groundFlooded:
+		$"../GroundParticles".position.x-=0.015
 		$"../GroundParticles".position.y-=0.002
 		
 		
@@ -131,20 +132,30 @@ func interact_mole():
 
 func _on_mole_anim_animation_finished(anim_name):
 	
+	if playing_mole_backwards:
+		playing_mole_backwards = false
+		$"../GroundParticles".emitting = false
+		return
+	
 	if anim_name == "mole_up":
 		if state.sunIsUp:
 			print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
-
+			$"../MoleAnim".play_backwards("mole_up")
+			playing_mole_backwards = true
+			$AudioStreams/MoleDiggingWrong.play()
 		elif state.groundFlooded:
 			print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
+			$"../MoleAnim".play_backwards("mole_up")
+			playing_mole_backwards = true
+			$AudioStreams/MoleDiggingWrong.play()
 		elif not state.sunIsUp:
 			print("MOLE MAKES CORRECT WATERWAY")
+			$"../MoleAnim".play("mole_dig")
 			$"../waterway".start_waterway()
 			$AudioStreams/MoleDigging.play()
 			state.actionSequence.push_back("MOLE")
 			state.waterwayDone = true
-		
-		$"../MoleAnim".play("mole_dig")
+
 	elif anim_name == "mole_dig":
 		moleIsUp = false
 		$"../GroundParticles".emitting = false
@@ -157,6 +168,7 @@ func interact_water():
 
 	if state.waterwayDone:
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
+		play_anim("focus_water_elevate")
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 		%RiverStream.play()
@@ -164,6 +176,7 @@ func interact_water():
 		emit_signal("player_released_waterfall", false)
 	else:
 		print("FLOOD THE GROUND")
+		play_anim("focus_water_elevate")
 		state.groundFlooded = true
 		%RiverStream.play()
 		$"../waterway".set_wet()
@@ -177,7 +190,9 @@ func interact_sun():
 	state.sunIsUp = true
 	state.actionSequence.push_back("SUN")
 	%Kikiriki.play()
-	play_anim("focus_water")
+	
+	if state.wetGround or state.groundFlooded:
+		play_anim("focus_water")
 	
 	%Ambience_Night.stop()
 	%Ambience_Day.play()
@@ -190,13 +205,15 @@ func interact_cow():
 		state.actionSequence.push_back("COW")
 		$"../CowAnim".play("cow_head")
 		play_anim("focus_cow")
+		$AudioStreams/CowEating.play()
 	elif not state.waterwayDone and state.groundFlooded:
 		print("COW DRINKS WATER")
 	elif state.waterwayDone and not state.wetGround:
 		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
 	elif not state.sunIsUp:
 		print("COW WAKES UP, GETS ANGRY AND GOES AWAY")
-
+		$AudioStreams/CowAngry.play()
+	
 func _on_cow_anim_animation_finished(anim_name):
 	print("GRASS DISAPEARS")
 	$"../Grass".visible = false
@@ -241,5 +258,7 @@ func _on_animation_player_animation_finished(anim_name):
 		$AnimationPlayer.play_backwards("focus_water")
 	if anim_name == "focus_topo":
 		$AnimationPlayer.play_backwards("focus_topo")
+	if anim_name == "focus_water_elevate":
+		$AnimationPlayer.play_backwards("focus_water_elevate")
 		
 	isBackwardsAnim = true
