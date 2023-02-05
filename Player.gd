@@ -22,7 +22,7 @@ var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 var mole_meters := 0.0
 
-signal player_released_waterfall(depth)
+signal player_released_waterfall(flood)
 
 func _ready():
 	World.global_player = self
@@ -37,7 +37,7 @@ func _process(delta):
 	process_sprite_audio(delta)
 	
 	if moleIsUp:
-		$"../GroundParticles".position.x-=0.01
+		$"../GroundParticles".position.x-=0.012
 		$"../GroundParticles".position.y-=0.002
 		
 		
@@ -137,14 +137,14 @@ func interact_water():
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 		%RiverStream.play()
-		emit_signal("player_released_waterfall", -1.5)
+		emit_signal("player_released_waterfall", false)
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
 		%RiverStream.play()
-		emit_signal("player_released_waterfall", -1.3)
+		emit_signal("player_released_waterfall", true)
 
 func interact_sun():
 	
@@ -178,14 +178,13 @@ func interact_roots():
 	
 	if state.waterwayDone and state.wetGround and state.sunIsUp and state.grassEaten:
 		print("WIN CASE!!")
-		# Check in case something is really bugged
-#		for act in state.actionSequence:
-#			print(act)
-			
 	elif state.waterwayDone and not state.wetGround and not state.sunIsUp:
 		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
 	elif state.waterwayDone and state.wetGround:
 		print("SHOOT AND SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
+		
+	character_enabled = false
+	
 
 func process_sprite_audio(delta):
 	
