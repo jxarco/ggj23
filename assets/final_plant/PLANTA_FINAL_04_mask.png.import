@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vvquscmpb2dy"
-path.s3tc="res://.godot/imported/PLANTA_FINAL_02_mask.png-64ae330a8d5ed147249b79c96d616edf.s3tc.ctex"
+uid="uid://dacj6m1r1kk40"
+path.s3tc="res://.godot/imported/PLANTA_FINAL_04_mask.png-2cc9cb17679a9fe6ea0acfaa122041cf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/final_plant/PLANTA_FINAL_02_mask.png"
-dest_files=["res://.godot/imported/PLANTA_FINAL_02_mask.png-64ae330a8d5ed147249b79c96d616edf.s3tc.ctex"]
+source_file="res://assets/final_plant/PLANTA_FINAL_04_mask.png"
+dest_files=["res://.godot/imported/PLANTA_FINAL_04_mask.png-2cc9cb17679a9fe6ea0acfaa122041cf.s3tc.ctex"]
 
 [params]
 

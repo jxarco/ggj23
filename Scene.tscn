@@ -235,7 +235,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.28891, 0.121141, 2.99
 [node name="Leg4" parent="Cow Legs" instance=ExtResource("17_xresg")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.52367, 0.0721407, 3.1342)
 
-[node name="Flower" parent="." instance=ExtResource("18_ja1qw")]
+[node name="FinalPlant" parent="." instance=ExtResource("18_ja1qw")]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -9.14667, 0, 3.67782)
 
 [node name="CowAnim" type="AnimationPlayer" parent="."]
