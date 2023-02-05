@@ -16,6 +16,5 @@ func _process(delta):
 
 
 func _on_player_player_released_waterfall(depth):
-	
 	$GPUParticles3D.emitting = true
 	$piedra.hide()

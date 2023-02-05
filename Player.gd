@@ -178,6 +178,9 @@ func interact_sun():
 	state.actionSequence.push_back("SUN")
 	%Kikiriki.play()
 	play_anim("focus_water")
+	
+	%Ambience_Night.stop()
+	%Ambience_Day.play()
 
 func interact_cow():
 
