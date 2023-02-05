@@ -127,14 +127,14 @@ func interact_water():
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 		%RiverStream.play()
-		emit_signal("player_released_waterfall", 0.23)
+		emit_signal("player_released_waterfall", -1.63)
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
 		%RiverStream.play()
-		emit_signal("player_released_waterfall", 0.288)
+		emit_signal("player_released_waterfall", -0.284)
 
 func interact_sun():
 	

@@ -1,6 +1,6 @@
 extends Node3D
 
-var target_pos = Vector3()
+var target_pos = 0.0
 var water_level_changed = false
 
 # Called when the node enters the scene tree for the first time.
@@ -12,13 +12,14 @@ func _process(_delta):
 	if !water_level_changed:
 		return
 	
-	var position_diff = target_pos - get_position() 
-	set_position(get_position() + lerp(Vector3(0.0, 0.0, 0.0), position_diff, 0.25 * _delta));
+	var position = get_position()
+
+	set_position(Vector3(position.x, move_toward(position.y, target_pos, _delta), position.z))
 
 
 func _on_player_player_released_waterfall(depth):
-	var old_pos = get_position()
-	target_pos = Vector3(old_pos.x, depth, old_pos.z)
+	target_pos = depth
+	print("target", target_pos)
 
 
 

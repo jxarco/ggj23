@@ -21,12 +21,11 @@ func _process(delta):
 	if time_counter >= total_time and !stablished:
 		%particles.emitting = true
 		emit_signal("waterfall_is_stablished")
-		print("finished waterfall")
 		stablished = true
 
 func _on_player_player_released_waterfall(depth):
 	flowing = true
-	print("Waterfall flowing")
+
 
 
 

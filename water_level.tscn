@@ -4,8 +4,8 @@
 [ext_resource type="Material" uid="uid://bj53wuq4vgfhg" path="res://water_level.tres" id="1_mxvmv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fvgs4"]
-subdivide_width = 69
-subdivide_depth = 50
+subdivide_width = 79
+subdivide_depth = 69
 
 [node name="water_level" type="Node3D"]
 script = ExtResource("1_hdg67")

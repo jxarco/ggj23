@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode cull_disabled, unshaded;
 
 uniform sampler2D u_noise_texture;
 uniform sampler2D u_displacement_texture;
