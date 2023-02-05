@@ -78,13 +78,13 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.14556, 0.15328, 3.25218)
 
 [node name="Water" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.34725, 6.21762, -0.904707)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.46995, 6.21762, -0.49013)
 
 [node name="Cow" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1362, 3.30164, 0.372799)
 
 [node name="Sun" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5255, 6.28825, -1.82044)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68786, 6.28825, -1.82044)
 
 [node name="Roots" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.808125, 0.490299, 1.43331)
