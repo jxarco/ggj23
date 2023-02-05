@@ -15,6 +15,7 @@ enum AnimState {
 	WALK
 }
 
+var character_enabled = false
 var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 var mole_meters := 0.0
@@ -22,6 +23,7 @@ var mole_meters := 0.0
 signal player_released_waterfall(depth)
 
 func _ready():
+	World.global_player = self
 	%Ambience_Night.play()
 
 func _process(delta):
@@ -43,6 +45,10 @@ func _process(delta):
 	process_sprite_audio(delta)
 		
 func _input(event):
+	
+	if not character_enabled:
+		return
+	
 	if event.is_action_pressed("Interact"):
 		match current_area:
 			World.Area.MOLE:
@@ -61,19 +67,24 @@ func _input(event):
 		get_tree().quit()
 
 func _physics_process(delta):
-#
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
+	if character_enabled:
 
-	var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
-	if input_dir:
-		velocity.x = input_dir.x * speed
-		velocity.z = input_dir.y * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
+		if input_dir:
+			velocity.x = input_dir.x * speed
+			velocity.z = input_dir.y * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+
+	if not character_enabled:
+		return
 
 	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
 	if (abs(velocity.z) + abs(velocity.x)) / 2.0 > 0.00:
