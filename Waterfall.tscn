@@ -36,14 +36,14 @@ curve = SubResource("Curve_7h1yw")
 [sub_resource type="Curve" id="Curve_ttjn1"]
 min_value = -200.0
 max_value = 200.0
-_data = [Vector2(0, -130.909), 0.0, 0.0, 0, 0, Vector2(0.658088, -61.8182), 0.0, 0.0, 0, 0, Vector2(1, -138.182), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 50.9091), 0.0, 0.0, 0, 0, Vector2(0.625, 156.364), 0.0, 0.0, 0, 0, Vector2(1, 21.8182), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_c0n5x"]
 curve = SubResource("Curve_ttjn1")
 
 [sub_resource type="Curve" id="Curve_gjekd"]
-_data = [Vector2(0.106618, 0.0090909), 0.0, 0.0, 0, 0, Vector2(0.341912, 0.345455), 0.0, 0.0, 0, 0, Vector2(0.735294, 0.727273), 0.0, 0.0, 0, 0, Vector2(1, 0.0090909), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.106618, 0.0090909), 0.0, 0.0, 0, 0, Vector2(0.474265, 0.390909), 0.0, 0.0, 0, 0, Vector2(0.790441, 0.627273), 0.0, 0.0, 0, 0, Vector2(1, 0.0090909), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_o3cox"]
@@ -51,18 +51,19 @@ curve = SubResource("Curve_gjekd")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1b6q3"]
 emission_shape = 3
-emission_box_extents = Vector3(1, 0.25, 0.5)
+emission_box_extents = Vector3(1, 0.01, 1)
 direction = Vector3(0, 1, 0)
 spread = 0.0
 flatness = 0.88
-gravity = Vector3(0, -9, 0)
+gravity = Vector3(0, 0, 0)
 linear_accel_curve = SubResource("CurveTexture_c0n5x")
 angle_curve = SubResource("CurveTexture_hk42n")
 scale_curve = SubResource("CurveTexture_o3cox")
 
 [sub_resource type="SphereMesh" id="SphereMesh_ynrge"]
 resource_local_to_scene = true
-radius = 0.65
+radius = 0.55
+height = 1.449
 
 [node name="Waterfall" type="Node3D"]
 script = ExtResource("1_ftc7k")
@@ -77,18 +78,20 @@ mesh = ExtResource("5_uedx4")
 
 [node name="particles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.595834, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.571475, 0.930504, -0.174158)
 material_override = SubResource("StandardMaterial3D_3ecul")
+transparency = 0.51
 gi_mode = 0
 emitting = false
-amount = 20
+amount = 40
 sub_emitter = NodePath(".")
-lifetime = 0.55
+lifetime = 5.86
 speed_scale = 4.0
 explosiveness = 0.07
 randomness = 0.03
 visibility_aabb = AABB(-1.98577, -1.00324, -1.93122, 3.97155, 2.00647, 3.86245)
 local_coords = true
+draw_order = 3
 trail_lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_1b6q3")
 draw_pass_1 = SubResource("SphereMesh_ynrge")

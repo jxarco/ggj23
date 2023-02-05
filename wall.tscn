@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnpy71gwqtque"]
+
+[ext_resource type="PackedScene" uid="uid://ceg8y5tedusek" path="res://piedra_suelo_seco_02.tscn" id="1_8dcyr"]
+
+[node name="wall" type="Node3D"]
+transform = Transform3D(0.0935621, 0, -0.491168, 0, 0.5, 0, 0.491168, 0, 0.0935621, -1.71076, 5.54398, 0.32345)
+
+[node name="piedra_suelo_seco_02" parent="." instance=ExtResource("1_8dcyr")]
+
+[node name="piedra_suelo_seco_03" parent="." instance=ExtResource("1_8dcyr")]
+transform = Transform3D(0.358922, 0, -0.933368, 0, 1, 0, 0.933368, 0, 0.358922, 0.207131, 0, -1.08736)
+
+[node name="piedra_suelo_seco_04" parent="." instance=ExtResource("1_8dcyr")]
+transform = Transform3D(0.22878, -0.651172, -0.723626, 0.349496, 0.748724, -0.563262, 0.908577, -0.124041, 0.398875, -0.515556, 0, 1.68176)
+
+[node name="piedra_suelo_seco_05" parent="." instance=ExtResource("1_8dcyr")]
+transform = Transform3D(0.989209, 0.137563, -0.0504229, -0.124852, 0.971557, 0.201217, 0.0766689, -0.19275, 0.978248, -0.779408, -0.341395, 3.06689)
+
+[node name="piedra_suelo_seco_06" parent="." instance=ExtResource("1_8dcyr")]
+transform = Transform3D(-0.208512, -0.694567, -0.688549, -0.245896, 0.718639, -0.650456, 0.946603, 0.0336839, -0.320636, -1.05085, -0.341395, 4.49186)
