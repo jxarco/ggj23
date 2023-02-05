@@ -12,6 +12,8 @@ var moleIsUp = false
 var standing_anim = preload("res://assets/semilla_idle/standing.tres")
 var walking_anim = preload("res://assets/semilla_walk/walking.tres")
 
+var isBackwardsAnim : bool = false
+
 enum AnimState {
 	IDLE,
 	WALK
@@ -21,6 +23,7 @@ var character_enabled = false
 var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 var mole_meters := 0.0
+var enable_movement : bool = true
 
 signal player_released_waterfall(flood)
 signal player_set_day()
@@ -32,9 +35,14 @@ func _ready():
 func _process(delta):
 	
 	var light : DirectionalLight3D = $"../Nivel/WorldEnvironment/DirectionalLight3D"
-	if state.sunIsUp and light.light_energy < 0.7:
-		var energy = move_toward(light.light_energy, 0.7, delta*0.2)
+	if state.sunIsUp:
+		var energy = move_toward(light.light_energy, 0.9, delta*0.2)
 		light.light_energy = energy
+		# Interpolate also color tint (Color())
+		light.light_color.r = move_toward(light.light_color.r, 0.96, delta*0.2)
+		light.light_color.g = move_toward(light.light_color.g, 0.88, delta*0.2)
+		light.light_color.b = move_toward(light.light_color.b, 0.76, delta*0.2)
+		
 	process_sprite_audio(delta)
 	
 	if moleIsUp:
@@ -68,6 +76,9 @@ func _input(event):
 		get_tree().quit()
 
 func _physics_process(delta):
+	
+	if not enable_movement:
+		return
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -99,6 +110,15 @@ func _physics_process(delta):
 		mat.uv1_scale.x = -1
 	elif velocity.x < 0.0:
 		mat.uv1_scale.x = 1
+		
+func play_anim(name):
+	$AnimationPlayer.play(name)
+	enable_movement = false
+	$SpringArm3D.collision_mask = 0
+	
+	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
+	mat.albedo_texture = standing_anim
+	anim_state = AnimState.IDLE
 
 func interact_mole():
 	$"../MoleAnim".play("mole_up")
@@ -107,6 +127,7 @@ func interact_mole():
 	$"../GroundParticles".position.x-= 0.05
 	$"../GroundParticles".position.y+= 0.1
 	$"../GroundParticles".emitting = true
+	play_anim("focus_topo")
 
 func _on_mole_anim_animation_finished(anim_name):
 	
@@ -119,7 +140,7 @@ func _on_mole_anim_animation_finished(anim_name):
 		elif not state.sunIsUp:
 			print("MOLE MAKES CORRECT WATERWAY")
 			$"../waterway".start_waterway()
-			
+			$AudioStreams/MoleDigging.play()
 			state.actionSequence.push_back("MOLE")
 			state.waterwayDone = true
 		
@@ -156,6 +177,7 @@ func interact_sun():
 	state.sunIsUp = true
 	state.actionSequence.push_back("SUN")
 	%Kikiriki.play()
+	play_anim("focus_water")
 
 func interact_cow():
 
@@ -163,7 +185,8 @@ func interact_cow():
 		print("COW EATS GRASS")
 		state.grassEaten = true
 		state.actionSequence.push_back("COW")
-		$"../CowSprite/CowAnim".play("cow_head")
+		$"../CowAnim".play("cow_head")
+		play_anim("focus_cow")
 	elif not state.waterwayDone and state.groundFlooded:
 		print("COW DRINKS WATER")
 	elif state.waterwayDone and not state.wetGround:
@@ -173,6 +196,7 @@ func interact_cow():
 
 func _on_cow_anim_animation_finished(anim_name):
 	print("GRASS DISAPEARS")
+	
 	$"../MoleAnim".play("grass_scale")
 	$"../MoleAnim".speed_scale = -1
 
@@ -203,3 +227,19 @@ func process_sprite_audio(delta):
 		elapsed_time = 0.0
 
 
+func _on_animation_player_animation_finished(anim_name):
+	
+	if isBackwardsAnim:
+		isBackwardsAnim = false
+		enable_movement = true
+		$SpringArm3D.collision_mask = 2
+		return
+	
+	if anim_name == "focus_cow":
+		$AnimationPlayer.play_backwards("focus_cow")
+	if anim_name == "focus_water":
+		$AnimationPlayer.play_backwards("focus_water")
+	if anim_name == "focus_topo":
+		$AnimationPlayer.play_backwards("focus_topo")
+		
+	isBackwardsAnim = true

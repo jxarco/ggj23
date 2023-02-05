@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dal7rtugxvxc8"]
 
 [ext_resource type="Script" path="res://StoneCascade.gd" id="1_1lp3b"]
-[ext_resource type="ArrayMesh" uid="uid://dc5prrlmyjqxq" path="res://particles/rocasa_particulasa.tres" id="2_v2mtx"]
+[ext_resource type="ArrayMesh" uid="uid://p0gl3khq2xi7" path="res://particles/rocasa_particulasa.tres" id="2_v2mtx"]
 [ext_resource type="PackedScene" uid="uid://xiwonhq14p2j" path="res://piedra_01.tscn" id="3_2kdye"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qhenx"]
