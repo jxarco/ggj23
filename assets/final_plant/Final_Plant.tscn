@@ -1,12 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7hqe6hwyxer3"]
+[gd_scene load_steps=20 format=3 uid="uid://6je0e1acjcif"]
 
 [ext_resource type="Texture2D" uid="uid://c0u5nbamhvr3o" path="res://assets/final_plant/PLANTA_FINAL_01.png" id="1_5thbj"]
-[ext_resource type="Texture2D" uid="uid://cokw80ya214ji" path="res://assets/small_grass/HOJA_SUELO_01.png" id="1_53v87"]
-[ext_resource type="Texture2D" uid="uid://d38cgb581nb4b" path="res://assets/small_grass/HOJA_SUELO_02.png" id="2_wcmig"]
+[ext_resource type="Shader" path="res://shaders/Final_Plant.gdshader" id="1_ifwmb"]
 [ext_resource type="Texture2D" uid="uid://bukoc5537nol3" path="res://assets/final_plant/PLANTA_FINAL_02.png" id="3_fa3jl"]
+[ext_resource type="Texture2D" uid="uid://xssxoyfc4m8p" path="res://assets/final_plant/PLANTA_FINAL_01_mask.png" id="3_kgji8"]
 [ext_resource type="Texture2D" uid="uid://cdubhqwnvyrfl" path="res://assets/small_grass/HOJA_SUELO_03.png" id="3_m7rg0"]
-[ext_resource type="Texture2D" uid="uid://bfqbx3awfy8t0" path="res://assets/final_plant/PLANTA_FINAL_03.png" id="5_v1ovq"]
+[ext_resource type="Texture2D" uid="uid://dacj6m1r1kk40" path="res://assets/final_plant/PLANTA_FINAL_04_mask.png" id="3_yy5kt"]
+[ext_resource type="Texture2D" uid="uid://bfqbx3awfy8t0" path="res://assets/final_plant/PLANTA_FINAL_03.png" id="4_gbny2"]
+[ext_resource type="Texture2D" uid="uid://0gkb6gyk4tvf" path="res://assets/final_plant/PLANTA_FINAL_03_mask.png" id="5_yefjw"]
+[ext_resource type="Texture2D" uid="uid://vvquscmpb2dy" path="res://assets/final_plant/PLANTA_FINAL_02_mask.png" id="6_6bn1k"]
 [ext_resource type="Texture2D" uid="uid://bmxrciv2u21s4" path="res://assets/final_plant/PLANTA_FINAL_04.png" id="7_mkcga"]
+[ext_resource type="Shader" path="res://assets/final_plant/Final_Plant.gdshader" id="7_nscxe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n027w"]
 
@@ -38,23 +42,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_py2s6")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ds3u"]
-transparency = 1
-albedo_texture = ExtResource("1_5thbj")
-emission_texture = ExtResource("1_53v87")
-uv1_scale = Vector3(-1, 1, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6im4o"]
+render_priority = 0
+shader = ExtResource("7_nscxe")
+shader_parameter/u_total_time = 2.0
+shader_parameter/u_current_time = 2.0
+shader_parameter/u_color_channel = ExtResource("7_mkcga")
+shader_parameter/u_mask = ExtResource("3_yy5kt")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1ep2"]
-transparency = 1
-albedo_texture = ExtResource("3_fa3jl")
-emission_texture = ExtResource("2_wcmig")
-uv1_scale = Vector3(-1, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03med"]
-transparency = 1
-albedo_texture = ExtResource("5_v1ovq")
-emission_texture = ExtResource("3_m7rg0")
-uv1_scale = Vector3(-1, 1, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18jbc"]
+render_priority = 0
+shader = ExtResource("7_nscxe")
+shader_parameter/u_total_time = 1.0
+shader_parameter/u_current_time = 1.0
+shader_parameter/u_color_channel = ExtResource("4_gbny2")
+shader_parameter/u_mask = ExtResource("5_yefjw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70dw7"]
 transparency = 1
@@ -62,28 +64,51 @@ albedo_texture = ExtResource("7_mkcga")
 emission_texture = ExtResource("3_m7rg0")
 uv1_scale = Vector3(-1, 1, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sp3jv"]
+render_priority = 0
+shader = ExtResource("1_ifwmb")
+shader_parameter/u_total_time = 1.0
+shader_parameter/u_current_time = 1.0
+shader_parameter/u_color_channel = ExtResource("3_fa3jl")
+shader_parameter/u_mask = ExtResource("6_6bn1k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsh5p"]
+render_priority = 0
+shader = ExtResource("7_nscxe")
+shader_parameter/u_total_time = 2.0
+shader_parameter/u_current_time = 2.0
+shader_parameter/u_color_channel = ExtResource("1_5thbj")
+shader_parameter/u_mask = ExtResource("3_kgji8")
+
 [node name="FinalPlant" type="Node3D"]
 transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 0, 0)
 
-[node name="Layer1" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.98, 4.26326e-14, 4.23516e-22, 0, -4.37114e-08, -1, -4.26326e-14, 1, -4.37114e-08, -0.892311, 0.99605, 4.22687e-08)
-mesh = SubResource("ArrayMesh_27hib")
-surface_material_override/0 = SubResource("StandardMaterial3D_6ds3u")
-
-[node name="Layer2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 1.98952e-13, -8.47033e-21, 0, -3.49691e-08, -1, -2.41585e-13, 0.8, -4.37114e-08, -1.001, 2.285, 0.014)
+[node name="tayo" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.4, -2.84217e-14, 7.6233e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.04998, 1.52181, -1.58543e-07)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_s1ep2")
+surface_material_override/0 = SubResource("ShaderMaterial_6im4o")
 
-[node name="Layer3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, -2.84217e-14, 1.69407e-21, 0, -1.74846e-08, -2.2, 2.84217e-14, 0.4, -9.61651e-08, -0.897791, 2.2979, -1.35563e-07)
-mesh = SubResource("ArrayMesh_27hib")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_03med")
-
-[node name="Layer4" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, -2.84217e-14, 6.77626e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -0.886005, 1.52181, -1.33783e-07)
+[node name="tayo_final" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.4, -2.84217e-14, 7.6233e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.06598, 2.46479, -1.60958e-07)
+material_override = SubResource("ShaderMaterial_18jbc")
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_70dw7")
+
+[node name="top_layer" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.98952e-13, -7.19978e-21, 0, -3.49691e-08, -1, -2.41585e-13, 0.8, -4.37114e-08, -0.971543, 2.285, 0.014)
+mesh = SubResource("ArrayMesh_27hib")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_sp3jv")
+
+[node name="base_layer" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -3.49691e-08, -0.8, 0, 0.8, -3.49691e-08, -1.05914, 0.798348, 1.42368e-07)
+material_override = SubResource("ShaderMaterial_lsh5p")
+mesh = SubResource("ArrayMesh_27hib")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_sp3jv")
