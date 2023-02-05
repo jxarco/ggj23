@@ -115,6 +115,10 @@ func play_anim(name):
 	$AnimationPlayer.play(name)
 	enable_movement = false
 	$SpringArm3D.collision_mask = 0
+	
+	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
+	mat.albedo_texture = standing_anim
+	anim_state = AnimState.IDLE
 
 func interact_mole():
 	$"../MoleAnim".play("mole_up")

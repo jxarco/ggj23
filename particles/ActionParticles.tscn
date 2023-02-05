@@ -16,7 +16,7 @@ emission_energy_multiplier = 5.62
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_6w6wr")
-amount = 150
+amount = 60
 lifetime = 1.64
 visibility_aabb = AABB(-27.8839, -15.0686, -18.8245, 55.7677, 30.1371, 37.6491)
 process_material = ExtResource("2_dehlw")

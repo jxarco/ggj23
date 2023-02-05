@@ -144,7 +144,7 @@ libraries = {
 }
 
 [node name="Mole" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.77941, 0.15328, 3.81856)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30706, 0.15328, 3.71694)
 
 [node name="Water" parent="." instance=ExtResource("1_r8fxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9821, 6.21762, -0.49013)
@@ -156,7 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0955, 3.30164, -1.23373)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68786, 6.28825, -1.82044)
 
 [node name="Roots" parent="." instance=ExtResource("1_r8fxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42697, -0.298886, 2.24534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42697, 0.237668, 2.50561)
 
 [node name="Player" parent="." instance=ExtResource("1_w27bx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14044, 1.02646, 3.33284)
@@ -227,7 +227,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.707808, 0.103722, -0
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.298, -0.00848198, -0.207456)
 
 [node name="Leg3" parent="Cow Legs" instance=ExtResource("17_xresg")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.28891, 0.148288, 2.99244)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.28891, 0.121141, 2.99244)
 
 [node name="Leg4" parent="Cow Legs" instance=ExtResource("17_xresg")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.52367, 0.0721407, 3.1342)
