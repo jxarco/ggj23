@@ -2,6 +2,8 @@ extends Node3D
 
 func _ready():
 	$Menu/MusicStream.play()
+	$Grass.rotation_degrees = Vector3(0, -180, 0)
+	$Grass.set_scale(Vector3(0.01, 0.01, 0.01))
 
 func _process(_delta):
 	%FPS.text = "FPS: " + str(Engine.get_frames_per_second())
