@@ -190,13 +190,15 @@ func interact_cow():
 		state.actionSequence.push_back("COW")
 		$"../CowAnim".play("cow_head")
 		play_anim("focus_cow")
+		$AudioStreams/CowEating.play()
 	elif not state.waterwayDone and state.groundFlooded:
 		print("COW DRINKS WATER")
 	elif state.waterwayDone and not state.wetGround:
 		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
 	elif not state.sunIsUp:
 		print("COW WAKES UP, GETS ANGRY AND GOES AWAY")
-
+		$AudioStreams/CowAngry.play()
+	
 func _on_cow_anim_animation_finished(anim_name):
 	print("GRASS DISAPEARS")
 	$"../Grass".visible = false
