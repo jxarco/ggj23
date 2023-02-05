@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d3qd5dosjoijg"
+path="res://.godot/imported/waterfall.obj-6169e6ab5f51137f7f24043aeaf98eca.mesh"
+
+[deps]
+
+files=["res://.godot/imported/waterfall.obj-6169e6ab5f51137f7f24043aeaf98eca.mesh"]
+
+source_file="res://assets/waterfall.obj"
+dest_files=["res://.godot/imported/waterfall.obj-6169e6ab5f51137f7f24043aeaf98eca.mesh", "res://.godot/imported/waterfall.obj-6169e6ab5f51137f7f24043aeaf98eca.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

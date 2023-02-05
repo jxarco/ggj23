@@ -26,10 +26,10 @@ func _ready():
 
 func _process(delta):
 	
-	var light = $"../Nivel/WorldEnvironment/DirectionalLight3D"
-	if state.sunIsUp and light.rotation.x > -PI*0.5:
-		var angle = move_toward(light.rotation.x, -PI*0.5, delta*0.1)
-		light.rotation.x = angle
+	var light : DirectionalLight3D = $"../Nivel/WorldEnvironment/DirectionalLight3D"
+	if state.sunIsUp and light.light_energy < 0.7:
+		var energy = move_toward(light.light_energy, 0.7, delta*0.2)
+		light.light_energy = energy
 		
 	if state.moleOnSurface and $"../MoleSprite".position.y < 1:
 		# Mole has to be 1 meter below 0 (-1) and go to 1 (2 units to reach objetive)
@@ -95,27 +95,29 @@ func interact_mole():
 		return
 
 	state.moleOnSurface = true
-
-	if state.sunIsUp:
-		print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
-		$"../GroundParticles".emitting = true
-	elif state.groundFlooded:
-		print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
-	elif not state.sunIsUp:
-		print("MOLE MAKES CORRECT WATERWAY")
-		$"../GroundParticles".emitting = true
-		state.actionSequence.push_back("MOLE")
-		state.waterwayDone = true
 		
 	# Mole returns home
 	var timer = Timer.new()
 	add_child(timer)
 	timer.connect("timeout", func ():
+		
+		if state.sunIsUp:
+			print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
+			$"../GroundParticles".emitting = true
+		elif state.groundFlooded:
+			print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
+		elif not state.sunIsUp:
+			print("MOLE MAKES CORRECT WATERWAY")
+			$"../waterway".start_waterway()
+			$"../GroundParticles".emitting = true
+			state.actionSequence.push_back("MOLE")
+			state.waterwayDone = true
+		
 		state.moleOnSurface = false
 		state.moleReturns = true
 		remove_child(timer)
 	)
-	timer.start(5.0)
+	timer.start(2.0)
 
 func interact_water():
 	if state.wetGround or state.groundFlooded:
@@ -127,14 +129,14 @@ func interact_water():
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
 		%RiverStream.play()
-		emit_signal("player_released_waterfall", 0.23)
+		emit_signal("player_released_waterfall", -1.63)
 	elif state.waterwayDone and state.sunIsUp:
 		print("WATER EVAPORATES")
 	elif not state.waterwayDone:
 		print("FLOOD THE GROUND")
 		state.groundFlooded = true
 		%RiverStream.play()
-		emit_signal("player_released_waterfall", 0.288)
+		emit_signal("player_released_waterfall", -0.284)
 
 func interact_sun():
 	
