@@ -25,6 +25,9 @@ var elapsed_time := 0.0
 var mole_meters := 0.0
 var enable_movement : bool = true
 var playing_mole_backwards : bool = false
+var growing := false
+var grow_current_time := 0.0
+var grow_sequence : Array
 
 signal player_released_waterfall(flood)
 signal player_set_day()
@@ -32,6 +35,9 @@ signal player_set_day()
 func _ready():
 	World.global_player = self
 	%Ambience_Night.play()
+	
+	
+	state.wetGround = true
 
 func _process(delta):
 	
@@ -49,7 +55,9 @@ func _process(delta):
 	if moleIsUp and not state.sunIsUp and not state.groundFlooded:
 		$"../GroundParticles".position.x-=0.015
 		$"../GroundParticles".position.y-=0.002
-		
+	
+	if growing:
+		process_final_plant(delta)
 		
 func _input(event):
 	
@@ -220,16 +228,85 @@ func _on_cow_anim_animation_finished(anim_name):
 
 func interact_roots():
 	
-	if state.waterwayDone and state.wetGround and state.sunIsUp and state.grassEaten:
-		print("WIN CASE!!")
-		
-	elif state.waterwayDone and not state.wetGround and not state.sunIsUp:
-		print("SHOOT GROWS UP, AFTERWARDS IT DIES")
-	elif state.waterwayDone and state.wetGround:
-		print("SHOOT AND SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
-		
+	enable_movement = false
 	character_enabled = false
 	
+	var game_case = 0
+	
+	# Caso 0 - Horrible
+	if not state.wetGround and not state.sunIsUp:
+		print("0 - SHOOT DOES NOT GROW")
+		#Gestionar derrota
+		return
+	# Caso 1 - Malo
+	elif state.wetGround and !state.sunIsUp and state.grassEaten:
+		print("1 - SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
+		game_case = 1
+	# Caso 2 - Menos malo
+	elif state.wetGround and state.sunIsUp and not state.grassEaten:
+		print("2 - SHOOT AND SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
+		game_case = 2
+	# Caso 3 - Bueno
+	elif state.wetGround and state.sunIsUp and state.grassEaten:
+		print("WIN CASE!!")
+		game_case = 3
+		
+	$FinalPlant.visible = true
+	growing = true
+		
+	var base_layer : MeshInstance3D = $FinalPlant/base_layer
+	var top_layer : MeshInstance3D = $FinalPlant/top_layer
+	var tayo : MeshInstance3D = $FinalPlant/tayo
+	var tayo_final : MeshInstance3D = $FinalPlant/tayo_final
+	
+	var mat_bl : ShaderMaterial = base_layer.get_surface_override_material(0)
+	var mat_tl : ShaderMaterial = top_layer.get_surface_override_material(0)
+	var mat_t : ShaderMaterial = tayo.get_surface_override_material(0)
+	var mat_tf : ShaderMaterial = tayo_final.get_surface_override_material(0)
+	
+	mat_tl.set_shader_parameter("u_current_time", 0)
+	mat_t.set_shader_parameter("u_current_time", 0)
+	mat_tf.set_shader_parameter("u_current_time", 0)
+	mat_bl.set_shader_parameter("u_current_time", 0)
+		
+	match game_case:
+		1:
+			grow_sequence.push_back(0)
+			pass
+		2:
+			grow_sequence.push_back(0)
+			grow_sequence.push_back(1)
+			grow_sequence.push_back(2)
+			pass
+		3:
+			grow_sequence.push_back(0)
+			grow_sequence.push_back(1)
+			grow_sequence.push_back(2)
+			grow_sequence.push_back(3)
+			pass
+	
+		
+	character_enabled = false
+
+func process_final_plant(delta):
+	
+		grow_current_time += delta
+		
+		var base_layer : MeshInstance3D = $FinalPlant/base_layer
+		var top_layer : MeshInstance3D = $FinalPlant/top_layer
+		var tayo : MeshInstance3D = $FinalPlant/tayo
+		var tayo_final : MeshInstance3D = $FinalPlant/tayo_final
+		
+		var mat_bl : ShaderMaterial = base_layer.get_surface_override_material(0)
+		var mat_tl : ShaderMaterial = top_layer.get_surface_override_material(0)
+		var mat_t : ShaderMaterial = tayo.get_surface_override_material(0)
+		var mat_tf : ShaderMaterial = tayo_final.get_surface_override_material(0)
+		
+		var next = grow_sequence[0]
+		match next:
+			0:
+				mat_bl.set_shader_parameter("u_current_time", grow_current_time)
+		
 
 func process_sprite_audio(delta):
 	

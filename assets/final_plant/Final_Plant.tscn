@@ -1,15 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://6je0e1acjcif"]
+[gd_scene load_steps=15 format=3 uid="uid://b7hqe6hwyxer3"]
 
 [ext_resource type="Texture2D" uid="uid://c0u5nbamhvr3o" path="res://assets/final_plant/PLANTA_FINAL_01.png" id="1_5thbj"]
 [ext_resource type="Shader" path="res://shaders/Final_Plant.gdshader" id="1_ifwmb"]
 [ext_resource type="Texture2D" uid="uid://bukoc5537nol3" path="res://assets/final_plant/PLANTA_FINAL_02.png" id="3_fa3jl"]
 [ext_resource type="Texture2D" uid="uid://xssxoyfc4m8p" path="res://assets/final_plant/PLANTA_FINAL_01_mask.png" id="3_kgji8"]
-[ext_resource type="Texture2D" uid="uid://cdubhqwnvyrfl" path="res://assets/small_grass/HOJA_SUELO_03.png" id="3_m7rg0"]
-[ext_resource type="Texture2D" uid="uid://dacj6m1r1kk40" path="res://assets/final_plant/PLANTA_FINAL_04_mask.png" id="3_yy5kt"]
 [ext_resource type="Texture2D" uid="uid://bfqbx3awfy8t0" path="res://assets/final_plant/PLANTA_FINAL_03.png" id="4_gbny2"]
 [ext_resource type="Texture2D" uid="uid://0gkb6gyk4tvf" path="res://assets/final_plant/PLANTA_FINAL_03_mask.png" id="5_yefjw"]
 [ext_resource type="Texture2D" uid="uid://vvquscmpb2dy" path="res://assets/final_plant/PLANTA_FINAL_02_mask.png" id="6_6bn1k"]
-[ext_resource type="Texture2D" uid="uid://bmxrciv2u21s4" path="res://assets/final_plant/PLANTA_FINAL_04.png" id="7_mkcga"]
 [ext_resource type="Shader" path="res://assets/final_plant/Final_Plant.gdshader" id="7_nscxe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n027w"]
@@ -47,22 +44,8 @@ render_priority = 0
 shader = ExtResource("7_nscxe")
 shader_parameter/u_total_time = 2.0
 shader_parameter/u_current_time = 2.0
-shader_parameter/u_color_channel = ExtResource("7_mkcga")
-shader_parameter/u_mask = ExtResource("3_yy5kt")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_18jbc"]
-render_priority = 0
-shader = ExtResource("7_nscxe")
-shader_parameter/u_total_time = 1.0
-shader_parameter/u_current_time = 1.0
 shader_parameter/u_color_channel = ExtResource("4_gbny2")
 shader_parameter/u_mask = ExtResource("5_yefjw")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70dw7"]
-transparency = 1
-albedo_texture = ExtResource("7_mkcga")
-emission_texture = ExtResource("3_m7rg0")
-uv1_scale = Vector3(-1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sp3jv"]
 render_priority = 0
@@ -92,11 +75,10 @@ surface_material_override/0 = SubResource("ShaderMaterial_6im4o")
 
 [node name="tayo_final" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.4, -2.84217e-14, 7.6233e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.06598, 2.46479, -1.60958e-07)
-material_override = SubResource("ShaderMaterial_18jbc")
+transform = Transform3D(0.4, -2.84217e-14, 9.31736e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.04667, 2.4592, -1.58043e-07)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_70dw7")
+surface_material_override/0 = SubResource("ShaderMaterial_6im4o")
 
 [node name="top_layer" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
