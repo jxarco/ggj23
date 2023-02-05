@@ -16,6 +16,7 @@ collision_mask = 4
 shape = SubResource("SphereShape3D_11ydm")
 
 [node name="EnvironmentParticles" parent="." instance=ExtResource("2_yaepm")]
+unique_name_in_owner = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

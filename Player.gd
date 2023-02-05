@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var gravity := 15.0
 @export var current_area := World.Area.NONE
 
+var current_area_ref = null
+
 @onready var state = World.state
 @onready var footstepsStreams = [%SeedFootstep_1, %SeedFootstep_2, %SeedFootstep_3]
 
@@ -15,6 +17,7 @@ enum AnimState {
 	WALK
 }
 
+var character_enabled = false
 var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
 var mole_meters := 0.0
@@ -22,6 +25,7 @@ var mole_meters := 0.0
 signal player_released_waterfall(flood)
 
 func _ready():
+	World.global_player = self
 	%Ambience_Night.play()
 
 func _process(delta):
@@ -30,19 +34,14 @@ func _process(delta):
 	if state.sunIsUp and light.light_energy < 0.7:
 		var energy = move_toward(light.light_energy, 0.7, delta*0.2)
 		light.light_energy = energy
-		
-	if state.moleOnSurface and $"../MoleSprite".position.y < 1:
-		# Mole has to be 1 meter below 0 (-1) and go to 1 (2 units to reach objetive)
-		var rest = abs($"../MoleSprite".position.y - 1) / 2
-		$"../MoleSprite".position.y = move_toward($"../MoleSprite".position.y, 1.0, pow(rest, 1.5) * 0.5)
-	elif not state.moleOnSurface and $"../MoleSprite".position.y > -1:
-		# Mole returns from 1 to 0
-		var rest = abs($"../MoleSprite".position.y - 1) / 2
-		$"../MoleSprite".position.y = move_toward($"../MoleSprite".position.y, -1.0, pow(rest, 1.5) * 0.5)
-		
+
 	process_sprite_audio(delta)
 		
 func _input(event):
+	
+	if not character_enabled:
+		return
+	
 	if event.is_action_pressed("Interact"):
 		match current_area:
 			World.Area.MOLE:
@@ -57,23 +56,31 @@ func _input(event):
 				interact_roots()
 			_:
 				print("No area!")
+				
+		if current_area_ref:
+			current_area_ref.deactivate()
 	if event.is_action_pressed("Exit"):
 		get_tree().quit()
 
 func _physics_process(delta):
-#
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
+	if character_enabled:
 
-	var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
-	if input_dir:
-		velocity.x = input_dir.x * speed
-		velocity.z = input_dir.y * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
+		if input_dir:
+			velocity.x = input_dir.x * speed
+			velocity.z = input_dir.y * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+
+	if not character_enabled:
+		return
 
 	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
 	if (abs(velocity.z) + abs(velocity.x)) / 2.0 > 0.00:
@@ -89,18 +96,11 @@ func _physics_process(delta):
 		mat.uv1_scale.x = 1
 
 func interact_mole():
-
-	if state.moleReturns:
-		print("MOLE ALREADY INTERACTED")
-		return
-
-	state.moleOnSurface = true
-		
-	# Mole returns home
-	var timer = Timer.new()
-	add_child(timer)
-	timer.connect("timeout", func ():
-		
+	$"../MoleAnim".play("mole_up")
+	
+func _on_mole_anim_animation_finished(anim_name):
+	
+	if anim_name == "mole_up":
 		if state.sunIsUp:
 			print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
 			$"../GroundParticles".emitting = true
@@ -112,13 +112,9 @@ func interact_mole():
 			$"../GroundParticles".emitting = true
 			state.actionSequence.push_back("MOLE")
 			state.waterwayDone = true
-		
-		state.moleOnSurface = false
-		state.moleReturns = true
-		remove_child(timer)
-	)
-	timer.start(2.0)
-
+			
+		$"../MoleAnim".play("mole_dig")
+	
 func interact_water():
 	if state.wetGround or state.groundFlooded:
 		print("WATER ALREADY FREED")
@@ -147,6 +143,7 @@ func interact_sun():
 	print("SUN IS UP!")
 	state.sunIsUp = true
 	state.actionSequence.push_back("SUN")
+	%Kikiriki.play()
 
 func interact_cow():
 
