@@ -35,9 +35,9 @@ shadow_mesh = SubResource("ArrayMesh_vorej")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bm2i"]
 transparency = 3
-alpha_hash_scale = 1.0
+alpha_hash_scale = 0.01
 alpha_antialiasing_mode = 1
-alpha_antialiasing_edge = 0.69
+alpha_antialiasing_edge = 1.0
 albedo_texture = ExtResource("2_88q86")
 metallic_specular = 0.0
 
