@@ -91,7 +91,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_28kl3")
 
 [node name="tayo_final" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.4, -2.84217e-14, 9.31736e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.04667, 2.4592, -1.58043e-07)
+transform = Transform3D(0.4, -2.84217e-14, 1.01644e-20, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.04667, 2.4592, -1.58043e-07)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_wldk5")

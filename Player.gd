@@ -62,7 +62,7 @@ func _process(delta):
 		
 	if cam_out:
 		$SpringArm3D.position.y = move_toward($SpringArm3D.position.y, 2, delta)
-		$SpringArm3D.position.z = move_toward($SpringArm3D.position.z, 1.5, delta)
+		$SpringArm3D.position.z = move_toward($SpringArm3D.position.z, 1.0, delta)
 		
 func _input(event):
 	
@@ -184,14 +184,14 @@ func interact_water():
 		play_anim("focus_water_elevate")
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
-		%RiverStream.play()
+		$"../RiverStream".play()
 		$"../waterway".set_wet()
 		emit_signal("player_released_waterfall", false)
 	else:
 		print("FLOOD THE GROUND")
 		play_anim("focus_water_elevate")
 		state.groundFlooded = true
-		%RiverStream.play()
+		$"../RiverStream".play()
 		$"../waterway".set_wet()
 		emit_signal("player_released_waterfall", true)
 
@@ -206,7 +206,7 @@ func interact_sun():
 	
 	if state.wetGround or state.groundFlooded:
 		play_anim("focus_water")
-		%RiverStream.stop()
+		$"../RiverStream".stop()
 	
 	%Ambience_Night.stop()
 	%Ambience_Day.play()

@@ -35,7 +35,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_py2s6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ds3u"]
-transparency = 1
+transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("1_ppo8n")
 emission_enabled = true
@@ -43,14 +43,14 @@ emission_texture = ExtResource("1_ppo8n")
 texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1ep2"]
-transparency = 1
+transparency = 4
 albedo_texture = ExtResource("2_bbqv7")
 emission_enabled = true
 emission_texture = ExtResource("2_bbqv7")
 texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03med"]
-transparency = 1
+transparency = 4
 albedo_texture = ExtResource("3_mdjyx")
 emission_enabled = true
 emission_texture = ExtResource("3_mdjyx")

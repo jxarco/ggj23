@@ -33,7 +33,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vorej")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccv4e"]
-transparency = 1
+transparency = 4
 albedo_texture = ExtResource("1_ls6nj")
 metallic_specular = 0.0
 uv1_scale = Vector3(-1, 1, 1)

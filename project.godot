@@ -21,8 +21,8 @@ World="*res://World.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [input]
 
@@ -70,3 +70,4 @@ Exit={
 [rendering]
 
 anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/size/viewport_height=1080
