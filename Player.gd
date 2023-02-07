@@ -37,6 +37,7 @@ var growing := false
 var grow_current_time := 0.0
 var grow_sequence : Array
 var cam_out = false
+var light : DirectionalLight3D
 
 signal player_released_waterfall(flood)
 signal player_set_day()
@@ -48,13 +49,12 @@ func _ready():
 	World.global_player = self
 	%Ambience_Night.play()
 	
-	var light : DirectionalLight3D = $"../Nivel/WorldEnvironment/DirectionalLight3D"
+	light = $"../Nivel/WorldEnvironment/DirectionalLight3D"
 	light.light_color = Color(0.55294120311737, 0.69411766529083, 1)
 	light.light_energy = 0.25
 	
 func _process(delta):
 	
-	var light : DirectionalLight3D = $"../Nivel/WorldEnvironment/DirectionalLight3D"
 	if state.sunIsUp:
 		var energy = move_toward(light.light_energy, 0.9, delta*0.2)
 		light.light_energy = energy
@@ -142,11 +142,10 @@ func set_idle_anim():
 	mat.albedo_texture = standing_anim
 	anim_state = AnimState.IDLE
 		
-func play_anim(name):
-	$AnimationPlayer.play(name)
+func play_anim(anim_name):
+	$AnimationPlayer.play(anim_name)
 	enable_movement = false
 	$SpringArm3D.collision_mask = 0
-	
 	set_idle_anim()
 
 func interact_mole():
@@ -235,16 +234,11 @@ func interact_cow():
 		$"../CowAnim".play("cow_head")
 		play_anim("focus_cow")
 		$AudioStreams/CowEating.play()
-	elif not state.waterwayDone and state.groundFlooded:
-		print("COW DRINKS WATER")
-	elif state.waterwayDone and not state.wetGround:
-		print("COW IGNORES EVERYTHING AND GOES AWAY (NO GRASS)")
-	elif not state.sunIsUp:
+	else:
 		print("COW WAKES UP, GETS ANGRY AND GOES AWAY")
 		$AudioStreams/CowAngry.play()
 	
-func _on_cow_anim_animation_finished(anim_name):
-	print("GRASS DISAPEARS")
+func _on_cow_anim_animation_finished(_anim_name):
 	$"../Grass".visible = false
 
 func interact_roots():
@@ -311,13 +305,12 @@ func interact_roots():
 			grow_sequence.push_back(RootPlantState.TOP)
 			grow_sequence.push_back(RootPlantState.FINISHED)
 		3:
-			grow_sequence.push_back(0)
-			grow_sequence.push_back(1)
-			grow_sequence.push_back(2)
-			grow_sequence.push_back(3)
-			grow_sequence.push_back(-1)
+			grow_sequence.push_back(RootPlantState.BASE)
+			grow_sequence.push_back(RootPlantState.STEM)
+			grow_sequence.push_back(RootPlantState.TOP)
+			grow_sequence.push_back(RootPlantState.FLOWER)
+			grow_sequence.push_back(RootPlantState.FINISHED)
 	
-		
 	character_enabled = false
 
 func process_final_plant(delta):
@@ -336,29 +329,23 @@ func process_final_plant(delta):
 		
 		if grow_sequence.size() == 0:
 			return
-			
+		
+		var update_shader : Callable = func (mat : ShaderMaterial):
+			mat.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
+			if grow_current_time >= 2:
+				grow_current_time = 0
+				grow_sequence.pop_front()
+		
 		var next = grow_sequence[0]
 		match next:
 			RootPlantState.BASE:
-				mat_bl.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
-				if grow_current_time >= 2:
-					grow_current_time = 0
-					grow_sequence.pop_front()
+				update_shader.call(mat_bl)
 			RootPlantState.STEM:
-				mat_t.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
-				if grow_current_time >= 2:
-					grow_current_time = 0
-					grow_sequence.pop_front()
+				update_shader.call(mat_t)
 			RootPlantState.TOP:
-				mat_tl.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
-				if grow_current_time >= 2:
-					grow_current_time = 0
-					grow_sequence.pop_front()
+				update_shader.call(mat_tl)
 			RootPlantState.FLOWER:
-				mat_tf.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
-				if grow_current_time >= 2:
-					grow_current_time = 0
-					grow_sequence.pop_front()
+				update_shader.call(mat_tf)
 			RootPlantState.FINISHED:
 				var timer = Timer.new()
 				add_child(timer)

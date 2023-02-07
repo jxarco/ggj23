@@ -13,9 +13,8 @@ func _process(_delta):
 	if not water_level_changed:
 		return
 	
-	var position = get_position()
-
-	set_position(Vector3(position.x, move_toward(position.y, target_pos, _delta * 0.5), position.z))
+	var pos = get_position()
+	set_position(Vector3(pos.x, move_toward(pos.y, target_pos, _delta * 0.5), pos.z))
 
 
 func _on_waterfall_waterfall_has_flooded():
