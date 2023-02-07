@@ -23,4 +23,3 @@ func _on_area_3d_body_exited(body):
 	emit_signal("player_exited", body)
 	# Reset area on exit
 	body.current_area = World.Area.NONE
-	print("No area")

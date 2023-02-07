@@ -6,14 +6,10 @@ var current_step : int = waterway_steps
 var wet_material = preload("res://level_scenes/waterway/waterway_wet_mat.tres")
 var wet_texture  = preload("res://assets/gfx/suelo_humedo.png")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	if World.state.dry_texture == null:
+		World.state.dry_texture = %waterway_0.get_active_material(0).albedo_texture
+	set_dry()
 
 func set_dry():
 	
@@ -23,8 +19,6 @@ func set_dry():
 	%waterway_3.get_active_material(0).albedo_texture = World.state.dry_texture
 
 func set_wet():
-	
-	World.state.dry_texture = %waterway_0.get_active_material(0).albedo_texture
 	
 	%waterway_0.get_active_material(0).albedo_texture = wet_texture
 	%waterway_1.get_active_material(0).albedo_texture = wet_texture
@@ -56,5 +50,3 @@ func _on_timer_timeout():
 	if current_step == 0:
 		%waterway_2.hide()
 		%waterway_3.show()
-	
-	pass # Replace with function body.

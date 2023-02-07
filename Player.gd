@@ -389,16 +389,12 @@ func _on_animation_player_animation_finished(anim_name):
 		
 	isBackwardsAnim = true
 
-func on_end_game():
-	$"../waterway".set_dry()
-
 func _on_win():
 	$"../Control/WinScreen".show()
 	var timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(func ():
 		emit_signal("reset_requested")
-		on_end_game()
 	)
 	timer.start(3)
 
@@ -408,6 +404,5 @@ func _on_lose():
 	add_child(timer)
 	timer.timeout.connect(func ():
 		emit_signal("reset_requested")
-		on_end_game()
 	)
 	timer.start(3)
