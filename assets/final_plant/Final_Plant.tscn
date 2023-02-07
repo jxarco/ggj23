@@ -1,13 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7hqe6hwyxer3"]
+[gd_scene load_steps=20 format=3 uid="uid://b7hqe6hwyxer3"]
 
 [ext_resource type="Texture2D" uid="uid://c0u5nbamhvr3o" path="res://assets/final_plant/PLANTA_FINAL_01.png" id="1_5thbj"]
-[ext_resource type="Shader" path="res://shaders/Final_Plant.gdshader" id="1_ifwmb"]
-[ext_resource type="Texture2D" uid="uid://bukoc5537nol3" path="res://assets/final_plant/PLANTA_FINAL_02.png" id="3_fa3jl"]
+[ext_resource type="Texture2D" uid="uid://bmxrciv2u21s4" path="res://assets/final_plant/PLANTA_FINAL_04.png" id="1_wsdx6"]
+[ext_resource type="Texture2D" uid="uid://dacj6m1r1kk40" path="res://assets/final_plant/PLANTA_FINAL_04_mask.png" id="2_tt254"]
+[ext_resource type="Texture2D" uid="uid://bukoc5537nol3" path="res://assets/final_plant/PLANTA_FINAL_02.png" id="3_cqytg"]
 [ext_resource type="Texture2D" uid="uid://xssxoyfc4m8p" path="res://assets/final_plant/PLANTA_FINAL_01_mask.png" id="3_kgji8"]
 [ext_resource type="Texture2D" uid="uid://bfqbx3awfy8t0" path="res://assets/final_plant/PLANTA_FINAL_03.png" id="4_gbny2"]
+[ext_resource type="Texture2D" uid="uid://vvquscmpb2dy" path="res://assets/final_plant/PLANTA_FINAL_02_mask.png" id="4_va7v8"]
 [ext_resource type="Texture2D" uid="uid://0gkb6gyk4tvf" path="res://assets/final_plant/PLANTA_FINAL_03_mask.png" id="5_yefjw"]
-[ext_resource type="Texture2D" uid="uid://vvquscmpb2dy" path="res://assets/final_plant/PLANTA_FINAL_02_mask.png" id="6_6bn1k"]
-[ext_resource type="Shader" path="res://assets/final_plant/Final_Plant.gdshader" id="7_nscxe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n027w"]
 
@@ -39,45 +39,137 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_py2s6")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_28kl3"]
+[sub_resource type="Shader" id="Shader_fm6vh"]
+code = "shader_type spatial;
+//render_mode depth_prepass_alpha;
+
+uniform sampler2D u_color_channel;
+uniform sampler2D u_mask;
+
+uniform float u_total_time;
+uniform float u_current_time;
+
+void fragment() {
+	float time = u_current_time / u_total_time;
+	vec2 final_uv = UV;
+	if (final_uv.y < 1.0 - time) discard;
+	final_uv.x = -final_uv.x;
+	vec4 curr_mask = texture(u_mask, final_uv);
+	float mask = (curr_mask.g);
+	vec4 base_color = texture(u_color_channel, final_uv);
+	ALBEDO = base_color.rgb;
+	ALPHA = clamp(time, 0.0, 1.0) * base_color.a;
+
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvh8r"]
 render_priority = 0
-shader = ExtResource("7_nscxe")
+shader = SubResource("Shader_fm6vh")
 shader_parameter/u_total_time = 2.0
-shader_parameter/u_current_time = 0.0
+shader_parameter/u_current_time = 2.0
+shader_parameter/u_color_channel = ExtResource("1_wsdx6")
+shader_parameter/u_mask = ExtResource("2_tt254")
+
+[sub_resource type="Shader" id="Shader_tbcdy"]
+code = "shader_type spatial;
+//render_mode depth_prepass_alpha;
+
+uniform sampler2D u_color_channel;
+uniform sampler2D u_mask;
+
+uniform float u_total_time;
+uniform float u_current_time;
+
+void fragment() {
+	float time = u_current_time / u_total_time;
+	vec2 final_uv = UV;
+	if (final_uv.y < 1.0 - time) discard;
+	final_uv.x = -final_uv.x;
+	vec4 curr_mask = texture(u_mask, final_uv);
+	float mask = (curr_mask.g);
+	vec4 base_color = texture(u_color_channel, final_uv);
+	ALBEDO = base_color.rgb;
+	ALPHA = clamp(time, 0.0, 1.0) * base_color.a;
+
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b65po"]
+render_priority = 0
+shader = SubResource("Shader_tbcdy")
+shader_parameter/u_total_time = 2.0
+shader_parameter/u_current_time = 2.0
 shader_parameter/u_color_channel = ExtResource("4_gbny2")
 shader_parameter/u_mask = ExtResource("5_yefjw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wldk5"]
-render_priority = 0
-shader = ExtResource("7_nscxe")
-shader_parameter/u_total_time = 2.0
-shader_parameter/u_current_time = 0.0
-shader_parameter/u_color_channel = ExtResource("4_gbny2")
-shader_parameter/u_mask = ExtResource("5_yefjw")
+[sub_resource type="Shader" id="Shader_giip4"]
+code = "shader_type spatial;
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_86kbg"]
-render_priority = 0
-shader = ExtResource("1_ifwmb")
-shader_parameter/u_total_time = 2.0
-shader_parameter/u_current_time = 0.0
-shader_parameter/u_color_channel = ExtResource("3_fa3jl")
-shader_parameter/u_mask = ExtResource("6_6bn1k")
+uniform sampler2D u_color_channel;
+uniform sampler2D u_mask;
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsh5p"]
+uniform float u_total_time;
+uniform float u_current_time;
+
+void fragment() {
+	float time = u_current_time / u_total_time;
+	vec2 uvs = UV;
+	uvs.x = -uvs.x;
+	vec4 curr_mask = texture(u_mask, uvs);
+	float mask = (1.0 - curr_mask.g) * curr_mask.a;
+	mask = 1.0 - mask;
+	vec4 base_color = texture(u_color_channel, uvs);
+	ALBEDO = base_color.rgb;
+	if (mask >= time) {
+		ALPHA = 0.0;
+	} else {
+		ALPHA = clamp(1.0 - mix(mask / time, 1.0, -2.0), 0.0, 1.0);
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_70k12"]
 render_priority = 0
-shader = ExtResource("7_nscxe")
+shader = SubResource("Shader_giip4")
+shader_parameter/u_total_time = 2.0
+shader_parameter/u_current_time = 2.0
+shader_parameter/u_color_channel = ExtResource("3_cqytg")
+shader_parameter/u_mask = ExtResource("4_va7v8")
+
+[sub_resource type="Shader" id="Shader_6dhc4"]
+code = "shader_type spatial;
+
+uniform sampler2D u_color_channel;
+uniform sampler2D u_mask;
+
+uniform float u_total_time;
+uniform float u_current_time;
+
+void fragment() {
+	float time = u_current_time / u_total_time;
+	vec2 uvs = UV;
+	uvs.x = -uvs.x;
+	vec4 curr_mask = texture(u_mask, uvs);
+	float mask = (1.0 - curr_mask.g) * curr_mask.a;
+	mask = 1.0 - mask;
+	vec4 base_color = texture(u_color_channel, uvs);
+	ALBEDO = base_color.rgb;
+	if (mask >= time) {
+		ALPHA = 0.0;
+	} else {
+		ALPHA = clamp(1.0 - mix(mask / time, 1.0, -2.0), 0.0, 1.0);
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hidx"]
+render_priority = 0
+shader = SubResource("Shader_6dhc4")
 shader_parameter/u_total_time = 2.0
 shader_parameter/u_current_time = 2.0
 shader_parameter/u_color_channel = ExtResource("1_5thbj")
 shader_parameter/u_mask = ExtResource("3_kgji8")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iol0w"]
-render_priority = 0
-shader = ExtResource("1_ifwmb")
-shader_parameter/u_total_time = 2.0
-shader_parameter/u_current_time = 0.0
-shader_parameter/u_color_channel = ExtResource("3_fa3jl")
-shader_parameter/u_mask = ExtResource("6_6bn1k")
 
 [node name="FinalPlant" type="Node3D"]
 transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 0, 0)
@@ -87,26 +179,25 @@ unique_name_in_owner = true
 transform = Transform3D(0.4, -2.84217e-14, 7.6233e-21, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.04998, 1.52181, -1.58543e-07)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_28kl3")
+surface_material_override/0 = SubResource("ShaderMaterial_pvh8r")
 
 [node name="tayo_final" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.4, -2.84217e-14, 1.01644e-20, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.04667, 2.4592, -1.58043e-07)
+transform = Transform3D(0.4, -2.84217e-14, 1.10114e-20, 0, -1.74846e-08, -1.5, 2.84217e-14, 0.4, -6.55671e-08, -1.04667, 2.66903, -1.58043e-07)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_wldk5")
+surface_material_override/0 = SubResource("ShaderMaterial_b65po")
 
 [node name="top_layer" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 1.98952e-13, -7.19978e-21, 0, -3.49691e-08, -1, -2.41585e-13, 0.8, -4.37114e-08, -0.971543, 2.285, 0.014)
+transform = Transform3D(1, 1.98952e-13, -3.81165e-21, 0, -3.49691e-08, -1, -2.41585e-13, 0.8, -4.37114e-08, -1.15605, 2.46163, 0.014)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_86kbg")
+surface_material_override/0 = SubResource("ShaderMaterial_70k12")
 
 [node name="base_layer" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -3.49691e-08, -0.8, 0, 0.8, -3.49691e-08, -1.05914, 0.798348, 1.42368e-07)
-material_override = SubResource("ShaderMaterial_lsh5p")
+transform = Transform3D(1, 1.98952e-13, -5.92923e-21, 0, -3.49691e-08, -1, -2.41585e-13, 0.8, -4.37114e-08, -1.0647, 0.978095, 0.014)
 mesh = SubResource("ArrayMesh_27hib")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_iol0w")
+surface_material_override/0 = SubResource("ShaderMaterial_3hidx")

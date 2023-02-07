@@ -30,6 +30,17 @@ class WorldState:
 	var sunIsUp := false
 	var grassEaten := false
 	var groundFlooded := false
+	
+	func reset():
+		waterwayDone = false
+		moleOnSurface = false
+		moleReturns = false
+		wetGround = false
+		sunIsUp = false
+		grassEaten = false
+		groundFlooded = false
+		
+		actionSequence.clear()
 
 var state = WorldState.new()
 var global_player = null

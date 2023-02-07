@@ -19,6 +19,14 @@ enum AnimState {
 	WALK
 }
 
+enum RootPlantState {
+	FINISHED = -1,
+	BASE,
+	STEM,
+	TOP,
+	FLOWER
+}
+
 var character_enabled = false
 var anim_state := AnimState.IDLE
 var elapsed_time := 0.0
@@ -61,8 +69,8 @@ func _process(delta):
 		process_final_plant(delta)
 		
 	if cam_out:
-		$SpringArm3D.position.y = move_toward($SpringArm3D.position.y, 2, delta)
-		$SpringArm3D.position.z = move_toward($SpringArm3D.position.z, 1.0, delta)
+		$SpringArm3D.position.y = move_toward($SpringArm3D.position.y, 3, delta * 0.5)
+		$SpringArm3D.position.z = move_toward($SpringArm3D.position.z, 0.3, delta * 0.5)
 		
 func _input(event):
 	
@@ -277,20 +285,22 @@ func interact_roots():
 	var mat_t : ShaderMaterial = tayo.get_surface_override_material(0)
 	var mat_tf : ShaderMaterial = tayo_final.get_surface_override_material(0)
 	
-	mat_tl.set_shader_parameter("u_current_time", 0)
-	mat_t.set_shader_parameter("u_current_time", 0)
-	mat_tf.set_shader_parameter("u_current_time", 0)
-	mat_bl.set_shader_parameter("u_current_time", 0)
+	grow_current_time = 0.0
+	
+	mat_tl.set_shader_parameter("u_current_time", 0.0)
+	mat_t.set_shader_parameter("u_current_time", 0.0)
+	mat_tf.set_shader_parameter("u_current_time", 0.0)
+	mat_bl.set_shader_parameter("u_current_time", 0.0)
 		
 	match game_case:
 		1:
-			grow_sequence.push_back(0)
-			grow_sequence.push_back(-1)
+			grow_sequence.push_back(RootPlantState.BASE)
+			grow_sequence.push_back(RootPlantState.FINISHED)
 		2:
-			grow_sequence.push_back(0)
-			grow_sequence.push_back(1)
-			grow_sequence.push_back(2)
-			grow_sequence.push_back(-1)
+			grow_sequence.push_back(RootPlantState.BASE)
+			grow_sequence.push_back(RootPlantState.STEM)
+			grow_sequence.push_back(RootPlantState.TOP)
+			grow_sequence.push_back(RootPlantState.FINISHED)
 		3:
 			grow_sequence.push_back(0)
 			grow_sequence.push_back(1)
@@ -320,37 +330,33 @@ func process_final_plant(delta):
 			
 		var next = grow_sequence[0]
 		match next:
-			0:
+			RootPlantState.BASE:
 				mat_bl.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
 				if grow_current_time >= 2:
 					grow_current_time = 0
 					grow_sequence.pop_front()
-			1:
+			RootPlantState.STEM:
 				mat_t.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
 				if grow_current_time >= 2:
 					grow_current_time = 0
 					grow_sequence.pop_front()
-			2:
+			RootPlantState.TOP:
 				mat_tl.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
 				if grow_current_time >= 2:
 					grow_current_time = 0
 					grow_sequence.pop_front()
-			3:
+			RootPlantState.FLOWER:
 				mat_tf.set_shader_parameter("u_current_time", clamp(grow_current_time, 0.0, 2.0))
 				if grow_current_time >= 2:
 					grow_current_time = 0
 					grow_sequence.pop_front()
-			-1:
-				
+			RootPlantState.FINISHED:
 				var timer = Timer.new()
 				add_child(timer)
 				timer.timeout.connect(func ():
 					emit_signal("win")
 				)
 				timer.start(3)
-				
-				pass
-		
 
 func process_sprite_audio(delta):
 	
