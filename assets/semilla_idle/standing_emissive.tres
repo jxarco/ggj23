@@ -1,0 +1,20 @@
+[gd_resource type="AnimatedTexture" load_steps=6 format=3 uid="uid://cjrca1y5bwnfk"]
+
+[ext_resource type="Texture2D" uid="uid://dqhu4aia3nnux" path="res://assets/semilla_idle/SEMILLA_IDLE_EMISSIVE_01.png" id="1_82qba"]
+[ext_resource type="Texture2D" uid="uid://bskut8hb86mgo" path="res://assets/semilla_idle/SEMILLA_IDLE_EMISSIVE_02.png" id="2_u5oam"]
+[ext_resource type="Texture2D" uid="uid://dtvx3dflcpeom" path="res://assets/semilla_idle/SEMILLA_IDLE_EMISSIVE_03.png" id="3_hwxgd"]
+[ext_resource type="Texture2D" uid="uid://hxknq4647v1j" path="res://assets/semilla_idle/SEMILLA_IDLE_EMISSIVE_04.png" id="4_r4cc3"]
+[ext_resource type="Texture2D" uid="uid://c4hhfhwequt10" path="res://assets/semilla_idle/SEMILLA_IDLE_EMISSIVE_05.png" id="5_whjps"]
+
+[resource]
+frames = 5
+frame_0/texture = ExtResource("1_82qba")
+frame_0/duration = 0.12
+frame_1/texture = ExtResource("2_u5oam")
+frame_1/duration = 0.12
+frame_2/texture = ExtResource("3_hwxgd")
+frame_2/duration = 0.12
+frame_3/texture = ExtResource("4_r4cc3")
+frame_3/duration = 0.12
+frame_4/texture = ExtResource("5_whjps")
+frame_4/duration = 0.12

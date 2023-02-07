@@ -33,7 +33,8 @@ scale_min = 0.5
 scale_curve = SubResource("CurveTexture_4vrm0")
 color_ramp = SubResource("GradientTexture1D_ijsr4")
 turbulence_enabled = true
-turbulence_noise_strength = 4.0
+turbulence_noise_strength = 3.0
+turbulence_noise_scale = 5.0
 
 [node name="EnvironmentParticles" type="Node3D"]
 
@@ -41,6 +42,7 @@ turbulence_noise_strength = 4.0
 material_override = SubResource("StandardMaterial3D_6w6wr")
 amount = 2000
 lifetime = 20.0
+preprocess = 5.0
 visibility_aabb = AABB(-27.8839, -15.0686, -18.8245, 55.7677, 30.1371, 37.6491)
 process_material = SubResource("ParticleProcessMaterial_m5olp")
 draw_pass_1 = ExtResource("2_xg5tx")

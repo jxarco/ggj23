@@ -5,6 +5,9 @@ var scene_instanced
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 	scene_instanced = scene.instantiate()
 	scene_instanced.reset_game.connect(_on_node_3d_reset)
 	add_child(scene_instanced)

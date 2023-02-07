@@ -9,8 +9,11 @@ var current_area_ref = null
 @onready var state = World.state
 @onready var footstepsStreams = [%SeedFootstep_1, %SeedFootstep_2, %SeedFootstep_3]
 var moleIsUp = false
+
 var standing_anim = preload("res://assets/semilla_idle/standing.tres")
+var standing_anim_emissive = preload("res://assets/semilla_idle/standing_emissive.tres")
 var walking_anim = preload("res://assets/semilla_walk/walking.tres")
+var walking_anim_emissive = preload("res://assets/semilla_walk/walking_emissive.tres")
 
 var isBackwardsAnim : bool = false
 
@@ -127,9 +130,11 @@ func _physics_process(delta):
 	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
 	if (abs(velocity.z) + abs(velocity.x)) / 2.0 > 0.00:
 		mat.albedo_texture = walking_anim
+		mat.emission_texture = walking_anim_emissive
 		anim_state = AnimState.WALK
 	else:
 		mat.albedo_texture = standing_anim
+		mat.emission_texture = standing_anim_emissive
 		anim_state = AnimState.IDLE
 
 	if velocity.x > 0.0:
@@ -140,6 +145,7 @@ func _physics_process(delta):
 func set_idle_anim():
 	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
 	mat.albedo_texture = standing_anim
+	mat.emission_texture = standing_anim_emissive
 	anim_state = AnimState.IDLE
 		
 func play_anim(name):
