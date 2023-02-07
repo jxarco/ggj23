@@ -44,6 +44,7 @@ texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1ep2"]
 transparency = 4
+cull_mode = 2
 albedo_texture = ExtResource("2_bbqv7")
 emission_enabled = true
 emission_texture = ExtResource("2_bbqv7")
@@ -51,6 +52,7 @@ texture_repeat = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03med"]
 transparency = 4
+cull_mode = 2
 albedo_texture = ExtResource("3_mdjyx")
 emission_enabled = true
 emission_texture = ExtResource("3_mdjyx")

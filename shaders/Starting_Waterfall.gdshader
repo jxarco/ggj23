@@ -40,8 +40,10 @@ void fragment() {
 	if (UV.y > percentage) {
 		ALPHA = 0.0;
 	} else {
-		ALPHA = clamp(1.0 - mix(UV.y / percentage, 1.0, -2.0), 0.0, 1.0);
+		ALPHA = clamp(1.0 - mix(UV.y / percentage, 1.0, -5.0), 0.0, 1.0);
 	}
+	
+	ALPHA_HASH_SCALE = 0.5;
 	
 	ALBEDO = get_water(UV);
 }

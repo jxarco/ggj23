@@ -12,7 +12,7 @@ var has_flooded = false
 func _process(delta):
 	if !flowing:
 		return
-	time_counter += delta
+	time_counter += delta * 0.75
 	%waterfall_body.get_active_material(0).set_shader_parameter("u_current_time", time_counter)
 
 	if time_counter >= total_time and !stablished:

@@ -48,6 +48,10 @@ func _ready():
 	World.global_player = self
 	%Ambience_Night.play()
 	
+	var light : DirectionalLight3D = $"../Nivel/WorldEnvironment/DirectionalLight3D"
+	light.light_color = Color(0.55294120311737, 0.69411766529083, 1)
+	light.light_energy = 0.25
+	
 func _process(delta):
 	
 	var light : DirectionalLight3D = $"../Nivel/WorldEnvironment/DirectionalLight3D"
@@ -133,14 +137,17 @@ func _physics_process(delta):
 	elif velocity.x < 0.0:
 		mat.uv1_scale.x = 1
 		
+func set_idle_anim():
+	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
+	mat.albedo_texture = standing_anim
+	anim_state = AnimState.IDLE
+		
 func play_anim(name):
 	$AnimationPlayer.play(name)
 	enable_movement = false
 	$SpringArm3D.collision_mask = 0
 	
-	var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
-	mat.albedo_texture = standing_anim
-	anim_state = AnimState.IDLE
+	set_idle_anim()
 
 func interact_mole():
 	$"../MoleAnim".play("mole_up")
@@ -211,8 +218,9 @@ func interact_sun():
 	state.actionSequence.push_back("SUN")
 	%Kikiriki.play()
 	
+	play_anim("focus_water")
+			
 	if state.wetGround or state.groundFlooded:
-		play_anim("focus_water")
 		$"../RiverStream".stop()
 	
 	%Ambience_Night.stop()
@@ -241,24 +249,16 @@ func _on_cow_anim_animation_finished(anim_name):
 
 func interact_roots():
 	
+	set_idle_anim()
+	
 	enable_movement = false
 	character_enabled = false
 	cam_out = true
 	
 	var game_case = 0
 	
-	# Caso 0 - Horrible
-	if not state.wetGround and not state.sunIsUp:
-		print("0 - SHOOT DOES NOT GROW")
-		var timer = Timer.new()
-		add_child(timer)
-		timer.timeout.connect(func ():
-			emit_signal("lose")
-		)
-		timer.start(3)
-		return
 	# Caso 1 - Malo
-	elif state.wetGround and !state.sunIsUp and not state.grassEaten:
+	if state.wetGround and not state.sunIsUp and not state.grassEaten:
 		print("1 - SOME LEAVES GROWS UP, AFTERWARDS IT DIES")
 		game_case = 1
 	# Caso 2 - Menos malo
@@ -269,6 +269,16 @@ func interact_roots():
 	elif state.wetGround and state.sunIsUp and state.grassEaten:
 		print("WIN CASE!!")
 		game_case = 3
+	# Caso 0 - Horrible
+	else:
+		print("0 - SHOOT DOES NOT GROW")
+		var timer = Timer.new()
+		add_child(timer)
+		timer.timeout.connect(func ():
+			emit_signal("lose")
+		)
+		timer.start(3)
+		return
 		
 	$FinalPlant.visible = true
 	%Sprite.visible = false

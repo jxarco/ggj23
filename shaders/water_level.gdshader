@@ -21,8 +21,8 @@ void fragment() {
 
 //	ALBEDO = vec3(0.52, 0.52, 0.52);
 	ALBEDO = vec3(0.0, 0.5, 0.9);
-	METALLIC = 0.5;
-	ROUGHNESS = 0.09;
+	METALLIC = 0.1;
+	ROUGHNESS = 0.3;
 	ALPHA = 0.4;
 	//ALBEDO = normalize(vec3(0.0, height(UV + vec2(0.0, 0.2), TIME) - height(UV + vec2(0.0, -0.2), TIME), 0.4));
 }
