@@ -35,17 +35,17 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_py2s6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ds3u"]
-transparency = 1
+transparency = 4
 albedo_texture = ExtResource("1_fg400")
 uv1_scale = Vector3(-1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1ep2"]
-transparency = 1
+transparency = 4
 albedo_texture = ExtResource("2_s1syf")
 uv1_scale = Vector3(-1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03med"]
-transparency = 1
+transparency = 4
 albedo_texture = ExtResource("3_iel12")
 uv1_scale = Vector3(-1, 1, 1)
 
