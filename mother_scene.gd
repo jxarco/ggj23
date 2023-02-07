@@ -17,9 +17,9 @@ func _process(delta):
 
 func _on_node_3d_reset():
 	
-	World.state.reset()	
-	
 	scene_instanced.queue_free()
 	scene_instanced = scene.instantiate()
 	scene_instanced.reset_game.connect(_on_node_3d_reset)
 	add_child(scene_instanced)
+	
+	World.state.reset()	

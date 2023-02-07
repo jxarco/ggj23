@@ -31,6 +31,9 @@ class WorldState:
 	var grassEaten := false
 	var groundFlooded := false
 	
+	# Store here stuff so we don't lose it at reset
+	var dry_texture = null
+	
 	func reset():
 		waterwayDone = false
 		moleOnSurface = false

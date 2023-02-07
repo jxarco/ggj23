@@ -47,7 +47,7 @@ signal reset_requested()
 func _ready():
 	World.global_player = self
 	%Ambience_Night.play()
-
+	
 func _process(delta):
 	
 	var light : DirectionalLight3D = $"../Nivel/WorldEnvironment/DirectionalLight3D"
@@ -187,20 +187,19 @@ func interact_water():
 		print("WATER EVAPORATED")
 		return
 
+	$"../Waterfall".show()
+	$"../waterway".set_wet()
+	$"../RiverStream".play()
+	play_anim("focus_water_elevate")
+
 	if state.waterwayDone:
 		print("WATER GOES THROUGH WATERWAY AND GRASS GROW UP")
-		play_anim("focus_water_elevate")
 		state.actionSequence.push_back("WATER")
 		state.wetGround = true
-		$"../RiverStream".play()
-		$"../waterway".set_wet()
 		emit_signal("player_released_waterfall", false)
 	else:
 		print("FLOOD THE GROUND")
-		play_anim("focus_water_elevate")
 		state.groundFlooded = true
-		$"../RiverStream".play()
-		$"../waterway".set_wet()
 		emit_signal("player_released_waterfall", true)
 
 func interact_sun():
@@ -390,6 +389,8 @@ func _on_animation_player_animation_finished(anim_name):
 		
 	isBackwardsAnim = true
 
+func on_end_game():
+	$"../waterway".set_dry()
 
 func _on_win():
 	$"../Control/WinScreen".show()
@@ -397,6 +398,7 @@ func _on_win():
 	add_child(timer)
 	timer.timeout.connect(func ():
 		emit_signal("reset_requested")
+		on_end_game()
 	)
 	timer.start(3)
 
@@ -406,5 +408,6 @@ func _on_lose():
 	add_child(timer)
 	timer.timeout.connect(func ():
 		emit_signal("reset_requested")
+		on_end_game()
 	)
 	timer.start(3)

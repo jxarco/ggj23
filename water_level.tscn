@@ -11,6 +11,6 @@ subdivide_depth = 69
 script = ExtResource("1_hdg67")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(8.2814, 0, 0, 0, 0.746244, 0, 0, 0, 7.2351, 0, 0, 0)
+transform = Transform3D(12.1477, 0, 0, 0, 0.746244, 0, 0, 0, 7.2351, 0, 0, 0)
 material_override = ExtResource("1_mxvmv")
 mesh = SubResource("PlaneMesh_fvgs4")

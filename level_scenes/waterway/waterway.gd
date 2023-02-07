@@ -15,7 +15,17 @@ func _ready():
 func _process(delta):
 	pass
 
+func set_dry():
+	
+	%waterway_0.get_active_material(0).albedo_texture = World.state.dry_texture
+	%waterway_1.get_active_material(0).albedo_texture = World.state.dry_texture
+	%waterway_2.get_active_material(0).albedo_texture = World.state.dry_texture
+	%waterway_3.get_active_material(0).albedo_texture = World.state.dry_texture
+
 func set_wet():
+	
+	World.state.dry_texture = %waterway_0.get_active_material(0).albedo_texture
+	
 	%waterway_0.get_active_material(0).albedo_texture = wet_texture
 	%waterway_1.get_active_material(0).albedo_texture = wet_texture
 	%waterway_2.get_active_material(0).albedo_texture = wet_texture

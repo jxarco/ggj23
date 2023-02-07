@@ -8,12 +8,7 @@ var time_counter = 0.0
 var flowing = false
 var stablished = false
 var has_flooded = false
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !flowing:
 		return
@@ -30,15 +25,15 @@ func _process(delta):
 			emit_signal("waterfall_is_pond")
 		stablished = true
 
-	#flowing = true
+func reset_water():
+	%waterfall_body.get_active_material(0).set_shader_parameter("u_current_time", 0)
 
 func _on_player_player_released_waterfall(flood):
 	flowing = true
 	has_flooded = flood
 
-
 func _on_player_player_set_day():
 	flowing = false
 	%particles.emitting = false
 	%particles2.emitting = false
-	%waterfall_body.get_active_material(0).set_shader_parameter("u_current_time", 0)
+	reset_water()
