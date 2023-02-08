@@ -17,5 +17,5 @@ func _process(delta):
 		started = true
 
 
-func _on_menu_animation_animation_finished(anim_name):
+func _on_menu_animation_animation_finished(_anim_name):
 	$Panel.visible = false

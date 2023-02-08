@@ -95,7 +95,8 @@ script = ExtResource("1_ftc7k")
 
 [node name="waterfall_body" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.562609, -0.00852022, -0.046051, 0.0611747, -0.0110455, 0.422436, -0.00921003, -0.593836, -0.00719667, 0.0336075, 1.20453, -0.272244)
+transform = Transform3D(0.563611, -0.0105336, 0.0382738, -0.0511278, -0.00914552, 0.423211, -0.00921003, -0.593836, -0.00719667, 0.0336075, 1.20453, -0.272244)
+visible = false
 material_override = SubResource("ShaderMaterial_bonj2")
 cast_shadow = 0
 mesh = ExtResource("5_uedx4")
@@ -120,7 +121,7 @@ draw_pass_1 = SubResource("QuadMesh_15jrc")
 
 [node name="particles3" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0986602, 0.0353872, -0.188668)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0986602, -0.351641, -0.188668)
 gi_mode = 0
 emitting = false
 amount = 400

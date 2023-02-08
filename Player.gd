@@ -171,17 +171,12 @@ func _on_mole_anim_animation_finished(anim_name):
 		return
 	
 	if anim_name == "mole_up":
-		if state.sunIsUp:
-			print("MOLE GETS HOT AND MAKES WRONG WATERWAY")
-			$"../MoleAnim".play_backwards("mole_up")
-			playing_mole_backwards = true
-			$AudioStreams/MoleDiggingWrong.play()
-		elif state.groundFlooded:
+		if state.sunIsUp or state.groundFlooded:
 			print("MOLE GETS AWAY AND DOES NOT MAKE THE WATERWAY")
 			$"../MoleAnim".play_backwards("mole_up")
 			playing_mole_backwards = true
 			$AudioStreams/MoleDiggingWrong.play()
-		elif not state.sunIsUp:
+		else:
 			print("MOLE MAKES CORRECT WATERWAY")
 			$"../MoleAnim".play("mole_dig")
 			$"../waterway".start_waterway()
