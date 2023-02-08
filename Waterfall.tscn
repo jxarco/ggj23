@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b80a1hiq0jb56"]
+[gd_scene load_steps=19 format=3 uid="uid://b80a1hiq0jb56"]
 
 [ext_resource type="Script" path="res://waterfall.gd" id="1_ftc7k"]
 [ext_resource type="Texture2D" uid="uid://bclw3pug2qnwd" path="res://assets/gfx/noise2.png" id="2_2xh01"]
@@ -74,26 +74,28 @@ orientation = 0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yth4i"]
 emission_shape = 3
-emission_box_extents = Vector3(0.014, 0.25, 0.25)
-direction = Vector3(0, 1, 0)
-spread = 21.5
-gravity = Vector3(0, -0.168, 0)
-initial_velocity_min = 0.74
-initial_velocity_max = 0.74
+emission_box_extents = Vector3(0.002, 0.1, 0.7)
+direction = Vector3(-0.06, 0.6, 0)
+spread = 20.0
+gravity = Vector3(0, -0.125, 0)
+initial_velocity_min = 0.6
+initial_velocity_max = 0.7
 linear_accel_curve = SubResource("CurveTexture_c0n5x")
 damping_min = 0.02
-damping_max = 0.1
+damping_max = 0.15
 angle_curve = SubResource("CurveTexture_hk42n")
-scale_min = 0.06
-scale_max = 0.16
+scale_min = 0.05
+scale_max = 0.6
 scale_curve = SubResource("CurveTexture_o3cox")
+
+[sub_resource type="BoxMesh" id="BoxMesh_cy8pj"]
 
 [node name="Waterfall" type="Node3D"]
 script = ExtResource("1_ftc7k")
 
 [node name="waterfall_body" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.562322, -0.00751939, -0.0460847, 0.0611438, -0.00974806, 0.422744, -0.00920535, -0.524081, -0.00720195, 0.0336075, 1.20453, -0.272244)
+transform = Transform3D(0.562609, -0.00852022, -0.046051, 0.0611747, -0.0110455, 0.422436, -0.00921003, -0.593836, -0.00719667, 0.0336075, 1.20453, -0.272244)
 material_override = SubResource("ShaderMaterial_bonj2")
 cast_shadow = 0
 mesh = ExtResource("5_uedx4")
@@ -116,20 +118,20 @@ trail_lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_1b6q3")
 draw_pass_1 = SubResource("QuadMesh_15jrc")
 
-[node name="particles2" type="GPUParticles3D" parent="."]
+[node name="particles3" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7423, 0.0176936, -0.174158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0986602, 0.0353872, -0.188668)
 gi_mode = 0
 emitting = false
-amount = 200
+amount = 400
 sub_emitter = NodePath(".")
 lifetime = 8.12
 speed_scale = 4.0
 explosiveness = 0.07
 randomness = 0.03
-visibility_aabb = AABB(-1.98577, -1.00324, -1.93122, 3.97155, 2.00647, 3.86245)
+visibility_aabb = AABB(-1.98577, -1.00324, -1.86384, 3.97155, 2.00647, 3.86245)
 local_coords = true
 draw_order = 3
 trail_lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_yth4i")
-draw_pass_1 = SubResource("QuadMesh_15jrc")
+draw_pass_1 = SubResource("BoxMesh_cy8pj")

@@ -17,7 +17,7 @@ func _process(delta):
 
 	if time_counter >= total_time and !stablished:
 		%particles.emitting = true
-		%particles2.emitting = true
+		%particles3.emitting = true
 		
 		if has_flooded:
 			emit_signal("waterfall_has_flooded")
@@ -35,5 +35,6 @@ func _on_player_player_released_waterfall(flood):
 func _on_player_player_set_day():
 	flowing = false
 	%particles.emitting = false
-	%particles2.emitting = false
+	%particles3.emitting = false
+	
 	reset_water()

@@ -96,11 +96,11 @@ curve = SubResource("Curve_u7r2b")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xvwny"]
 emission_shape = 1
 emission_sphere_radius = 1.0
-direction = Vector3(0, 2.288, 0)
-spread = 26.8
-gravity = Vector3(0, -0.928, 0)
+direction = Vector3(0, 1.582, 0)
+spread = 21.6
+gravity = Vector3(0, -0.813, 0)
 initial_velocity_min = 1.28
-initial_velocity_max = 1.42
+initial_velocity_max = 1.74
 scale_min = 0.4
 scale_curve = SubResource("CurveTexture_03m3j")
 color_ramp = SubResource("GradientTexture1D_4sr46")
@@ -110,8 +110,8 @@ turbulence_influence_min = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cgea"]
 transparency = 1
-albedo_color = Color(1, 1, 0.321569, 1)
 albedo_texture = ExtResource("5_xybig")
+metallic_specular = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_sm2i6"]
 material = SubResource("StandardMaterial3D_5cgea")
@@ -178,9 +178,9 @@ offset_bottom = 67.0
 label_settings = SubResource("LabelSettings_7iqg2")
 
 [node name="GroundParticles" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.897, 0.498, 3)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.33738, 0.259013, 2.45372)
 emitting = false
-amount = 56
+amount = 80
 lifetime = 2.18
 speed_scale = 1.5
 visibility_aabb = AABB(-10.8969, -5.42056, -4, 21.7938, 10.8411, 8)
@@ -194,7 +194,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011, 0.003)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86967, -1.16024, 2.67803)
 
 [node name="Waterfall" parent="." instance=ExtResource("5_lbge5")]
-transform = Transform3D(-0.0231103, 0.0402721, 1.40724, -0.159189, 1.03972, -0.058114, -1.01635, -0.163765, -0.022896, -10.2793, -0.926701, 2.83733)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.3457, -0.962779, 2.35659)
 
 [node name="waterway" parent="." instance=ExtResource("7_h7ger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011, 0)
@@ -203,8 +203,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011, 0)
 
 [node name="Waterfall_rocks" parent="." instance=ExtResource("11_yhtqy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.524, 5.55484, -0.167088)
+visible = false
 
 [node name="staticrocks" parent="." instance=ExtResource("11_5goj8")]
+transform = Transform3D(-0.24378, 0, -0.169403, 0, 0.134186, 0, 0.178257, 0, -0.231672, -10.4116, 5.92327, -0.600308)
 
 [node name="water_level_small" parent="." instance=ExtResource("12_nowmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.096, -2.45133, 1.2252)
@@ -216,7 +218,7 @@ transform = Transform3D(0.0604397, -0.00329383, 3.23517, -0.165244, 1.20925, 0.0
 target_pos = -0.606
 
 [node name="water_level_top" parent="." instance=ExtResource("14_0b4ia")]
-transform = Transform3D(0.490432, 0, 0, 0, 1, 0, 0, 0, 0.46591, -10.3815, 5.64496, -1.96102)
+transform = Transform3D(0.567573, 0, 0, 0, 1.15729, 0, 0, 0, 0.539194, -10.4912, 5.64496, -1.83111)
 script = ExtResource("15_74udx")
 target_pos = 4.7
 

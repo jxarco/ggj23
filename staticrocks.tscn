@@ -8,6 +8,12 @@ transform = Transform3D(-0.24378, 0, -0.169403, 0, 0.134186, 0, 0.178257, 0, -0.
 [node name="piedra2" parent="." instance=ExtResource("1_rwlah")]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, -4.17233e-07, 0, 1, 0.553661, -1.8489, 3.23339)
 
+[node name="piedra4" parent="." instance=ExtResource("1_rwlah")]
+transform = Transform3D(-0.192954, 0, 1.26643, 0, 1.28104, 0, -1.26643, 0, -0.192954, 2.02346, -4.54166, -0.208769)
+
+[node name="piedra9" parent="." instance=ExtResource("1_rwlah")]
+transform = Transform3D(-0.224339, 0, 1.47242, 0, 1.48941, 0, -1.47242, 0, -0.224339, 0.932674, -5.5305, -1.04808)
+
 [node name="piedra3" parent="." instance=ExtResource("1_rwlah")]
 transform = Transform3D(1.3195, 0, -5.96046e-08, 0, 1.57091, 0, 4.17233e-07, 0, 1.41535, 2.27916, -2.54958, 0.315323)
 
@@ -19,6 +25,12 @@ transform = Transform3D(1.25279, 1.78814e-07, 0.414247, -0.491582, -0.126259, 1.
 
 [node name="piedra5" parent="piedra5" instance=ExtResource("1_rwlah")]
 transform = Transform3D(0.767828, 0.774774, -1.05197, 0.995341, -0.012011, 0.917617, 0.481804, -1.18566, -0.66691, -0.469298, -0.587862, -0.671631)
+
+[node name="piedra8" parent="." instance=ExtResource("1_rwlah")]
+transform = Transform3D(0.310584, 1.35625, 0.21788, -0.491582, -0.126259, 1.48667, 1.21421, -0.388412, 0.368502, -0.473246, -2.19104, -0.615816)
+
+[node name="piedra5" parent="piedra8" instance=ExtResource("1_rwlah")]
+transform = Transform3D(0.767828, 0.774774, -1.05197, 0.995341, -0.012011, 0.917617, 0.481804, -1.18566, -0.66691, -0.553626, -0.609523, -0.416595)
 
 [node name="piedra6" parent="." instance=ExtResource("1_rwlah")]
 transform = Transform3D(-0.751333, 0, 1.0847, 0, 1.57091, 0, -1.16349, 0, -0.805911, 3.01753, -2.15458, 2.41841)

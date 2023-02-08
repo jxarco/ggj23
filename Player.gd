@@ -158,8 +158,8 @@ func interact_mole():
 	$"../MoleAnim".play("mole_up")
 	moleIsUp = true
 	$"../GroundParticles".position = $"../Mole".position
-	$"../GroundParticles".position.x-= 0.05
-	$"../GroundParticles".position.y+= 0.1
+	$"../GroundParticles".position.x -= 0.3
+	$"../GroundParticles".position.z -= 0.4
 	$"../GroundParticles".emitting = true
 	play_anim("focus_topo")
 
