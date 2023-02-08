@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b80a1hiq0jb56"]
+[gd_scene load_steps=23 format=3 uid="uid://b80a1hiq0jb56"]
 
 [ext_resource type="Script" path="res://waterfall.gd" id="1_ftc7k"]
 [ext_resource type="Texture2D" uid="uid://bclw3pug2qnwd" path="res://assets/gfx/noise2.png" id="2_2xh01"]
@@ -84,11 +84,32 @@ linear_accel_curve = SubResource("CurveTexture_c0n5x")
 damping_min = 0.02
 damping_max = 0.15
 angle_curve = SubResource("CurveTexture_hk42n")
-scale_min = 0.05
+scale_min = 0.0
 scale_max = 0.6
 scale_curve = SubResource("CurveTexture_o3cox")
 
 [sub_resource type="BoxMesh" id="BoxMesh_cy8pj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sr7rc"]
+transparency = 1
+blend_mode = 1
+cull_mode = 1
+no_depth_test = true
+albedo_texture = ExtResource("6_0bi0b")
+
+[sub_resource type="SphereMesh" id="SphereMesh_olg83"]
+material = SubResource("StandardMaterial3D_sr7rc")
+radius = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbgbe"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+albedo_texture = ExtResource("6_0bi0b")
+uv1_scale = Vector3(1.081, 1.081, 1.081)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wc8is"]
+orientation = 2
 
 [node name="Waterfall" type="Node3D"]
 script = ExtResource("1_ftc7k")
@@ -122,6 +143,7 @@ draw_pass_1 = SubResource("QuadMesh_15jrc")
 [node name="particles3" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0986602, -0.351641, -0.188668)
+visible = false
 gi_mode = 0
 emitting = false
 amount = 400
@@ -136,3 +158,39 @@ draw_order = 3
 trail_lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_yth4i")
 draw_pass_1 = SubResource("BoxMesh_cy8pj")
+
+[node name="particles_new" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.2, -0.377)
+visible = false
+gi_mode = 0
+amount = 500
+sub_emitter = NodePath(".")
+lifetime = 8.12
+speed_scale = 4.0
+explosiveness = 0.07
+randomness = 0.03
+visibility_aabb = AABB(-1.98577, -1.00324, -1.86384, 3.97155, 2.00647, 3.86245)
+local_coords = true
+draw_order = 3
+trail_lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_yth4i")
+draw_pass_1 = SubResource("SphereMesh_olg83")
+
+[node name="particles3_new" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333, -0.133, -0.255)
+material_override = SubResource("StandardMaterial3D_hbgbe")
+gi_mode = 0
+amount = 500
+sub_emitter = NodePath(".")
+lifetime = 8.12
+speed_scale = 4.0
+explosiveness = 0.07
+randomness = 0.03
+visibility_aabb = AABB(-1.98577, -1.00324, -1.86384, 3.97155, 2.00647, 3.86245)
+local_coords = true
+draw_order = 3
+trail_lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_yth4i")
+draw_pass_1 = SubResource("PlaneMesh_wc8is")
