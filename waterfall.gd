@@ -9,6 +9,10 @@ var flowing = false
 var stablished = false
 var has_flooded = false
 
+func _ready():
+	reset_water()
+	%waterfall_body.visible = false
+
 func _process(delta):
 	if !flowing:
 		return
@@ -29,6 +33,7 @@ func reset_water():
 	%waterfall_body.get_active_material(0).set_shader_parameter("u_current_time", 0)
 
 func _on_player_player_released_waterfall(flood):
+	%waterfall_body.visible = true
 	flowing = true
 	has_flooded = flood
 

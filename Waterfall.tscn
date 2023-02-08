@@ -94,6 +94,7 @@ script = ExtResource("1_ftc7k")
 [node name="waterfall_body" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.562322, -0.00751939, -0.0460847, 0.0611438, -0.00974806, 0.422744, -0.00920535, -0.524081, -0.00720195, 0.0336075, 1.20453, -0.272244)
+visible = false
 material_override = SubResource("ShaderMaterial_bonj2")
 cast_shadow = 0
 mesh = ExtResource("5_uedx4")
