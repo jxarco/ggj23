@@ -141,6 +141,7 @@ emitting = false
 amount = 500
 sub_emitter = NodePath(".")
 lifetime = 8.12
+preprocess = 2.0
 speed_scale = 2.1
 visibility_aabb = AABB(-1.98577, -1.00324, -1.86384, 3.97155, 2.00647, 3.86245)
 local_coords = true
