@@ -52,14 +52,12 @@ uniform float u_current_time;
 void fragment() {
 	float time = u_current_time / u_total_time;
 	vec2 final_uv = UV;
-	if (final_uv.y < 1.0 - time) discard;
 	final_uv.x = -final_uv.x;
 	vec4 curr_mask = texture(u_mask, final_uv);
 	float mask = (curr_mask.g);
 	vec4 base_color = texture(u_color_channel, final_uv);
 	ALBEDO = base_color.rgb;
-	ALPHA = clamp(time, 0.0, 1.0) * base_color.a;
-
+	ALPHA = clamp(time, 0.0, 1.0) * base_color.a * smoothstep(1.0 - time, 1.0 - time + 0.02, final_uv.y);
 }
 "
 
@@ -67,7 +65,7 @@ void fragment() {
 render_priority = 0
 shader = SubResource("Shader_fm6vh")
 shader_parameter/u_total_time = 2.0
-shader_parameter/u_current_time = 2.0
+shader_parameter/u_current_time = 0.0
 shader_parameter/u_color_channel = ExtResource("1_wsdx6")
 shader_parameter/u_mask = ExtResource("2_tt254")
 
@@ -84,14 +82,12 @@ uniform float u_current_time;
 void fragment() {
 	float time = u_current_time / u_total_time;
 	vec2 final_uv = UV;
-	if (final_uv.y < 1.0 - time) discard;
 	final_uv.x = -final_uv.x;
 	vec4 curr_mask = texture(u_mask, final_uv);
 	float mask = (curr_mask.g);
 	vec4 base_color = texture(u_color_channel, final_uv);
 	ALBEDO = base_color.rgb;
-	ALPHA = clamp(time, 0.0, 1.0) * base_color.a;
-
+	ALPHA = clamp(time, 0.0, 1.0) * base_color.a * smoothstep(1.0 - time, 1.0 - time + 0.02, final_uv.y);
 }
 "
 
@@ -114,18 +110,13 @@ uniform float u_current_time;
 
 void fragment() {
 	float time = u_current_time / u_total_time;
-	vec2 uvs = UV;
-	uvs.x = -uvs.x;
-	vec4 curr_mask = texture(u_mask, uvs);
-	float mask = (1.0 - curr_mask.g) * curr_mask.a;
-	mask = 1.0 - mask;
-	vec4 base_color = texture(u_color_channel, uvs);
+	vec2 final_uv = UV;
+	final_uv.x = -final_uv.x;
+	vec4 curr_mask = texture(u_mask, final_uv);
+	float mask = (curr_mask.g);
+	vec4 base_color = texture(u_color_channel, final_uv);
 	ALBEDO = base_color.rgb;
-	if (mask >= time) {
-		ALPHA = 0.0;
-	} else {
-		ALPHA = clamp(1.0 - mix(mask / time, 1.0, -2.0), 0.0, 1.0);
-	}
+	ALPHA = clamp(time, 0.0, 1.0) * base_color.a * smoothstep(1.0 - time, 1.0 - time + 0.02, final_uv.y);
 }
 "
 
@@ -133,7 +124,7 @@ void fragment() {
 render_priority = 0
 shader = SubResource("Shader_giip4")
 shader_parameter/u_total_time = 2.0
-shader_parameter/u_current_time = 2.0
+shader_parameter/u_current_time = 0.0
 shader_parameter/u_color_channel = ExtResource("3_cqytg")
 shader_parameter/u_mask = ExtResource("4_va7v8")
 
@@ -148,18 +139,13 @@ uniform float u_current_time;
 
 void fragment() {
 	float time = u_current_time / u_total_time;
-	vec2 uvs = UV;
-	uvs.x = -uvs.x;
-	vec4 curr_mask = texture(u_mask, uvs);
-	float mask = (1.0 - curr_mask.g) * curr_mask.a;
-	mask = 1.0 - mask;
-	vec4 base_color = texture(u_color_channel, uvs);
+	vec2 final_uv = UV;
+	final_uv.x = -final_uv.x;
+	vec4 curr_mask = texture(u_mask, final_uv);
+	float mask = (curr_mask.g);
+	vec4 base_color = texture(u_color_channel, final_uv);
 	ALBEDO = base_color.rgb;
-	if (mask >= time) {
-		ALPHA = 0.0;
-	} else {
-		ALPHA = clamp(1.0 - mix(mask / time, 1.0, -2.0), 0.0, 1.0);
-	}
+	ALPHA = clamp(time, 0.0, 1.0) * base_color.a * smoothstep(1.0 - time, 1.0 - time + 0.02, final_uv.y);
 }
 "
 
@@ -167,7 +153,7 @@ void fragment() {
 render_priority = 0
 shader = SubResource("Shader_6dhc4")
 shader_parameter/u_total_time = 2.0
-shader_parameter/u_current_time = 2.0
+shader_parameter/u_current_time = 0.0
 shader_parameter/u_color_channel = ExtResource("1_5thbj")
 shader_parameter/u_mask = ExtResource("3_kgji8")
 

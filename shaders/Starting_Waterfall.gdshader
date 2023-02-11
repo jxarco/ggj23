@@ -20,7 +20,7 @@ vec3 get_water(in vec2 uv) {
 	float noise_sample = texture(u_noise_texture, timed_UV + displacement_UV).r;
 	
 	float intensity = 0.0;
-	const float banding_step = 1.0 / float(u_banding_steps);
+	float banding_step = 1.0 / float(u_banding_steps);
 	for(uint i = 0u; i < u_banding_steps; i++) {
 		intensity += step(float(i) * banding_step, noise_sample) * banding_step;
 	}

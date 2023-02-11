@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b80a1hiq0jb56"]
+[gd_scene load_steps=24 format=3 uid="uid://b80a1hiq0jb56"]
 
 [ext_resource type="Script" path="res://waterfall.gd" id="1_ftc7k"]
 [ext_resource type="Texture2D" uid="uid://bclw3pug2qnwd" path="res://assets/gfx/noise2.png" id="2_2xh01"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bpku3p4efyqa4" path="res://assets/gfx/uniformclouds.jpg" id="2_j2onh"]
 [ext_resource type="ArrayMesh" uid="uid://d3qd5dosjoijg" path="res://assets/waterfall.obj" id="5_uedx4"]
 [ext_resource type="Texture2D" uid="uid://cbv62w67g7hqb" path="res://assets/gfx/env_particle.png" id="6_0bi0b"]
+[ext_resource type="Texture2D" uid="uid://b74qmvbxevhnr" path="res://particles/color_ramp_part.tres" id="7_hohvy"]
+[ext_resource type="Texture2D" uid="uid://bfnphrvtnkab" path="res://assets/gfx/humo.png" id="7_u2geq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bonj2"]
 render_priority = 0
@@ -30,6 +32,13 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_hk42n"]
 curve = SubResource("Curve_7h1yw")
 
+[sub_resource type="Gradient" id="Gradient_68g3y"]
+offsets = PackedFloat32Array(0, 0.839844)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t12dp"]
+gradient = SubResource("Gradient_68g3y")
+
 [sub_resource type="Curve" id="Curve_ttjn1"]
 min_value = -200.0
 max_value = 200.0
@@ -39,16 +48,16 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_c0n5x"]
 curve = SubResource("Curve_ttjn1")
 
-[sub_resource type="Curve" id="Curve_gjekd"]
-_data = [Vector2(0.106618, 0.0090909), 0.0, 0.0, 0, 0, Vector2(0.474265, 0.390909), 0.0, 0.0, 0, 0, Vector2(0.790441, 0.627273), 0.0, 0.0, 0, 0, Vector2(1, 0.0090909), 0.0, 0.0, 0, 0]
-point_count = 4
+[sub_resource type="Curve" id="Curve_cdqmw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_o3cox"]
-curve = SubResource("Curve_gjekd")
+curve = SubResource("Curve_cdqmw")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1b6q3"]
 emission_shape = 3
-emission_box_extents = Vector3(0.014, 0.25, 0.25)
+emission_box_extents = Vector3(0.014, 0.25, 0.744)
 direction = Vector3(0, 1, 0)
 spread = 11.39
 gravity = Vector3(-0.05, -0.404, 0)
@@ -61,34 +70,44 @@ angle_curve = SubResource("CurveTexture_hk42n")
 scale_min = 0.06
 scale_max = 0.24
 scale_curve = SubResource("CurveTexture_o3cox")
+color_ramp = SubResource("GradientTexture1D_t12dp")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k56lq"]
 transparency = 1
 blend_mode = 1
 cull_mode = 1
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("6_0bi0b")
 
 [sub_resource type="QuadMesh" id="QuadMesh_15jrc"]
 material = SubResource("StandardMaterial3D_k56lq")
 orientation = 0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbgbe"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("7_u2geq")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yth4i"]
 emission_shape = 3
-emission_box_extents = Vector3(0.002, 0.1, 0.7)
-direction = Vector3(-0.06, 0.6, 0)
-spread = 20.0
-gravity = Vector3(0, -0.125, 0)
-initial_velocity_min = 0.6
-initial_velocity_max = 0.7
+emission_box_extents = Vector3(0.002, 0.202, 1.265)
+direction = Vector3(-4.159, 0.6, 0)
+spread = 65.21
+gravity = Vector3(0, -0.047, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 0.35
 linear_accel_curve = SubResource("CurveTexture_c0n5x")
-damping_min = 0.02
-damping_max = 0.15
+damping_min = 0.08
+damping_max = 0.2
 angle_curve = SubResource("CurveTexture_hk42n")
 scale_min = 0.05
-scale_max = 0.6
-scale_curve = SubResource("CurveTexture_o3cox")
+scale_max = 0.4
+color_ramp = ExtResource("7_hohvy")
 
-[sub_resource type="BoxMesh" id="BoxMesh_cy8pj"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_wc8is"]
+flip_faces = true
+orientation = 0
 
 [node name="Waterfall" type="Node3D"]
 script = ExtResource("1_ftc7k")
@@ -103,36 +122,28 @@ mesh = ExtResource("5_uedx4")
 
 [node name="particles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.277057, 5.36919, -0.174158)
-gi_mode = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.472976, 5.4357, -0.174158)
 emitting = false
 amount = 200
 sub_emitter = NodePath(".")
 lifetime = 8.12
-speed_scale = 4.0
-explosiveness = 0.07
-randomness = 0.03
+speed_scale = 3.0
 visibility_aabb = AABB(-1.98577, -1.00324, -1.93122, 3.97155, 2.00647, 3.86245)
 local_coords = true
-draw_order = 3
-trail_lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_1b6q3")
 draw_pass_1 = SubResource("QuadMesh_15jrc")
 
-[node name="particles3" type="GPUParticles3D" parent="."]
+[node name="particles3_new" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0986602, -0.351641, -0.188668)
-gi_mode = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0172905, 0.41104, -0.197772)
+material_override = SubResource("StandardMaterial3D_hbgbe")
 emitting = false
-amount = 400
+amount = 500
 sub_emitter = NodePath(".")
 lifetime = 8.12
-speed_scale = 4.0
-explosiveness = 0.07
-randomness = 0.03
+speed_scale = 2.1
 visibility_aabb = AABB(-1.98577, -1.00324, -1.86384, 3.97155, 2.00647, 3.86245)
 local_coords = true
-draw_order = 3
 trail_lifetime = 0.4
 process_material = SubResource("ParticleProcessMaterial_yth4i")
-draw_pass_1 = SubResource("BoxMesh_cy8pj")
+draw_pass_1 = SubResource("PlaneMesh_wc8is")
