@@ -11,6 +11,10 @@ func _ready():
 	scene_instanced.reset_game.connect(_on_node_3d_reset)
 	add_child(scene_instanced)
 
+func _input(event):
+	if event.is_action_pressed("Exit"):
+		get_tree().quit()
+
 func _on_node_3d_reset():
 	
 	scene_instanced.queue_free()
