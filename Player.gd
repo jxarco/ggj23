@@ -115,6 +115,7 @@ func _physics_process(delta):
 	if character_enabled:
 
 		var input_dir := Input.get_vector("Left", "Right", "Up", "Down")
+		input_dir = input_dir.normalized()
 		if input_dir:
 			velocity.x = input_dir.x * speed
 			velocity.z = input_dir.y * speed
